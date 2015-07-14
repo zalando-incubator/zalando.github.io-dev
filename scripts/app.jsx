@@ -1,6 +1,6 @@
 import React from 'react';
-import MyComponent from './components/mycomponent.jsx';
+import Main from './components/Main.jsx';
 
 window.React = React;
 
-React.render(<MyComponent />, document.getElementById('content'));
+React.render(<Main />, document.getElementById('content'));
