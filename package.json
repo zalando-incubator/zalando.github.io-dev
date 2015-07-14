@@ -36,7 +36,10 @@
   "dependencies": {
     "imagemin-pngquant": "^4.1.2",
     "react": "^0.13.3",
-    "superagent": "^1.2.0"
+    "superagent": "^1.2.0",
+    "jquery": "^2.1.4",
+    "jquery.scrollto": "^2.1.1",
+    "lodash": "^3.10.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",

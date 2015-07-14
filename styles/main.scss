@@ -1,10 +1,19 @@
+// colors
+$zalando-orange: #f16a21;
+
+// basic reset
+body, html {
+  padding:0; margin:0;
+  font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
 //STATS
 .section-heading {
-  margin: 20x;
+  margin: 20px;
   text-transform: uppercase;
   color: #F16A21;
   font-size: 1.3em;
@@ -52,3 +61,41 @@ hr {
 }
 
 
+
+//
+// Stupid layout XXX
+//
+.main-content {
+  padding-top:40px;
+}
+
+//
+// Navbar component styles
+//
+nav.Navbar {
+  position: fixed;
+  margin:0; padding: 0;
+  background: $zalando-orange;
+  display: block;
+  width: 100%;
+  top: 0;
+
+  > ul {
+    margin:0; padding:0;
+
+    > li {
+      display: block;
+      list-style: none; padding: 0; margin: 0;
+      height: 40px; line-height: 40px;
+      float:left; width: 50%;
+      text-align:center;
+      text-transform: uppercase;
+
+      > a {
+        color:#fff;
+        font-size:24px;
+        text-decoration: none;
+      }
+    }
+  }
+}
