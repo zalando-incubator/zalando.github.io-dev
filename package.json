@@ -21,7 +21,8 @@
     "chai"
   ],
   "scripts": {
-    "test": "mocha --reporter nyan --compilers js:babel/register --recursive"
+    "test": "mocha --reporter nyan --compilers js:babel/register --recursive",
+    "ci": "gulp lint && npm test"
   },
   "authors": [
     "Angela Igreja",

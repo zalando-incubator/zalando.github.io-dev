@@ -81,7 +81,8 @@ gulp.task('styles', function() {
 gulp.task('lint', function() {
   return gulp.src('scripts/**/*.jsx')
     .pipe(eslint())
-    .pipe(eslint.format());
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
 });
 
 gulp.task('watchTask', function() {
