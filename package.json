@@ -1,11 +1,11 @@
 {
-  "name": "react-starterify",
-  "version": "1.0.3",
-  "description": "React JS application skeleton using Browserify and other awesome tools",
-  "main": "app.js",
+  "name": "zalando.github.io-dev",
+  "version": "0.0.0",
+  "description": "Zalando github io page **DEV** repository",
+  "main": "index.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Granze/react-starterify"
+    "url": "https://github.com/zalando/zalando.github.io-dev"
   },
   "keywords": [
     "gulp",
@@ -23,12 +23,15 @@
   "scripts": {
     "test": "mocha --reporter nyan --compilers js:babel/register --recursive"
   },
-  "author": "Maurizio Mangione",
+  "authors": [
+    "Angela Igreja",
+    "Ruben Barilani"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Granze/react-starterify/issues"
+    "url": "https://github.com/zalando/zalando.github.io-dev/issues"
   },
-  "homepage": "https://github.com/Granze/react-starterify",
+  "homepage": "https://github.com/zalando/zalando.github.io-dev",
   "dependencies": {
     "react": "^0.13.3",
     "superagent": "^1.2.0"

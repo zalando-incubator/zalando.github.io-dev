@@ -1,7 +1,18 @@
-[![Build Status](https://travis-ci.org/Granze/react-starterify.svg?branch=master)](https://travis-ci.org/Granze/react-starterify)
-[![bitHound Score](https://www.bithound.io/github/Granze/react-starterify/badges/score.svg)](https://www.bithound.io/github/Granze/react-starterify/master)
+# zalando.github.io 
+
+Zalando github io page **DEV** repository.
+
+[![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
+
+
+-------------------
+
 
 # React Starterify
+
+
+[![Build Status](https://travis-ci.org/Granze/react-starterify.svg?branch=master)](https://travis-ci.org/Granze/react-starterify)
+[![bitHound Score](https://www.bithound.io/github/Granze/react-starterify/badges/score.svg)](https://www.bithound.io/github/Granze/react-starterify/master)
 
 A minimal and solid React JS application skeleton.
 
