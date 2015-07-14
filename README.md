@@ -2,8 +2,7 @@
 
 Zalando github io page **DEV** repository.
 
-[![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
-
+[![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
 
 -------------------
 
