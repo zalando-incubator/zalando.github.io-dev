@@ -1,0 +1,62 @@
+{
+  "name": "react-starterify",
+  "version": "1.0.3",
+  "description": "React JS application skeleton using Browserify and other awesome tools",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Granze/react-starterify"
+  },
+  "keywords": [
+    "gulp",
+    "react",
+    "browserify",
+    "seed",
+    "boilerplate",
+    "kickstarter",
+    "ES6",
+    "6to5",
+    "babel",
+    "mocha",
+    "chai"
+  ],
+  "scripts": {
+    "test": "mocha --reporter nyan --compilers js:babel/register --recursive"
+  },
+  "author": "Maurizio Mangione",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Granze/react-starterify/issues"
+  },
+  "homepage": "https://github.com/Granze/react-starterify",
+  "dependencies": {
+    "react": "^0.13.3",
+    "superagent": "^1.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babel": "^5.5.8",
+    "babel-eslint": "^3.1.15",
+    "babelify": "^6.1.2",
+    "browser-sync": "^2.7.11",
+    "browserify": "^10.2.4",
+    "chai": "^3.0.0",
+    "del": "^1.2.0",
+    "eslint": "^0.23.0",
+    "eslint-plugin-react": "^2.5.2",
+    "gulp": "^3.9.0",
+    "gulp-changed": "^1.2.1",
+    "gulp-csso": "^1.0.0",
+    "gulp-eslint": "^0.14.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-postcss": "^5.1.9",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "mocha": "^2.2.5",
+    "react-tools": "^0.13.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
+  }
+}
