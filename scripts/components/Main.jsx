@@ -1,5 +1,5 @@
 import React from 'react';
-import Stats from './Stats/Stats.js'
+import Stats from './Stats/Stats.js';
 
 class Main extends React.Component{
   render(){
@@ -7,8 +7,8 @@ class Main extends React.Component{
       <div className="main-container">
         <Stats/>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Main;
