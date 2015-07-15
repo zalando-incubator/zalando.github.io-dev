@@ -17,6 +17,10 @@ Clone the repository and run ```npm install```
 
 ```npm test```
 
+## Lint
+
+```npm run lint``` or ```gulp lint```
+
 
 -------------------
 

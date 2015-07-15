@@ -38,7 +38,7 @@ class Stats extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

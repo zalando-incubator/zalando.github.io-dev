@@ -21,6 +21,7 @@
     "chai"
   ],
   "scripts": {
+    "lint": "gulp lint",
     "test": "mocha $(find src -name '*-test.js') --reporter nyan --compilers js:babel/register",
     "ci": "gulp lint && npm test -- --reporter progress",
     "serve": "gulp serve"

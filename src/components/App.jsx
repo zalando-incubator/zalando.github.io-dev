@@ -1,5 +1,5 @@
 import React from 'react';
-import Stats from './stats/Stats.js';
+import Stats from './stats/Stats';
 
 class App extends React.Component{
   render(){
