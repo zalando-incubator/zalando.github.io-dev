@@ -1,34 +1,18 @@
 import React from 'react';
 import _ from 'lodash';
-import $scrollTo from 'jquery.scrollto';
+import NavbarItem from './NavbarItem.jsx';
 
 export default class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.options = _.extend({
-      scrollTo: {
-        duration: 400,
-        offset: -40
-      }
-    }, props.options || {});
-  }
-
-  // Scroll to target
-  scrollTo(target, event) {
-    event.preventDefault();
-    $scrollTo(target, this.options.scrollTo);
+    this.options = _.extend(Navbar.options, props.options || {});
   }
 
   render() {
     let items = this.props.items.map((item) => {
-      let href = '#' + item.hash;
-      return (
-        <li key={item.hash}>
-          <a href={href} onClick={this.scrollTo.bind(this, href)}>{item.label}</a>
-        </li>
-      );
+      return (<NavbarItem item={item} options={this.options} />);
     });
 
     return (
@@ -38,3 +22,10 @@ export default class Navbar extends React.Component {
     );
   }
 }
+
+Navbar.options = {
+  scrollTo: {
+    duration: 300,
+    offset: -40
+  }
+};

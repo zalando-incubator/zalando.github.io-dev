@@ -19,7 +19,7 @@ class Stats extends React.Component {
       <div className='container'>
         <div className="row">
           <div className="col-lg-12 text-center">
-            <h3 className="section-heading">Stats</h3>
+            <h3 className="section-heading" id="stats">Stats</h3>
             {/*<hr className="primary"></hr> */}
           </div>
         </div>

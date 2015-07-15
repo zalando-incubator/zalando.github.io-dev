@@ -34,7 +34,7 @@ class FilterableRepositoryList extends React.Component {
       <div className='container'>
           <div className="row">
             <div className="col-lg-12 text-center">
-              <h3 className="section-heading">Repositories</h3>
+              <h3 className="section-heading" id="repositories">Repositories</h3>
               {/*<hr className="primary"></hr> */}
             </div>
           </div>

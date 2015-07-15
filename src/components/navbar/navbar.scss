@@ -8,6 +8,7 @@ nav.Navbar {
   display: block;
   width: 100%;
   top: 0;
+  z-index:300;
 
   > ul {
     margin:0; padding:0;
