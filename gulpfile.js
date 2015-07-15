@@ -101,7 +101,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(p.scss, ['styles']);
+  gulp.watch('src/**/*.scss', ['styles']);
   gulp.watch('src/**/*.jsx', ['lint']);
   gulp.watch('src/assets/images/*', ['images']);
 });
