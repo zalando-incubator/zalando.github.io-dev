@@ -21,8 +21,10 @@
     "chai"
   ],
   "scripts": {
-    "test": "mocha --reporter nyan --compilers js:babel/register --recursive",
-    "ci": "gulp lint && npm test"
+    "lint": "gulp lint",
+    "test": "mocha $(find src -name '*-test.js') --reporter nyan --compilers js:babel/register",
+    "ci": "gulp lint && npm test -- --reporter progress",
+    "serve": "gulp serve"
   },
   "authors": [
     "Angela Igreja",
@@ -33,6 +35,7 @@
     "url": "https://github.com/zalando/zalando.github.io-dev/issues"
   },
   "homepage": "https://github.com/zalando/zalando.github.io-dev",
+  "engine": "node >= 0.11",
   "dependencies": {
     "imagemin-pngquant": "^4.1.2",
     "react": "^0.13.3",

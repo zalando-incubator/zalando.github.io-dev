@@ -4,8 +4,27 @@ Zalando github io page **DEV** repository.
 
 [![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
 
+
+## Install
+
+Clone the repository and run ```npm install```
+
+## Run and watch for changes
+
+```npm run serve``` or ```gulp serve```
+
+## Tests
+
+```npm test```
+
+## Lint
+
+```npm run lint``` or ```gulp lint```
+
+
 -------------------
 
+Base skeleton was:
 
 # React Starterify
 
