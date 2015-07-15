@@ -37,12 +37,14 @@
   "homepage": "https://github.com/zalando/zalando.github.io-dev",
   "engine": "node >= 0.11",
   "dependencies": {
+    "bootstrap-sass": "^3.3.5",
     "imagemin-pngquant": "^4.1.2",
-    "react": "^0.13.3",
-    "superagent": "^1.2.0",
     "jquery": "^2.1.4",
     "jquery.scrollto": "^2.1.1",
-    "lodash": "^3.10.0"
+    "lodash": "^3.10.0",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.23.7",
+    "superagent": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
