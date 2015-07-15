@@ -1,1 +1,6 @@
+// Import bootstrap styles: TODO... maybe import only basic and really required modules not the entire huge pack
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
 @import 'components/app';
+@import 'components/stats/stats';
+@import 'components/navbar/navbar';

@@ -1,0 +1,48 @@
+//STATS
+.section-heading {
+  margin: 20px;
+  text-transform: uppercase;
+  color: #F16A21;
+  font-size: 1.3em;
+}
+
+hr {
+  max-width: 70px;
+  border-color: #F16A21;
+  border-width: 3px;
+}
+
+.stat {
+  margin:35px;
+
+  h2, h4 {
+    display:inline;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h4 {
+    font-size: 0.75em;
+  }
+}
+
+
+@media(min-width:480px) {
+
+  .stat {
+    h2 {
+      font-size: 3em;
+    }
+
+    h4 {
+      font-size: 1.5em;
+    }
+  }
+
+  .section-heading {
+    font-size: 2em;
+  }
+
+}

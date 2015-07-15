@@ -1,101 +1,28 @@
+//
+// Variables
+//
+
 // colors
 $zalando-orange: #f16a21;
 
-// basic reset
+
+//
+// App Layout
+//
 body, html {
-  padding:0; margin:0;
   font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-//STATS
-.section-heading {
-  margin: 20px;
-  text-transform: uppercase;
-  color: #F16A21;
-  font-size: 1.3em;
-}
-
-hr {
-  max-width: 70px;
-  border-color: #F16A21;
-  border-width: 3px;
-}
-
-.stat {
-  margin:35px;
-
-  h2, h4 {
-    display:inline;
-  }
-
-  h2 {
-    font-size: 1.5em;
-  }
-
-  h4 {
-    font-size: 0.75em;
-  }
-}
-
-
-@media(min-width:480px) {
-
-  .stat {
-    h2 {
-      font-size: 3em;
-    }
-
-    h4 {
-      font-size: 1.5em;
-    }
-  }
-
-  .section-heading {
-    font-size: 2em;
-  }
-
-}
-
-
-
-//
-// Stupid layout XXX
-//
-.main-content {
-  padding-top:40px;
-}
-
-//
-// Navbar component styles
-//
-nav.Navbar {
-  position: fixed;
-  margin:0; padding: 0;
+// Shame styles XXX
+.join-us-btn {
   background: $zalando-orange;
+  border-color: $zalando-orange;
   display: block;
-  width: 100%;
-  top: 0;
+  margin: 0 auto;
 
-  > ul {
-    margin:0; padding:0;
-
-    > li {
-      display: block;
-      list-style: none; padding: 0; margin: 0;
-      height: 40px; line-height: 40px;
-      float:left; width: 50%;
-      text-align:center;
-      text-transform: uppercase;
-
-      > a {
-        color:#fff;
-        font-size:24px;
-        text-decoration: none;
-      }
-    }
+  &:hover {
+    background: $zalando-orange;
+    border-color: $zalando-orange;
+    opacity: 0.6;
   }
 }
