@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Stat from './Stat';
+import Stat from './Stat.jsx';
 
 class Stats extends React.Component {
 
