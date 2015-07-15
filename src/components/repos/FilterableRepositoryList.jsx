@@ -7,17 +7,46 @@ class FilterableRepositoryList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props.repositories = {
-
-    };
     this.state = {
-      filter: 'all'
+      filter: 'all',
+      repositories: [
+        {
+          name: 'Lorem Ipsum',
+          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
+          primaryLanguage: 'java',
+          forksCount: 30,
+          starsCount: 40
+        },
+        {
+          name: 'Lorem Ipsum',
+          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
+          primaryLanguage: 'javascript',
+          forksCount: 30,
+          starsCount: 40
+        },
+        {
+          name: 'Lorem Ipsum',
+          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
+          primaryLanguage: 'go',
+          forksCount: 30,
+          starsCount: 40
+        },
+        {
+          name: 'Lorem Ipsum',
+          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
+          primaryLanguage: 'java',
+          forksCount: 30,
+          starsCount: 40
+        }
+      ]
     };
+    this.handleUserInput = this.handleUserInput.bind(this);
   }
 
   handleUserInput(filter) {
     this.setState({
       filter: filter
+
     });
   }
 
