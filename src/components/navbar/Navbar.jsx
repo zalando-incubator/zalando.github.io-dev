@@ -9,8 +9,16 @@ export default class Navbar extends React.Component {
     super(props);
 
     this.options = _.extend(Navbar.options, props.options || {});
+    this.options.scrollTo.onAfter = this.options.scrollTo.onAfter.bind(this);
+
     this.sections = {};
     this.$window = $(window);
+    this.shouldReactOnScroll = true;
+    this.onClickCallback = function (section){
+      this.shouldReactOnScroll = false;
+      this.setState({section: section});
+    }.bind(this);
+
     this.state = {
       section: null
     };
@@ -34,15 +42,15 @@ export default class Navbar extends React.Component {
   }
 
   componentDidMount() {
-
     this.populateSections();
     this.listenScroll();
 
     this.$window.on('navbar.scroll', function () {
-      let section = this.getSection(this.$window.scrollTop());
-      this.setState({section: section});
+      if (this.shouldReactOnScroll === true) {
+        let section = this.getSection(this.$window.scrollTop());
+        this.setState({section: section});
+      }
     }.bind(this));
-
   }
 
   /**
@@ -59,6 +67,11 @@ export default class Navbar extends React.Component {
       if ((this.sections[section] - windowHeight) < ( windowPos + (this.options.scrollOffset) )) {
         returnValue = section;
       }
+    }
+
+    // scroll reached the bottom, current section is the last one
+    if (this.props.items.length && windowPos + this.$window.height() === $(document).height()) {
+      return this.getId(this.props.items[this.props.items.length - 1]);
     }
     return returnValue;
   }
@@ -103,7 +116,8 @@ export default class Navbar extends React.Component {
           href={this.getId(item)}
           label={item.label}
           section={this.state.section}
-          options={this.options} />
+          options={this.options}
+          onClickCallback={this.onClickCallback} />
       );
     });
 
@@ -126,6 +140,10 @@ Navbar.options = {
   scrollOffset: 58,
   scrollTo: {
     duration: 300,
-    offset: -60
+    offset: -60,
+    onAfter: function () {
+      // "re-activate" the state change when user scroll, after scrollTo animation end
+      this.shouldReactOnScroll = true;
+    }
   }
 };

@@ -7,10 +7,11 @@ export default class NavbarItem extends React.Component {
     super(props);
   }
 
-  // Scroll to target
-  scrollTo(target, event) {
+  // onClick
+  onClick(target, event) {
     event.preventDefault();
     $scrollTo(target, this.props.options.scrollTo);
+    this.props.onClickCallback(target);
   }
 
   render() {
@@ -19,7 +20,7 @@ export default class NavbarItem extends React.Component {
 
     return (
       <li key={href}>
-        <a href={href} onClick={this.scrollTo.bind(this, href)}
+        <a href={href} onClick={this.onClick.bind(this, href)}
            className={className}>{this.props.label}</a>
       </li>
     );
