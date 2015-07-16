@@ -3,17 +3,20 @@
  */
 
 import React from 'react';
-
 import RepositoryListItem from './RepositoryListItem.jsx';
+import {Grid, Row} from 'react-bootstrap';
 
 class RepositoryList extends React.Component {
 
   render() {
     return (
-      <div>
-        RepositoryList
-        <RepositoryListItem/>
-      </div>
+      <Grid>
+        <Row className='show-grid'>
+          {this.props.repositories.map(function(repo, i){
+            return <RepositoryListItem key={i} data={repo} />;
+          })}
+        </Row>
+      </Grid>
     );
   }
 }

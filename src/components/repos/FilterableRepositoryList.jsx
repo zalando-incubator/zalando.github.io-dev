@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
-import RepoStore from '../../stores/RepoStore.js'
+import RepoStore from '../../stores/RepoStore.js';
 
 class FilterableRepositoryList extends React.Component {
 
@@ -43,7 +43,7 @@ class FilterableRepositoryList extends React.Component {
             onUserInput={this.handleUserInput}
             />
           <RepositoryList
-            repositories={this.props.repositories}
+            repositories={this.state.repositories}
             filter={this.state.filter}
             />
       </div>

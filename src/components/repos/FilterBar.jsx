@@ -29,7 +29,7 @@ class FilterBar extends React.Component {
 
   render() {
     return (
-      <div className="text-center">
+      <div className="text-center filter-bar">
         <Button onClick={this.onOptionChange.bind(this, 'all')} active={this.state.filter === 'all'}>All</Button>
         <span> </span>
         <Button onClick={this.onOptionChange.bind(this, 'java')} active={this.state.filter === 'java'}>Java</Button>
