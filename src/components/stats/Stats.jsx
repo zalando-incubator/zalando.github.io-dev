@@ -1,6 +1,7 @@
 import React from 'react';
 import Stat from './Stat.jsx';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
+import {Col, Row} from 'react-bootstrap';
 
 class Stats extends React.Component {
 
@@ -18,20 +19,20 @@ class Stats extends React.Component {
     return (
       <div className='container'>
         <SectionHeading target="stats" text="Stats" />
-        <div className="row text-center">
-          <div className="col-xs-6 col-lg-3">
+        <Row className='show-grid text-center'>
+          <Col xs={6} lg={3}>
             <Stat name='REPOS' count={this.state.repos} icon='fa fa-github'/>
-          </div>
-          <div className=" col-xs-6 col-lg-3">
+          </Col>
+          <Col xs={6} lg={3}>
             <Stat name='STARS' count={this.state.stars} icon='fa fa-star'/>
-          </div>
-          <div className=" col-xs-6 col-lg-3">
+          </Col>
+          <Col xs={6} lg={3}>
             <Stat name='FORKS' count={this.state.forks} icon='fa fa-code-fork'/>
-          </div>
-          <div className="col-xs-6 col-lg-3">
+          </Col>
+          <Col xs={6} lg={3}>
             <Stat name='LANGUAGES' count={this.state.languages} icon='fa fa-code'/>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     );
   }
