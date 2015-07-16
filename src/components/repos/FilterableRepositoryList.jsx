@@ -3,6 +3,7 @@ import _ from 'lodash';
 import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
+import SectionHeading from '../section-heading/SectionHeading.jsx';
 
 class FilterableRepositoryList extends React.Component {
 
@@ -32,12 +33,7 @@ class FilterableRepositoryList extends React.Component {
   render() {
     return (
       <div className='container'>
-          <div className="row">
-            <div className="col-lg-12 text-center">
-              <h3 className="section-heading" id="repositories">Repositories</h3>
-              {/*<hr className="primary"></hr> */}
-            </div>
-          </div>
+          <SectionHeading target="repositories" text="Repositories" />
           <FilterBar
             filter={this.state.filter}
             onUserInput={this.handleUserInput}
