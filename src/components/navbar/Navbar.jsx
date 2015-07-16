@@ -10,10 +10,9 @@ export default class Navbar extends React.Component {
 
     this.options = _.extend(Navbar.options, props.options || {});
     this.sections = {};
-    console.log(this.props.items);
     this.state = {
       section: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -25,7 +24,7 @@ export default class Navbar extends React.Component {
     $(window).on('scroll', function(e) {
       if (scrollTimer) { clearTimeout(scrollTimer); }
       scrollTimer = setTimeout(function() {
-        $(window).trigger('navbar.scroll', {scrollEvent : e });
+        $(window).trigger('navbar.scroll', {scrollEvent: e });
       }, 500);
     });
 
@@ -40,8 +39,8 @@ export default class Navbar extends React.Component {
     var returnValue = null;
     var windowHeight = Math.round($(window).height() * this.options.scrollThreshold);
 
-    for(var section in this.sections) {
-      if((this.sections[section] - windowHeight) < windowPos) {
+    for (var section in this.sections) {
+      if ((this.sections[section] - windowHeight) < windowPos) {
         returnValue = section;
       }
     }
@@ -62,7 +61,7 @@ export default class Navbar extends React.Component {
       linkHref = this.getId(item);
       $target = $(linkHref);
 
-      if($target.length) {
+      if ($target.length) {
         topPos = $target.offset().top;
         this.sections[linkHref] = Math.round(topPos);
       }

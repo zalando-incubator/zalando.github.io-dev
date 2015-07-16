@@ -4,7 +4,7 @@ class Stat extends React.Component {
   render() {
     return (
       <div className='stat'>
-        <img src='../images/icon.png' width='40px' height='40px' alt='Icon'/>
+        <i className={this.props.icon}></i>
         <div>
             <br></br>
               <h2>{this.props.count}</h2>
@@ -17,6 +17,7 @@ class Stat extends React.Component {
 }
 
 Stat.propTypes = {
+  icon: React.PropTypes.string.isRequired,
   count: React.PropTypes.number.isRequired,
   name: React.PropTypes.string.isRequired
 };

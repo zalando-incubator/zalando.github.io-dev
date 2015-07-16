@@ -16,23 +16,3 @@ body, html {
 .main-container {
   padding-top: 40px;
 }
-
-// Shame styles XXX
-.join-us-btn {
-  background: $zalando-orange;
-  border-color: $zalando-orange;
-  display: block;
-  margin: 0 auto;
-
-  &:hover {
-    background: $zalando-orange;
-    border-color: $zalando-orange;
-    opacity: 0.6;
-  }
-}
-
-
-// Shame styles XXX
-#repositories.section-heading {
-  min-height: 400px;
-}

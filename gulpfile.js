@@ -28,7 +28,8 @@ var gulp = require('gulp'),
       bundle: 'index.js',
       tmpJs: '.tmp/js',
       tmpCss: '.tmp/css',
-      tmpImages: '.tmp/images'
+      tmpImages: '.tmp/images',
+      tmpFonts: '.tmp/fonts'
     };
 
 gulp.task('clean', function(cb) {
@@ -93,6 +94,11 @@ gulp.task('images', function () {
     .pipe(gulp.dest(p.tmpImages));
 });
 
+gulp.task('fonts', function () {
+  gulp.src('./node_modules/font-awesome/fonts/*')
+    .pipe(gulp.dest(p.tmpFonts));
+});
+
 gulp.task('lint', function() {
   return gulp.src('src/**/*.jsx')
     .pipe(eslint())
@@ -107,7 +113,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('serve', ['clean'], function() {
-  gulp.start(['browserSync', 'watch', 'watchify', 'styles', 'images', 'lint']);
+  gulp.start(['browserSync', 'watch', 'watchify', 'styles', 'images', 'fonts', 'lint']);
 });
 
 // NOT READY YET! TODO
