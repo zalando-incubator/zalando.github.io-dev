@@ -56,7 +56,7 @@ export default class Navbar extends React.Component {
     let windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
 
     for (var section in this.sections) {
-      if ((this.sections[section] - windowHeight) < windowPos) {
+      if ((this.sections[section] - windowHeight) < ( windowPos + (this.options.scrollOffset) )) {
         returnValue = section;
       }
     }
@@ -123,6 +123,7 @@ Navbar.SCROLL_EVENT_DELAY = 500;
 
 Navbar.options = {
   scrollThreshold: 0.3,
+  scrollOffset: 58,
   scrollTo: {
     duration: 300,
     offset: -60

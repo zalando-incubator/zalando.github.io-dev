@@ -17,7 +17,7 @@ class Stats extends React.Component {
   render() {
     return (
       <div className='container'>
-        <SectionHeading target="stats" text="Stats" />
+        <SectionHeading target="stats" text="statistics" />
         <div className="row text-center">
           <div className="col-xs-6 col-lg-3">
             <Stat name='REPOS' count={this.state.repos} icon='fa fa-github'/>
