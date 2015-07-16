@@ -1,5 +1,26 @@
+//FILTER BAR
+
 .filter-bar {
   margin:20px;
+
+  .btn {
+    border-radius: 0px;
+    border-color: $zalando-orange;
+    color: $zalando-orange;
+
+    &.active {
+      background-color: $zalando-orange;
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
 
+.panel {
+  border-radius: 0px;
+}
 
+//REPOSITORY LIST ITEM
+.panel-default {
+  border-left: 3px solid $zalando-orange;
+}

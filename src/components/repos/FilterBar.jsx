@@ -31,11 +31,11 @@ class FilterBar extends React.Component {
     return (
       <div className="text-center filter-bar">
         <Button onClick={this.onOptionChange.bind(this, 'all')} active={this.state.filter === 'all'}>All</Button>
-        <span> </span>
+        &nbsp;
         <Button onClick={this.onOptionChange.bind(this, 'java')} active={this.state.filter === 'java'}>Java</Button>
-        <span> </span>
+        &nbsp;
         <Button onClick={this.onOptionChange.bind(this, 'javascript')} active={this.state.filter === 'javascript'}>JavaScript</Button>
-        <span> </span>
+        &nbsp;
         <Button onClick={this.onOptionChange.bind(this, 'go')} active={this.state.filter === 'go'}>Go</Button>
       </div>
 
