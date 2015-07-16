@@ -15,23 +15,22 @@ class FilterBar extends React.Component {
   }
 
   onOptionChange(language) {
+    let newFilter = language;
+    //if the user clicks the same button, reset the filter
     if (language === this.state.filter) {
-      this.setState({
-        filter: 'all'
-      });
-    } else {
-      this.setState({
-        filter: language
-      });
+      newFilter = 'all';
     }
-    console.log(this.state.filter);
-    this.props.onUserInput(this.state.filter);
+    this.setState({
+      filter: newFilter
+    });
+    console.log(newFilter);
+    this.props.onUserInput(newFilter);
   }
 
   render() {
     return (
       <div className="text-center">
-        <Button onClick={this.onOptionChange.bind(this, 'All')} active={this.state.filter === 'all'}>All</Button>
+        <Button onClick={this.onOptionChange.bind(this, 'all')} active={this.state.filter === 'all'}>All</Button>
         <span> </span>
         <Button onClick={this.onOptionChange.bind(this, 'java')} active={this.state.filter === 'java'}>Java</Button>
         <span> </span>

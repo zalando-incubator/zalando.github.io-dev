@@ -1,7 +1,8 @@
 import React from 'react';
-
+import _ from 'lodash';
 import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
+import RepoStore from '../../stores/RepoStore.js'
 
 class FilterableRepositoryList extends React.Component {
 
@@ -9,45 +10,23 @@ class FilterableRepositoryList extends React.Component {
     super(props);
     this.state = {
       filter: 'all',
-      repositories: [
-        {
-          name: 'Lorem Ipsum',
-          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
-          primaryLanguage: 'java',
-          forksCount: 30,
-          starsCount: 40
-        },
-        {
-          name: 'Lorem Ipsum',
-          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
-          primaryLanguage: 'javascript',
-          forksCount: 30,
-          starsCount: 40
-        },
-        {
-          name: 'Lorem Ipsum',
-          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
-          primaryLanguage: 'go',
-          forksCount: 30,
-          starsCount: 40
-        },
-        {
-          name: 'Lorem Ipsum',
-          description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
-          primaryLanguage: 'java',
-          forksCount: 30,
-          starsCount: 40
-        }
-      ]
+      repositories: RepoStore.getRepos()
     };
     this.handleUserInput = this.handleUserInput.bind(this);
   }
 
   handleUserInput(filter) {
+    let newRepoList;
+    if (filter === 'all') {
+      newRepoList = RepoStore.getRepos();
+    } else {
+      newRepoList = _.filter(RepoStore.getRepos(), {'primaryLanguage': filter});
+    }
     this.setState({
-      filter: filter
-
+      filter: filter,
+      repositories: newRepoList
     });
+    console.log(newRepoList);
   }
 
   render() {
