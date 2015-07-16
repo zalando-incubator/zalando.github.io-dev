@@ -10,34 +10,47 @@ export default class Navbar extends React.Component {
 
     this.options = _.extend(Navbar.options, props.options || {});
     this.sections = {};
+    this.$window = $(window);
     this.state = {
       section: null
     };
   }
 
-  componentDidMount() {
-
-    this.populateSections();
-    console.log(this.sections);
-
+  /**
+   * Listen scroll dom event and trigger our custom scroll event
+   * @return void
+   */
+  listenScroll() {
     var scrollTimer;
-    $(window).on('scroll', function(e) {
+    this.$window.on('scroll', function(e) {
       if (scrollTimer) { clearTimeout(scrollTimer); }
       scrollTimer = setTimeout(function() {
-        $(window).trigger('navbar.scroll', {scrollEvent: e });
-      }, 500);
-    });
-
-    $(window).on('navbar.scroll', function () {
-      let section = this.getSection($(window).scrollTop());
-      this.setState({section: section});
-      console.log(section);
+        this.$window.trigger('navbar.scroll', { scrollEvent: e });
+      }.bind(this), 500);
     }.bind(this));
   }
 
+  componentDidMount() {
+
+    this.populateSections();
+    this.listenScroll();
+
+    this.$window.on('navbar.scroll', function () {
+      let section = this.getSection(this.$window.scrollTop());
+      this.setState({section: section});
+    }.bind(this));
+
+  }
+
+  /**
+   * Get the current displayed section
+   *
+   * @param {float} windowPos
+   * @returns {string|null}
+   */
   getSection (windowPos) {
     var returnValue = null;
-    var windowHeight = Math.round($(window).height() * this.options.scrollThreshold);
+    var windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
 
     for (var section in this.sections) {
       if ((this.sections[section] - windowHeight) < windowPos) {
@@ -48,11 +61,22 @@ export default class Navbar extends React.Component {
     return returnValue;
   }
 
+  /**
+   * Get the id/href for in page navigation targets
+   *
+   * @param {Object} item
+   * @returns {string}
+   */
   getId(item) {
     return '#' + item.hash;
   }
 
+  /**
+   * Populate sections property with sections positions
+   * @returns {Object}
+   */
   populateSections() {
+
     var linkHref;
     var topPos;
     var $target;
@@ -72,19 +96,25 @@ export default class Navbar extends React.Component {
 
   render() {
     let items = this.props.items.map((item) => {
-      return (<NavbarItem href={this.getId(item)}
-                          label={item.label}
-                          section={this.state.section}
-                          options={this.options} />);
+      return (
+        <NavbarItem
+          href={this.getId(item)}
+          label={item.label}
+          section={this.state.section}
+          options={this.options} />
+      );
     });
 
     return (
-      <nav className="Navbar">
+      <nav className="navbar">
         <ul>{items}</ul>
       </nav>
     );
   }
 }
+
+// TODO: propTypes validation
+//Navbar.propTypes = {};
 
 Navbar.options = {
   scrollThreshold: 0.3,
