@@ -24,17 +24,17 @@ class Stats extends React.Component {
           </div>
         </div>
         <div className="row text-center">
-          <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='REPOS' count={this.state.repos} icon='fa fa-github' />
+          <div className="col-xs-6 col-lg-3">
+            <Stat name='REPOS' count={this.state.repos}/>
           </div>
-          <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='STARS' count={this.state.stars} icon='fa fa-star'/>
+          <div className=" col-xs-6 col-lg-3">
+            <Stat name='STARS' count={this.state.stars}/>
           </div>
-          <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='FORKS' count={this.state.forks} icon='fa fa-code-fork' />
+          <div className=" col-xs-6 col-lg-3">
+            <Stat name='FORKS' count={this.state.forks}/>
           </div>
-          <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='LANGUAGES' count={this.state.languages} icon='fa fa-code'/>
+          <div className="col-xs-6 col-lg-3">
+            <Stat name='LANGUAGES' count={this.state.languages}/>
           </div>
         </div>
       </div>

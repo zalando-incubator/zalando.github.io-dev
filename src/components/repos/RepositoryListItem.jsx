@@ -9,7 +9,7 @@ class RepositoryListItem extends React.Component {
 
   render() {
     return (
-      <Col xs={6} md={4}>
+      <Col xs={12} sm={6} md={4}>
         <Panel header={this.props.data.name}>
           {this.props.data.description}
           <p>{this.props.data.primaryLanguage}</p>
