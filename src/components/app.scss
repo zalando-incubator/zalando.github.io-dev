@@ -13,16 +13,6 @@ body, html {
   font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
 }
 
-// Shame styles XXX
-.join-us-btn {
-  background: $zalando-orange;
-  border-color: $zalando-orange;
-  display: block;
-  margin: 0 auto;
-
-  &:hover {
-    background: $zalando-orange;
-    border-color: $zalando-orange;
-    opacity: 0.6;
-  }
+.main-container {
+  padding-top: 40px;
 }

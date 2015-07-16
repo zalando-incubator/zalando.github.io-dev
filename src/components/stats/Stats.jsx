@@ -19,22 +19,22 @@ class Stats extends React.Component {
       <div className='container'>
         <div className="row">
           <div className="col-lg-12 text-center">
-            <h3 className="section-heading">Stats</h3>
+            <h3 className="section-heading" id="stats">Stats</h3>
             {/*<hr className="primary"></hr> */}
           </div>
         </div>
         <div className="row text-center">
           <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='REPOS' count={this.state.repos}/>
+            <Stat name='REPOS' count={this.state.repos} icon='fa fa-github' />
           </div>
           <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='STARS' count={this.state.stars}/>
+            <Stat name='STARS' count={this.state.stars} icon='fa fa-star'/>
           </div>
           <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='FORKS' count={this.state.forks}/>
+            <Stat name='FORKS' count={this.state.forks} icon='fa fa-code-fork' />
           </div>
           <div className="col-md-4 col-xs-6 col-lg-3">
-            <Stat name='LANGUAGES' count={this.state.languages}/>
+            <Stat name='LANGUAGES' count={this.state.languages} icon='fa fa-code'/>
           </div>
         </div>
       </div>
