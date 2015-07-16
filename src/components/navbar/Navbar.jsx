@@ -90,6 +90,6 @@ Navbar.options = {
   scrollThreshold: 0.3,
   scrollTo: {
     duration: 300,
-    offset: -40
+    offset: -60
   }
 };
