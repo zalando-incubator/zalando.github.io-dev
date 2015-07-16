@@ -1,5 +1,6 @@
 let ITEMS = [
-  {label: 'stats', hash: 'stats'},
+  {label: 'welcome', hash: 'welcome'},
+  {label: 'statistics', hash: 'stats'},
   {label: 'repositories', hash: 'repositories'}
 ];
 

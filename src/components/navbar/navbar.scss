@@ -3,6 +3,8 @@
 //
 nav.navbar {
 
+  border-radius: 0;
+
   position: fixed;
   margin:0; padding: 0;
   background: $zalando-orange;
@@ -18,7 +20,7 @@ nav.navbar {
       display: block;
       list-style: none; padding: 0; margin: 0;
       height: 48px;
-      float:left; width: 50%;
+      float:left; width: 33.33333%;
       text-align:center;
       text-transform: uppercase;
 
@@ -35,5 +37,11 @@ nav.navbar {
         }
       }
     }
+  }
+}
+
+@media(max-width:480px) {
+  nav.navbar > ul > li > a {
+    font-size: 13px;
   }
 }
