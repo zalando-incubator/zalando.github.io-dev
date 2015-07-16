@@ -21,12 +21,15 @@ export default class Navbar extends React.Component {
    * @return void
    */
   listenScroll() {
-    var scrollTimer;
+    let scrollTimer;
+
     this.$window.on('scroll', function(e) {
       if (scrollTimer) { clearTimeout(scrollTimer); }
+
       scrollTimer = setTimeout(function() {
-        this.$window.trigger('navbar.scroll', { scrollEvent: e });
-      }.bind(this), 500);
+        this.$window.trigger(Navbar.SCROLL_EVENT, { scrollEvent: e });
+      }.bind(this), Navbar.SCROLL_EVENT_DELAY);
+
     }.bind(this));
   }
 
@@ -49,15 +52,14 @@ export default class Navbar extends React.Component {
    * @returns {string|null}
    */
   getSection (windowPos) {
-    var returnValue = null;
-    var windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
+    let returnValue = null;
+    let windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
 
     for (var section in this.sections) {
       if ((this.sections[section] - windowHeight) < windowPos) {
         returnValue = section;
       }
     }
-
     return returnValue;
   }
 
@@ -76,10 +78,9 @@ export default class Navbar extends React.Component {
    * @returns {Object}
    */
   populateSections() {
-
-    var linkHref;
-    var topPos;
-    var $target;
+    let linkHref;
+    let topPos;
+    let $target;
 
     this.props.items.forEach(function(item) {
       linkHref = this.getId(item);
@@ -115,6 +116,9 @@ export default class Navbar extends React.Component {
 
 // TODO: propTypes validation
 //Navbar.propTypes = {};
+
+Navbar.SCROLL_EVENT = 'navbar.scroll';
+Navbar.SCROLL_EVENT_DELAY = 500;
 
 Navbar.options = {
   scrollThreshold: 0.3,
