@@ -12,28 +12,32 @@ let RepoStore = assign({}, EventEmitter.prototype, {
         description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
         primaryLanguage: 'java',
         forksCount: 30,
-        starsCount: 40
+        starsCount: 40,
+        url: 'https://github.com/zalando/zalando.github.io-dev'
       },
       {
         name: 'Lorem Ipsum',
         description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
         primaryLanguage: 'javascript',
         forksCount: 30,
-        starsCount: 40
+        starsCount: 40,
+        url: 'https://github.com/zalando/zalando.github.io-dev'
       },
       {
         name: 'Lorem Ipsum',
         description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
         primaryLanguage: 'go',
         forksCount: 30,
-        starsCount: 40
+        starsCount: 40,
+        url: 'https://github.com/zalando/zalando.github.io-dev'
       },
       {
         name: 'Lorem Ipsum',
         description: 'is simply dummy text of the printing and typesetting industry. Lorem Ipsum',
         primaryLanguage: 'java',
         forksCount: 30,
-        starsCount: 40
+        starsCount: 40,
+        url: 'https://github.com/zalando/zalando.github.io-dev'
       }
     ];
   }
