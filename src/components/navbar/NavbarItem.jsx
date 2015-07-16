@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import $scrollTo from 'jquery.scrollto';
 
 export default class NavbarItem extends React.Component {
@@ -14,10 +15,13 @@ export default class NavbarItem extends React.Component {
   }
 
   render() {
-    let href = '#' + this.props.item.hash;
+    let href = this.props.href;
+    let className = this.props.section === href ? 'active': '';
+
     return (
-      <li key={this.props.item.hash}>
-        <a href={href} onClick={this.scrollTo.bind(this, href)}>{this.props.item.label}</a>
+      <li key={href}>
+        <a href={href} onClick={this.scrollTo.bind(this, href)}
+           className={className}>{this.props.label}</a>
       </li>
     );
   }
