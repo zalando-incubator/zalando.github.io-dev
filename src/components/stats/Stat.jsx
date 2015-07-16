@@ -8,7 +8,7 @@ class Stat extends React.Component {
         <div>
             <br></br>
               <h2>{this.props.count}</h2>
-              <span></span>
+              &nbsp;
               <h4>{this.props.name}</h4>
         </div>
       </div>

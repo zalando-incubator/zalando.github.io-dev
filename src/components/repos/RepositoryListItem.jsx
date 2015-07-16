@@ -11,14 +11,23 @@ class RepositoryListItem extends React.Component {
     return (
       <Col xs={12} sm={6} md={4}>
         <Panel header={this.props.data.name}>
-          {this.props.data.description}
-          <p>{this.props.data.primaryLanguage}</p>
+          <p>{this.props.data.description}</p>
           <Row className='show-grid text-center'>
-            <Col xs={6} md={6}>
-              {this.props.data.forksCount}
-              <span class="icon-fork"></span>
+            <Col xs={4} md={4}>
+              <i className='fa fa-code'></i>
+              &nbsp;
+              {this.props.data.primaryLanguage}
             </Col>
-            <Col xs={6} md={6}> {this.props.data.starsCount}</Col>
+            <Col xs={4} md={4}>
+              <i className='fa fa-code-fork'></i>
+              &nbsp;
+              {this.props.data.forksCount}
+            </Col>
+            <Col xs={4} md={4}>
+              <i className='fa fa-star'></i>
+              &nbsp;
+              {this.props.data.starsCount}
+            </Col>
           </Row>
         </Panel>
       </Col>
