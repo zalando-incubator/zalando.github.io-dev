@@ -99,6 +99,7 @@ export default class Navbar extends React.Component {
     let items = this.props.items.map((item) => {
       return (
         <NavbarItem
+          key={item.hash}
           href={this.getId(item)}
           label={item.label}
           section={this.state.section}
