@@ -100,7 +100,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('lint', function() {
-  return gulp.src('src/**/*.{jsx,js}')
+  return gulp.src(['src/**/*.{jsx,js}','!src/**/*-{mock,test}.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
