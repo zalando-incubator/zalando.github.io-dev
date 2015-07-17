@@ -4,7 +4,7 @@ import Navbar from './navbar/Navbar.jsx';
 import FilterableRepositoryList from './repos/FilterableRepositoryList.jsx';
 import Welcome from './welcome/Welcome.jsx';
 
-import NAV_ITEMS from '../constants/Navitems.jsx';
+import NAV_ITEMS from '../constants/navitems.jsx';
 
 class App extends React.Component{
   render(){
