@@ -133,7 +133,7 @@ export default class Navbar extends React.Component {
 //Navbar.propTypes = {};
 
 Navbar.SCROLL_EVENT = 'navbar.scroll';
-Navbar.SCROLL_EVENT_DELAY = 500;
+Navbar.SCROLL_EVENT_DELAY = 300;
 
 Navbar.options = {
   scrollThreshold: 0.3,
