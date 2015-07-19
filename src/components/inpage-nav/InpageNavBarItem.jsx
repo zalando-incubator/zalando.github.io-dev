@@ -1,13 +1,12 @@
 import React from 'react';
 import $scrollTo from 'jquery.scrollto';
 
-export default class NavbarItem extends React.Component {
+export default class InpageNavBarItem extends React.Component {
 
   constructor(props) {
     super(props);
   }
 
-  // onClick
   onClick(target, event) {
     event.preventDefault();
     $scrollTo(target, this.props.options.scrollTo);

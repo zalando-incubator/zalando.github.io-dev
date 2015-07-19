@@ -1,13 +1,14 @@
 //
-// Navbar component styles
+// InpageNavBar component styles
 //
-nav.navbar {
+nav.inpage-nav-bar {
 
   border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 
   position: fixed;
   margin:0; padding: 0;
-  background: $zalando-orange;
+  background: #fff;
   display: block;
   width: 100%;
   top: 0;
@@ -27,13 +28,14 @@ nav.navbar {
       > a {
         display: block;
         line-height: 48px;
-        color:#fff;
+        color: $zalando-orange;
         font-size:18px;
         text-decoration: none;
 
         &.active {
-          color: $zalando-orange;
-          background: #fff;
+          color: #fff;
+          background-color: $zalando-orange;
+          transition: background-color 300ms linear;
         }
       }
     }
@@ -41,7 +43,7 @@ nav.navbar {
 }
 
 @media(max-width:480px) {
-  nav.navbar > ul > li > a {
+  nav.inpage-nav-bar > ul > li > a {
     font-size: 13px;
   }
 }

@@ -9,7 +9,7 @@ export default class SectionHeading extends React.Component {
     return (
       <div className="row">
         <div className="col-lg-12 text-center">
-          <h3 className="section-heading" id={this.props.target}>{this.props.text}</h3>
+          <h3 className="section-heading">{this.props.text}</h3>
         </div>
       </div>
     );
@@ -17,6 +17,5 @@ export default class SectionHeading extends React.Component {
 }
 
 SectionHeading.propTypes = {
-  target: React.PropTypes.string.isRequired,
   text: React.PropTypes.string.isRequired
 };

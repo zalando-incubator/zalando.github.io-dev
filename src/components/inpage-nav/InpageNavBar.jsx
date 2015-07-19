@@ -1,14 +1,15 @@
 import React from 'react';
 import _ from 'lodash';
 import $ from 'jquery';
-import NavbarItem from './NavbarItem.jsx';
 
-export default class Navbar extends React.Component {
+import InpageNavBarItem from './InpageNavBarItem.jsx';
+
+export default class InpageNavBar extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.options = _.extend(Navbar.options, props.options || {});
+    this.options = _.extend(InpageNavBar.options, props.options || {});
     this.options.scrollTo.onAfter = this.options.scrollTo.onAfter.bind(this);
 
     this.sections = {};
@@ -35,8 +36,8 @@ export default class Navbar extends React.Component {
       if (scrollTimer) { clearTimeout(scrollTimer); }
 
       scrollTimer = setTimeout(function() {
-        this.$window.trigger(Navbar.SCROLL_EVENT, { scrollEvent: e });
-      }.bind(this), Navbar.SCROLL_EVENT_DELAY);
+        this.$window.trigger(InpageNavBar.SCROLL_EVENT, { scrollEvent: e });
+      }.bind(this), InpageNavBar.SCROLL_EVENT_DELAY);
 
     }.bind(this));
   }
@@ -83,7 +84,7 @@ export default class Navbar extends React.Component {
    * @returns {string}
    */
   getId(item) {
-    return '#' + item.hash;
+    return '#' + item.target;
   }
 
   /**
@@ -111,9 +112,9 @@ export default class Navbar extends React.Component {
   render() {
     let items = this.props.items.map((item) => {
       return (
-        <NavbarItem
-          key={item.hash}
-          href={this.getId(item)}
+        <InpageNavBarItem
+          key={item.target}
+          href={this.getId(item) }
           label={item.label}
           section={this.state.section}
           options={this.options}
@@ -122,20 +123,18 @@ export default class Navbar extends React.Component {
     });
 
     return (
-      <nav className="navbar">
+      <nav className="inpage-nav-bar">
         <ul>{items}</ul>
       </nav>
     );
   }
 }
 
-// TODO: propTypes validation
-//Navbar.propTypes = {};
 
-Navbar.SCROLL_EVENT = 'navbar.scroll';
-Navbar.SCROLL_EVENT_DELAY = 300;
+InpageNavBar.SCROLL_EVENT = 'navbar.scroll';
+InpageNavBar.SCROLL_EVENT_DELAY = 300;
 
-Navbar.options = {
+InpageNavBar.options = {
   scrollThreshold: 0.3,
   scrollOffset: 58,
   scrollTo: {
