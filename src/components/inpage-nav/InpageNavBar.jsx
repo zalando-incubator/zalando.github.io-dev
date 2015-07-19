@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 import $ from 'jquery';
+import $scrollTo from 'jquery.scrollto';
+
 
 import InpageNavBarItem from './InpageNavBarItem.jsx';
 
@@ -15,8 +17,10 @@ export default class InpageNavBar extends React.Component {
     this.sections = {};
     this.$window = $(window);
     this.shouldReactOnScroll = true;
+
     this.onClickCallback = function (section){
       this.shouldReactOnScroll = false;
+      $scrollTo(this.getSectionId(window.location.hash), this.options.scrollTo);
       this.setState({section: section});
     }.bind(this);
 
@@ -26,7 +30,7 @@ export default class InpageNavBar extends React.Component {
   }
 
   /**
-   * Listen scroll dom event and trigger our custom scroll event
+   * Listen scroll dom event and trigger our custom "debounced" scroll event
    * @return void
    */
   listenScroll() {
@@ -34,11 +38,9 @@ export default class InpageNavBar extends React.Component {
 
     this.$window.on('scroll', function(e) {
       if (scrollTimer) { clearTimeout(scrollTimer); }
-
       scrollTimer = setTimeout(function() {
         this.$window.trigger(InpageNavBar.SCROLL_EVENT, { scrollEvent: e });
       }.bind(this), InpageNavBar.SCROLL_EVENT_DELAY);
-
     }.bind(this));
   }
 
@@ -46,9 +48,12 @@ export default class InpageNavBar extends React.Component {
     this.populateSections();
     this.listenScroll();
 
+    this.setState({ section: this.getSection() });
+
     this.$window.on('navbar.scroll', function () {
       if (this.shouldReactOnScroll === true) {
-        let section = this.getSection(this.$window.scrollTop());
+        let section = this.getSection();
+        window.location.hash = section;
         this.setState({section: section});
       }
     }.bind(this));
@@ -57,10 +62,10 @@ export default class InpageNavBar extends React.Component {
   /**
    * Get the current displayed section
    *
-   * @param {float} windowPos
    * @returns {string|null}
    */
-  getSection (windowPos) {
+  getSection () {
+    let windowPos = this.$window.scrollTop();
     let returnValue = null;
     let windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
 
@@ -72,19 +77,29 @@ export default class InpageNavBar extends React.Component {
 
     // scroll reached the bottom, current section is the last one
     if (this.props.items.length && windowPos + this.$window.height() === $(document).height()) {
-      return this.getId(this.props.items[this.props.items.length - 1]);
+      return this.getHref(this.props.items[this.props.items.length - 1]);
     }
     return returnValue;
   }
 
   /**
-   * Get the id/href for in page navigation targets
+   * Get the href to trigger hash change for the current item
    *
    * @param {Object} item
    * @returns {string}
    */
-  getId(item) {
+  getHref(item) {
     return '#' + item.target;
+  }
+
+  /**
+   * Get the id of a section related to the current hash
+   *
+   * @param hash
+   * @returns {string}
+   */
+  getSectionId(hash) {
+    return hash + InpageNavBar.SECTION_ID_SUFFIX;
   }
 
   /**
@@ -92,17 +107,17 @@ export default class InpageNavBar extends React.Component {
    * @returns {Object}
    */
   populateSections() {
-    let linkHref;
+    let hash;
     let topPos;
-    let $target;
+    let $section;
 
     this.props.items.forEach(function(item) {
-      linkHref = this.getId(item);
-      $target = $(linkHref);
+      hash = this.getHref(item);
+      $section = $(this.getSectionId(hash));
 
-      if ($target.length) {
-        topPos = $target.offset().top;
-        this.sections[linkHref] = Math.round(topPos);
+      if ($section.length) {
+        topPos = $section.offset().top;
+        this.sections[hash] = Math.round(topPos);
       }
     }.bind(this));
 
@@ -114,7 +129,7 @@ export default class InpageNavBar extends React.Component {
       return (
         <InpageNavBarItem
           key={item.target}
-          href={this.getId(item) }
+          href={this.getHref(item) }
           label={item.label}
           section={this.state.section}
           options={this.options}
@@ -133,6 +148,7 @@ export default class InpageNavBar extends React.Component {
 
 InpageNavBar.SCROLL_EVENT = 'navbar.scroll';
 InpageNavBar.SCROLL_EVENT_DELAY = 300;
+InpageNavBar.SECTION_ID_SUFFIX = '__in-page-navbar';
 
 InpageNavBar.options = {
   scrollThreshold: 0.3,
