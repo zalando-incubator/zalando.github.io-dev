@@ -4,3 +4,6 @@ node_modules
 dist
 .tmp
 .publish
+
+src/config/*
+src/config/parameters.default.json
