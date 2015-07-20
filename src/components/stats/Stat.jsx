@@ -6,10 +6,10 @@ class Stat extends React.Component {
       <div className='stat'>
         <i className={this.props.icon}></i>
         <div>
-            <br></br>
-              <h2>{this.props.count}</h2>
+          <br></br>
+          <h2>{this.props.count}</h2>
               &nbsp;
-              <h4>{this.props.name}</h4>
+          <h4>{this.props.name}</h4>
         </div>
       </div>
     );

@@ -32,7 +32,7 @@ hr { // FIXME - global
   }
 }
 
-// desktop - tablet
+/* Extra Small Devices, Phones */
 @media(min-width:480px) {
 
   .stat {
@@ -55,3 +55,16 @@ hr { // FIXME - global
   }
 
 }
+
+/* Large Devices, Wide Screens */
+@media(min-width:1200px) {
+
+  .stat {
+    h2{
+      display: block;
+      text-align: center;
+    }
+  }
+
+}
+
