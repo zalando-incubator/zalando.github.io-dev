@@ -23,7 +23,6 @@ class FilterBar extends React.Component {
     this.setState({
       filter: newFilter
     });
-    console.log(newFilter);
     this.props.onUserInput(newFilter);
   }
 

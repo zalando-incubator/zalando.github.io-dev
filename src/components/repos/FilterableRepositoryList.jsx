@@ -27,7 +27,6 @@ class FilterableRepositoryList extends React.Component {
       filter: filter,
       repositories: newRepoList
     });
-    console.log(newRepoList);
   }
 
   render() {
