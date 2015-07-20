@@ -2,7 +2,7 @@ import React from 'react';
 import Stat from './Stat.jsx';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import {Col, Row} from 'react-bootstrap';
-import api from '../../utils/api.js';
+import api from '../../utils/Api.js';
 
 class Stats extends React.Component {
 

@@ -1,6 +1,6 @@
 import restful from 'restful.js';
 import _ from 'lodash';
-import API_CONFIG from '../constants/api-config.js';
+import API_CONFIG from '../constants/ApiConfig.js';
 import ReposActionCreators from '../actions/ReposActionCreators.js';
 
 var api = restful(API_CONFIG.BASE_URL)

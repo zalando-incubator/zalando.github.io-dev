@@ -4,8 +4,8 @@ import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
-import api from '../../utils/api';
-import languagesUtil from '../../utils/languages-util';
+import api from '../../utils/Api';
+import languagesUtil from '../../utils/LanguagesUtil';
 
 class FilterableRepositoryList extends React.Component {
 

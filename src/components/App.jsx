@@ -1,6 +1,6 @@
 import React from 'react';
 
-import navItems from '../constants/nav-items.js';
+import navItems from '../constants/NavItems.js';
 import InpageNav from './inpage-nav/InpageNav.jsx';
 import { default as NavBar } from './inpage-nav/InpageNavBar.jsx';
 import { default as Section } from './inpage-nav/InpageNavSection.jsx';
