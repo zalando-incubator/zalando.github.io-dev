@@ -2,17 +2,27 @@ import React from 'react';
 import Stat from './Stat.jsx';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import {Col, Row} from 'react-bootstrap';
+import api from '../../utils/api.js';
 
 class Stats extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      repos: 40,
-      stars: 100,
-      forks: 100,
-      languages: 20
+      repos: 0,
+      stars: 0,
+      forks: 0,
+      languages: 0
     };
+  }
+
+  componentDidMount() {
+    // get the stats
+    api.getStats().then(function (stats){
+      if (stats) {
+        this.setState(stats);
+      }
+    }.bind(this));
   }
 
   render() {

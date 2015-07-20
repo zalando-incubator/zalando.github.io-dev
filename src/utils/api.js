@@ -12,10 +12,59 @@ var api = restful(API_CONFIG.BASE_URL)
 
 export default api;
 
-let languages = api.all('languages');
-let statistics = api.all('statistics');
+// main end points
 let repositories = api.all('projects');
+let statistics = api.all('statistics');
+let languages = api.all('languages');
 
-export {languages as languages};
-export {statistics as statistics};
-export {repositories as repositories};
+// unwrap the response and return simple array of items
+let transformCollection = function (response) {
+    let body = response.body();
+    let items = [];
+    body.forEach(function (item) {
+      items.push(item.data());
+    });
+    return items;
+};
+
+/**
+ * Get the last stats snapshot
+ *
+ * @returns {Promise.<Object>}
+ */
+api.getStats = function () {
+  return statistics.getAll().then(function (response) {
+    let body = response.body();
+    let statData;
+
+    if (body.length) {
+      statData = body[0].data();
+      return {
+        repos: statData.publicProjectCount || 0,
+        stars: statData.allStarsCount || 0,
+        forks: statData.allForksCount || 0,
+        languages: statData.programLanguagesCount || 0
+      };
+    } else {
+      return null;
+    }
+  });
+};
+
+/**
+ * Get repositories/projects
+ *
+ * @returns {Promise.<Array>}
+ */
+api.getRepos = function () {
+  return repositories.getAll().then(transformCollection);
+};
+
+/**
+ * Get programming languages
+ *
+ * @returns {Promise.<Array>}
+ */
+api.getLanguages = function (){
+  return languages.getAll().then(transformCollection);
+};
