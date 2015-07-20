@@ -44,7 +44,9 @@ api.getStats = function () {
         repos: statData.publicProjectCount || 0,
         stars: statData.allStarsCount || 0,
         forks: statData.allForksCount || 0,
-        languages: statData.programLanguagesCount || 0
+        languages: statData.programLanguagesCount || 0,
+        members: statData.membersCount || 0,
+        contributors: statData.allContributorsCount || 0
       };
     } else {
       return null;
