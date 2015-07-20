@@ -4,8 +4,10 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     sass = require('gulp-sass'),
     csso = require('gulp-csso'),
+    runSequence = require('run-sequence'),
     autoprefixer = require('autoprefixer-core'),
     browserify = require('browserify'),
+    ghPages = require('gulp-gh-pages'),
     watchify = require('watchify'),
     source = require('vinyl-source-stream'),
     buffer = require('vinyl-buffer'),
@@ -20,8 +22,10 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
+    ghPages = require('gulp-gh-pages'),
     p = {
       tmp: '.tmp',
+      dist: 'dist',
       source: 'src',
       jsx: 'src/index.jsx',
       scss: 'src/index.scss',
@@ -33,7 +37,7 @@ var gulp = require('gulp'),
     };
 
 gulp.task('clean', function(cb) {
-  del([p.tmp], cb);
+  return del([p.tmp, '!dist/.git', 'dist/**/*'], cb);
 });
 
 gulp.task('browserSync', function() {
@@ -62,7 +66,7 @@ gulp.task('watchify', function() {
 });
 
 gulp.task('browserify', function() {
-  browserify(p.jsx)
+  return browserify(p.jsx)
     .transform(babelify)
     .bundle()
     .pipe(source(p.bundle))
@@ -95,7 +99,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  gulp.src('./node_modules/font-awesome/fonts/*')
+  return gulp.src('./node_modules/font-awesome/fonts/*')
     .pipe(gulp.dest(p.tmpFonts));
 });
 
@@ -116,12 +120,19 @@ gulp.task('serve', ['clean'], function() {
   gulp.start(['browserSync', 'watch', 'watchify', 'styles', 'images', 'fonts', 'lint']);
 });
 
-// NOT READY YET! TODO
-//gulp.task('build', ['clean'], function() {
-//  process.env.NODE_ENV = 'production';
-//  gulp.start(['browserify', 'styles', 'images']);
-//});
+gulp.task('copy-dist', function () {
+  return gulp.src(['.tmp/**/*','src/index.html']).pipe(gulp.dest(p.dist));
+});
+
+gulp.task('build', ['clean'], function (done) {
+  runSequence(['browserify', 'styles', 'images', 'fonts'],'copy-dist', done);
+});
+
+gulp.task('deploy', ['build'], function () {
+  return gulp.src('./dist/**/*')
+    .pipe(ghPages());
+});
 
 gulp.task('default', function() {
-  console.log('Run "gulp watch or gulp build"');
+  console.log('Run "gulp serve or gulp build"');
 });
