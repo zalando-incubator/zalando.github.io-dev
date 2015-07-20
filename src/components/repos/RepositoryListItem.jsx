@@ -6,7 +6,6 @@ import React from 'react';
 import {Panel, Col, Row} from 'react-bootstrap';
 
 class RepositoryListItem extends React.Component {
-
   render() {
     return (
       <Col xs={12} sm={6} md={4}>

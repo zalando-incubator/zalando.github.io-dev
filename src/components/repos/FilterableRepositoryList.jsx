@@ -4,6 +4,7 @@ import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
+import api from '../../utils/api';
 
 class FilterableRepositoryList extends React.Component {
 
@@ -14,6 +15,19 @@ class FilterableRepositoryList extends React.Component {
       repositories: RepoStore.getRepos()
     };
     this.handleUserInput = this.handleUserInput.bind(this);
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  componentDidMount() {
+    RepoStore.addChangeListener(this.onChange);
+    api.getRepos();
+  }
+
+  onChange() {
+    this.setState({
+      repositories: RepoStore.getRepos()
+    });
   }
 
   handleUserInput(filter) {

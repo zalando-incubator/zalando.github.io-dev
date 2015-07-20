@@ -1,6 +1,7 @@
 import restful from 'restful.js';
 import _ from 'lodash';
 import API_CONFIG from '../constants/api-config.js';
+import ReposActionCreators from '../actions/ReposActionCreators.js';
 
 var api = restful(API_CONFIG.BASE_URL)
   .protocol(API_CONFIG.PROTOCOL)
@@ -57,7 +58,12 @@ api.getStats = function () {
  * @returns {Promise.<Array>}
  */
 api.getRepos = function () {
-  return repositories.getAll().then(transformCollection);
+  return repositories
+    .getAll()
+    .then(transformCollection)
+    .then(function (repos) {
+      ReposActionCreators.receiveRepos(repos);
+    });
 };
 
 /**

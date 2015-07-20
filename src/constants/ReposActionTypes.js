@@ -1,0 +1,5 @@
+const ACTION_TYPES = {
+  RECEIVE_REPOS: 'RECEIVE_REPOS'
+};
+
+export default ACTION_TYPES;
