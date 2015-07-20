@@ -63,6 +63,7 @@ api.getRepos = function () {
     .then(transformCollection)
     .then(function (repos) {
       ReposActionCreators.receiveRepos(repos);
+      return repos;
     });
 };
 

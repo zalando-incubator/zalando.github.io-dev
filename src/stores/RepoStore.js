@@ -31,7 +31,6 @@ let RepoStore = assign({}, EventEmitter.prototype, {
 
 RepoStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
-
     case ReposActionTypes.RECEIVE_REPOS:
       action.repos.forEach(function (repo) {
         repos.push(repo);
@@ -42,7 +41,6 @@ RepoStore.dispatchToken = AppDispatcher.register(function(action) {
     default:
     // do nothing
   }
-
 });
 
 module.exports = RepoStore;

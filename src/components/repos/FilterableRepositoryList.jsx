@@ -5,6 +5,7 @@ import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import api from '../../utils/api';
+import languagesUtil from '../../utils/languages-util';
 
 class FilterableRepositoryList extends React.Component {
 
@@ -12,6 +13,7 @@ class FilterableRepositoryList extends React.Component {
     super(props);
     this.state = {
       filter: 'all',
+      languages: [],
       repositories: RepoStore.getRepos()
     };
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -21,7 +23,9 @@ class FilterableRepositoryList extends React.Component {
 
   componentDidMount() {
     RepoStore.addChangeListener(this.onChange);
-    api.getRepos();
+    api.getRepos().then(function (repos) {
+      this.setState({languages: languagesUtil.guessLanguages(repos)});
+    }.bind(this));
   }
 
   onChange() {
@@ -48,6 +52,7 @@ class FilterableRepositoryList extends React.Component {
       <div className='container repos'>
           <SectionHeading text="Repositories" />
           <FilterBar
+            languages={this.state.languages}
             filter={this.state.filter}
             onUserInput={this.handleUserInput}
             />
