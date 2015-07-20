@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 export default {
   /**
-   * Extract programming languages by passing all repos
+   * Extract programming languages data
    *
    * @param {Array} repos
    * @returns {Array} - array used languages with count and percentage, ordered by count
@@ -33,9 +33,8 @@ export default {
 
     // add percentage
     languages.forEach(function (language) {
-      language.percentage = Math.round((language.count / repos.length) * 100);
+      language.percentage = Math.round( ( language.count / repos.length) * 100 );
     });
-
     return languages;
   }
 };

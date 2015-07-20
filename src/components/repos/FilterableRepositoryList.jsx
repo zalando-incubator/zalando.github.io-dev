@@ -5,6 +5,7 @@ import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
 import LanguageStore from '../../stores/LanguageStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
+import api from '../../utils/Api.js';
 
 class FilterableRepositoryList extends React.Component {
 
@@ -25,6 +26,8 @@ class FilterableRepositoryList extends React.Component {
   componentDidMount() {
     RepoStore.addChangeListener(this.onReposChange);
     LanguageStore.addChangeListener(this.onLanguagesChange);
+
+    api.getRepos();
   }
 
   onLanguagesChange() {
