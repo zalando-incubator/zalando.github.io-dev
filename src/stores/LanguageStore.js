@@ -5,12 +5,13 @@ import EventEmitter from 'events';
 import assign from 'object-assign';
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
 import ReposActionTypes from '../constants/ReposActionTypes.js';
+import languagesUtil from '../utils/LanguagesUtil.js';
 
 const CHANGE_EVENT = 'change';
 
-var repos = [];
+var languages = [];
 
-let RepoStore = assign({}, EventEmitter.prototype, {
+let LanguageStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -24,16 +25,16 @@ let RepoStore = assign({}, EventEmitter.prototype, {
   removeChangeListener: function(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
-  getRepos: function() {
-    return repos;
+  getLanguages: function() {
+    return languages;
   }
 });
 
-RepoStore.dispatchToken = AppDispatcher.register(function(action) {
+LanguageStore.dispatchToken = AppDispatcher.register(function(action) {
   switch (action.type) {
     case ReposActionTypes.RECEIVE_REPOS:
-      repos = action.repos;
-      RepoStore.emitChange();
+      languages = languagesUtil.guessLanguages(action.repos);
+      LanguageStore.emitChange();
       break;
 
     default:
@@ -41,4 +42,4 @@ RepoStore.dispatchToken = AppDispatcher.register(function(action) {
   }
 });
 
-module.exports = RepoStore;
+module.exports = LanguageStore;

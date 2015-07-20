@@ -8,8 +8,14 @@ import { default as Section } from './inpage-nav/InpageNavSection.jsx';
 import Welcome from './welcome/Welcome.jsx';
 import Stats from './stats/Stats.jsx';
 import FilterableRepositoryList from './repos/FilterableRepositoryList.jsx';
+import api from '../utils/Api.js';
 
 class App extends React.Component{
+
+  componentDidMount() {
+    api.getRepos();
+  }
+
   render(){
     return (
       <div className="main-container">
