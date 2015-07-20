@@ -7,7 +7,7 @@ export default class Welcome extends React.Component
   render() {
     return (
       <div className="container" id="welcome-container">
-        <SectionHeading text="welcome" target="welcome"/>
+        <SectionHeading text="welcome" />
       </div>
     );
   }

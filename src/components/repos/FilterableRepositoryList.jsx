@@ -33,7 +33,7 @@ class FilterableRepositoryList extends React.Component {
   render() {
     return (
       <div className='container repos'>
-          <SectionHeading target="repositories" text="Repositories" />
+          <SectionHeading text="Repositories" />
           <FilterBar
             filter={this.state.filter}
             onUserInput={this.handleUserInput}
