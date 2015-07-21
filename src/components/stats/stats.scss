@@ -13,14 +13,14 @@ hr { // FIXME - global
 }
 
 .stat {
-  margin:35px;
+  margin:30px;
 
   i {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 
   h2, h4 {
-    display:inline;
+    display:block;
   }
 
   h2 {
@@ -29,6 +29,7 @@ hr { // FIXME - global
 
   h4 {
     font-size: 0.75em;
+    font-weight: 350;
   }
 }
 
@@ -38,7 +39,7 @@ hr { // FIXME - global
   .stat {
 
     i {
-      font-size: 5em;
+      font-size: 4.5em;
     }
 
     h2 {
@@ -53,18 +54,4 @@ hr { // FIXME - global
   .section-heading {
     font-size: 2em;
   }
-
 }
-
-/* Large Devices, Wide Screens */
-@media(min-width:1200px) {
-
-  .stat {
-    h2{
-      display: block;
-      text-align: center;
-    }
-  }
-
-}
-

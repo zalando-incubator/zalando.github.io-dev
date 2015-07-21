@@ -32,22 +32,22 @@ class Stats extends React.Component {
       <div className='container'>
         <SectionHeading text="statistics" />
         <Row className='show-grid text-center'>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='REPOS' count={this.state.repos} icon='fa fa-github'/>
           </Col>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='STARS' count={this.state.stars} icon='fa fa-star'/>
           </Col>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='FORKS' count={this.state.forks} icon='fa fa-code-fork'/>
           </Col>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='LANGUAGES' count={this.state.languages} icon='fa fa-code'/>
           </Col>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='CONTRIBUTORS' count={this.state.contributors} icon='fa fa-users'/>
           </Col>
-          <Col xs={6} lg={2}>
+          <Col xs={6} lg={4}>
             <Stat name='MEMBERS' count={this.state.members} icon='fa fa-user'/>
           </Col>
         </Row>
