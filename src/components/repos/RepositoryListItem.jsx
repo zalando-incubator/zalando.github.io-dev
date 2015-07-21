@@ -4,13 +4,17 @@
 
 import React from 'react';
 import {Panel, Col, Row} from 'react-bootstrap';
+import LANGUAGE_COLORS from '../../constants/LanguageColors.js';
 
 class RepositoryListItem extends React.Component {
   render() {
+    let colorBar = {
+      borderLeft: '3px solid ' + LANGUAGE_COLORS[this.props.data.primaryLanguage]
+    };
     return (
       <Col xs={12} sm={6} md={4}>
         <a href={this.props.data.url}>
-          <Panel header={this.props.data.name} className={this.props.data.primaryLanguage}>
+          <Panel header={this.props.data.name} style={colorBar}>
             <p>{this.props.data.description}</p>
             <Row className='show-grid text-center'>
               <Col xs={4} md={4}>

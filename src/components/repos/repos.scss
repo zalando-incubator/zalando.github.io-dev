@@ -13,77 +13,36 @@
 //FILTER BAR
 .filter-bar {
   margin:20px;
-
   .btn {
     border-radius: 0px;
-    border-width: 2px;
-    border-color: dimgray;
+    border-width: 0px;
     color: dimgray;
     margin: 0 4px 4px 0;
+    background-color: transparent;
 
     &.active {
-      background-color: dimgray;
-      color: white;
+      background-color: transparent;
+      border-bottom: 2px solid $zalando-orange;
     }
 
     &:focus {
       outline: none;
-
     }
   }
 }
 
-.java-btn {
-
-  border-color: red !important;
-  color: red !important;
-
-  &.active {
-    background-color: red !important;
-    color: white !important;
-  }
-}
-
-
-.js-btn {
-    border-color: #0066bb !important;
-    color: #0066bb !important;
-
-    &.active {
-      background-color: #0066bb !important;
-      color: white !important;
-    }
-}
-
-.go-btn {
-  border-color: $zalando-orange !important;
-  color: $zalando-orange !important;
-
-  &.active {
-    background-color: $zalando-orange !important;
-    color: white !important;
-  }
-}
 
 .panel {
   border-radius: 0px;
 }
 
 //REPOSITORY LIST ITEM
+.panel-heading{
+  text-decoration:none;
+}
+
 .panel-default {
   border: 1px solid transparent;
-}
-
-.java{
-  border-left: 3px solid red;
-}
-
-.javascript{
-  border-left: 3px solid #0066bb;
-}
-
-.go {
-  border-left: 3px solid $zalando-orange;
 }
 
 .language {
