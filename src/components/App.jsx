@@ -1,5 +1,5 @@
 import React from 'react';
-import AppConstants from '../constants/AppConstants.js';
+import AppConstants from '../constants/AppConstants.jsx';
 import InpageNav from './inpage-nav/InpageNav.jsx';
 import { default as NavBar } from './inpage-nav/InpageNavBar.jsx';
 import { default as Section } from './inpage-nav/InpageNavSection.jsx';

@@ -4,7 +4,7 @@
 nav.inpage-nav-bar {
 
   border-radius: 0;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 
   position: fixed;
   margin:0; padding: 0;
@@ -16,34 +16,89 @@ nav.inpage-nav-bar {
 
   > ul {
     margin:0; padding:0;
+    display:block;
+    @include container-fixed();
 
-    > li {
+    @media (min-width: $screen-sm) {
+      width: $container-sm;
+    }
+    @media (min-width: $screen-md) {
+      width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg;
+    }
+
+
+  > li {
+
       display: block;
       list-style: none; padding: 0; margin: 0;
-      height: 48px;
-      float:left; width: 33.33333%;
+      height: 55px;
+      float:right; width: 200px;
       text-align:center;
       text-transform: uppercase;
 
+      &:first-child {
+        float:left;
+        width: 162px;
+
+        > a {
+          background: url('/images/icon_50x50.png') left center no-repeat;
+          background-size: 30px 30px;
+          padding-left: 38px;
+          line-height: 16px;
+          text-align: left;
+          height: 55px;
+          padding-top: 12px;
+
+          span.claim {display: block}
+        }
+      }
+
       > a {
         display: block;
-        line-height: 48px;
-        color: $zalando-orange;
-        font-size:18px;
+        line-height: 54px;
+        color: $zalando-dark-grey;
+        font-size:14px;
+        font-weight: bold;
         text-decoration: none;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+          color: $zalando-orange;
+          transition: color 100ms linear;
+        }
 
         &.active {
-          color: #fff;
-          background-color: $zalando-orange;
+          color: $zalando-orange;
           transition: background-color 300ms linear;
+          border-bottom: 2px solid $zalando-orange;
         }
       }
     }
   }
 }
 
-@media(max-width:480px) {
-  nav.inpage-nav-bar > ul > li > a {
-    font-size: 13px;
+@media (max-width: $screen-md-min) {
+  nav.inpage-nav-bar > ul > li {
+    width: 150px;
+
+    > a {
+      font-size: 13px;
+    }
+
+    &:first-child  {
+      width: 200px;
+    }
+  }
+}
+
+
+@media (max-width: $screen-xs-max) {
+  nav.inpage-nav-bar > ul > li:first-child {
+    width: 54px;
+    text-indent: -9999px;
+    > a { background-position: center center; }
   }
 }

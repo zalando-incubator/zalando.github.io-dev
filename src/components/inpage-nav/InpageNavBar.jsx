@@ -42,6 +42,10 @@ export default class InpageNavBar extends React.Component {
         this.$window.trigger(InpageNavBar.SCROLL_EVENT, { scrollEvent: e });
       }.bind(this), InpageNavBar.SCROLL_EVENT_DELAY);
     }.bind(this));
+
+    this.$window.on('resize', function() {
+      this.populateSections(); // recalculate section positions on resize
+    }.bind(this));
   }
 
   componentDidMount() {
@@ -68,17 +72,23 @@ export default class InpageNavBar extends React.Component {
     let windowPos = this.$window.scrollTop();
     let returnValue = null;
     let windowHeight = Math.round(this.$window.height() * this.options.scrollThreshold);
+    let sections = [];
 
-    for (var section in this.sections) {
-      if ((this.sections[section] - windowHeight) < ( windowPos + (this.options.scrollOffset) )) {
-        returnValue = section;
+    for (let section in this.sections) {
+      sections.push({id: section, pos: this.sections[section]});
+    }
+
+    sections = _.sortByOrder(sections, function (sec) {
+      return sec.pos;
+    }, ['desc']);
+
+    for (let i = 0; i < sections.length; i++) {
+      if ((sections[i].pos - windowHeight) < ( windowPos + (this.options.scrollOffset) )) {
+        returnValue = sections[i].id;
+        break;
       }
     }
 
-    // scroll reached the bottom, current section is the last one
-    if (this.props.items.length && windowPos + this.$window.height() === $(document).height()) {
-      return this.getHref(this.props.items[this.props.items.length - 1]);
-    }
     return returnValue;
   }
 
@@ -157,6 +167,7 @@ InpageNavBar.options = {
     duration: 300,
     offset: -60,
     onAfter: function () {
+      // FIXME this callback can't be overwritten
       // "re-activate" the state change when user scroll, after scrollTo animation end
       this.shouldReactOnScroll = true;
     }

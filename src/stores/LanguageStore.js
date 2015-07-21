@@ -1,6 +1,6 @@
 import assign from 'object-assign';
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
-import AppConstants from '../constants/AppConstants.js';
+import AppConstants from '../constants/AppConstants.jsx';
 import languagesUtil from '../utils/LanguagesUtil.js';
 import BaseStoreMixin from './BaseStoreMixin.js';
 
