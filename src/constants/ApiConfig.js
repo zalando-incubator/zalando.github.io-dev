@@ -1,8 +1,9 @@
-// TODO: inject those values while build, those values are dependent to the environment
+import parameters from '../config/parameters.json';
+
 const API_CONFIG = {
-  BASE_URL: 'catwatch-web.hackweek.zalan.do', // 'localhost:8080',
-  PROTOCOL: 'https', //'http',
-  ORGANIZATIONS: 'galanto' // 'zalando,zalando-stups'
+  BASE_URL: parameters.CATWATCH_API.BASE_URL,
+  PROTOCOL: parameters.CATWATCH_API.PROTOCOL,
+  ORGANIZATIONS: parameters.CATWATCH_API.ORGANIZATIONS
 };
 
 export default API_CONFIG;

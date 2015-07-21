@@ -1,0 +1,7 @@
+{
+  "CATWATCH_API": {
+    "BASE_URL": "catwatch-web.hackweek.zalan.do",
+    "PROTOCOL": "https",
+    "ORGANIZATIONS": "galanto"
+  }
+}

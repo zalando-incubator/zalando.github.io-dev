@@ -21,6 +21,30 @@ Clone the repository and run ```npm install```
 
 ```npm run lint``` or ```gulp lint```
 
+### Provide different parameters (env specific configuration)
+
+Add a new json file in the ```src/config``` folder called  ```parameters.<ENV>.json```.
+
+Example (src/config/parameters.prod.json):
+
+```json
+{
+  "CATWATCH_API" : {
+    "BASE_URL": "api.catwatch.com"
+  }
+}
+```
+
+Run gulp tasks with the env flag.
+
+```
+gulp serve --env=prod
+```
+
+The generated ```src/config/parameters.json``` file is the result of a merge 
+between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 
+
+
 
 -------------------
 
