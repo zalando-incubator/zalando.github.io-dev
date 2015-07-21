@@ -1,10 +1,10 @@
 import AppDispatcher from '../dispatchers/AppDispatcher.js';
-import ReposActionTypes from '../constants/ReposActionTypes.js';
+import AppConstants from '../constants/AppConstants.jsx';
 
 let actions = {
   receiveRepos: function (repos) {
     AppDispatcher.dispatch({
-      type: ReposActionTypes.RECEIVE_REPOS,
+      type: AppConstants.ActionTypes.RECEIVE_REPOS,
       repos: repos
     });
   }

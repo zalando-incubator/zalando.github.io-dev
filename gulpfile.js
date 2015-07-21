@@ -23,6 +23,8 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     ghPages = require('gulp-gh-pages'),
+    fs = require('fs'),
+    _ = require('lodash'),
     p = {
       tmp: '.tmp',
       dist: 'dist',
@@ -116,16 +118,40 @@ gulp.task('watch', function() {
   gulp.watch('src/assets/images/*', ['images']);
 });
 
-gulp.task('serve', ['clean'], function() {
-  gulp.start(['browserSync', 'watch', 'watchify', 'styles', 'images', 'fonts', 'lint']);
+gulp.task('serve', ['clean','parameters'], function() {
+  runSequence(['watch', 'watchify', 'styles', 'images', 'fonts', 'lint'], 'browserSync');
 });
 
 gulp.task('copy-dist', function () {
   return gulp.src(['.tmp/**/*','src/index.html']).pipe(gulp.dest(p.dist));
 });
 
-gulp.task('build', ['clean'], function (done) {
+gulp.task('build', ['clean','parameters'], function (done) {
   runSequence(['browserify', 'styles', 'images', 'fonts'],'copy-dist', done);
+});
+
+/**
+ * Custom task to generate parameters.json file that contains
+ * env dependent configuration values.
+ *
+ * Usage:
+ *
+ * gulp parameters [--env=<name>]
+ *
+ */
+gulp.task('parameters', function (done) {
+  var argv = require('yargs').argv;
+  var env = argv.env;
+  var defaultParameters = require('./src/config/parameters.default.json');
+  var envParametersFileName = env ? ('./src/config/parameters.'  + env + '.json') : null;
+  var parameters =  _.extend({}, defaultParameters);
+
+  if(env && envParametersFileName && fs.existsSync(envParametersFileName)) {
+    parameters = _.merge({}, parameters, require(envParametersFileName));
+  }
+
+  fs.writeFileSync('./src/config/parameters.json', JSON.stringify(parameters, null, 2));
+  done();
 });
 
 gulp.task('deploy', ['build'], function () {

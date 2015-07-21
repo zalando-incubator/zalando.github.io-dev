@@ -1,6 +1,6 @@
 import restful from 'restful.js';
 import _ from 'lodash';
-import API_CONFIG from '../constants/api-config.js';
+import API_CONFIG from '../constants/ApiConfig.js';
 import ReposActionCreators from '../actions/ReposActionCreators.js';
 
 var api = restful(API_CONFIG.BASE_URL)
@@ -44,7 +44,9 @@ api.getStats = function () {
         repos: statData.publicProjectCount || 0,
         stars: statData.allStarsCount || 0,
         forks: statData.allForksCount || 0,
-        languages: statData.programLanguagesCount || 0
+        languages: statData.programLanguagesCount || 0,
+        members: statData.membersCount || 0,
+        contributors: statData.allContributorsCount || 0
       };
     } else {
       return null;
@@ -63,6 +65,7 @@ api.getRepos = function () {
     .then(transformCollection)
     .then(function (repos) {
       ReposActionCreators.receiveRepos(repos);
+      return repos;
     });
 };
 

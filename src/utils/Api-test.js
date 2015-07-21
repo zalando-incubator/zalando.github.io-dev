@@ -1,8 +1,8 @@
-import api from './api.js';
+import api from './Api.js';
 import chai from 'chai';
 import spies from 'chai-spies';
-import API_CONFIG from '../constants/api-config.js';
-import promiseMock from './promise-mock.js';
+import API_CONFIG from '../constants/ApiConfig.js';
+import promiseMock from './Promise-mock.js';
 
 
 chai.use(spies);

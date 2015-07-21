@@ -27,15 +27,27 @@ class FilterBar extends React.Component {
   }
 
   render() {
+    let buttons = this.props.languages.map(function (language) {
+      return (
+        <Button
+          key={language.name}
+          className={language.name.toLowerCase() + '-btn'}
+          onClick={this.onOptionChange.bind(this, language.name)}
+          active={this.state.filter === language.name}>{language.name}
+        </Button>
+      );
+    }.bind(this));
+
+    buttons.unshift(<Button
+        key={'All'}
+        onClick={this.onOptionChange.bind(this, 'all')}
+        active={this.state.filter === 'all'}>All
+      </Button>
+    );
+
     return (
       <div className="text-center filter-bar">
-        <Button onClick={this.onOptionChange.bind(this, 'all')} active={this.state.filter === 'all'}>All</Button>
-        &nbsp;
-        <Button className="java-btn" onClick={this.onOptionChange.bind(this, 'Java')} active={this.state.filter === 'Java'}>Java</Button>
-        &nbsp;
-        <Button className="js-btn" onClick={this.onOptionChange.bind(this, 'JS')} active={this.state.filter === 'JS'}>JavaScript</Button>
-        &nbsp;
-        <Button className="go-btn" onClick={this.onOptionChange.bind(this, 'Go')} active={this.state.filter === 'Go'}>Go</Button>
+        {buttons}
       </div>
 
     );
