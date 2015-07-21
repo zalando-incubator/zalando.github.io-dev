@@ -35,7 +35,7 @@ nav.inpage-nav-bar {
       display: block;
       list-style: none; padding: 0; margin: 0;
       height: 55px;
-      float:right; width: 200px;
+      float:right; width: 180px;
       text-align:center;
       text-transform: uppercase;
 
@@ -53,13 +53,22 @@ nav.inpage-nav-bar {
           padding-top: 12px;
 
           span.claim {display: block}
+
+          &.active {
+            color: $zalando-darken-grey;
+            border-bottom: 2px solid transparent;
+          }
+
+          &:hover {
+            color: $zalando-dark-grey;
+          }
         }
       }
 
       > a {
         display: block;
         line-height: 54px;
-        color: $zalando-dark-grey;
+        color: $zalando-darken-grey;
         font-size:14px;
         font-weight: bold;
         text-decoration: none;
@@ -72,7 +81,6 @@ nav.inpage-nav-bar {
 
         &.active {
           color: $zalando-orange;
-          transition: background-color 300ms linear;
           border-bottom: 2px solid $zalando-orange;
         }
       }
@@ -89,7 +97,7 @@ nav.inpage-nav-bar {
     }
 
     &:first-child  {
-      width: 200px;
+      width: 180px;
     }
   }
 }
