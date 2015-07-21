@@ -3,32 +3,40 @@ import _ from 'lodash';
 import FilterBar from './FilterBar.jsx';
 import RepositoryList from './RepositoryList.jsx';
 import RepoStore from '../../stores/RepoStore.js';
+import LanguageStore from '../../stores/LanguageStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
-import api from '../../utils/Api';
-import languagesUtil from '../../utils/LanguagesUtil';
+import api from '../../utils/Api.js';
 
 class FilterableRepositoryList extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       filter: 'all',
-      languages: [],
+      languages: LanguageStore.getLanguages(),
       repositories: RepoStore.getRepos()
     };
-    this.handleUserInput = this.handleUserInput.bind(this);
 
-    this.onChange = this.onChange.bind(this);
+    this.handleUserInput = this.handleUserInput.bind(this);
+    this.onReposChange = this.onReposChange.bind(this);
+    this.onLanguagesChange = this.onLanguagesChange.bind(this);
   }
 
   componentDidMount() {
-    RepoStore.addChangeListener(this.onChange);
-    api.getRepos().then(function (repos) {
-      this.setState({languages: languagesUtil.guessLanguages(repos)});
-    }.bind(this));
+    RepoStore.addChangeListener(this.onReposChange);
+    LanguageStore.addChangeListener(this.onLanguagesChange);
+
+    api.getRepos();
   }
 
-  onChange() {
+  onLanguagesChange() {
+    this.setState({
+      languages: LanguageStore.getLanguages()
+    });
+  }
+
+  onReposChange() {
     this.setState({
       repositories: RepoStore.getRepos()
     });

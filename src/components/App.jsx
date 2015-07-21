@@ -1,10 +1,8 @@
 import React from 'react';
-
-import navItems from '../constants/NavItems.js';
+import AppConstants from '../constants/AppConstants.js';
 import InpageNav from './inpage-nav/InpageNav.jsx';
 import { default as NavBar } from './inpage-nav/InpageNavBar.jsx';
 import { default as Section } from './inpage-nav/InpageNavSection.jsx';
-
 import Welcome from './welcome/Welcome.jsx';
 import Stats from './stats/Stats.jsx';
 import FilterableRepositoryList from './repos/FilterableRepositoryList.jsx';
@@ -14,7 +12,7 @@ class App extends React.Component{
     return (
       <div className="main-container">
         <InpageNav>
-          <NavBar items={navItems} />
+          <NavBar items={AppConstants.NavItems} />
           <Section target="welcome">
             <Welcome />
           </Section>
