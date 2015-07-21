@@ -44,7 +44,7 @@ nav.inpage-nav-bar {
         width: 162px;
 
         > a {
-          background: url('/images/icon_50x50.png') left center no-repeat;
+          background: url('#{$image-path}/icon_50x50.png') left center no-repeat;
           background-size: 30px 30px;
           padding-left: 38px;
           line-height: 16px;
