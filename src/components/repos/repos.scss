@@ -1,13 +1,7 @@
 //REPOS
-
 .repos{
   width: 100%;
-  background-color: #e3e3e3;
-
-  a {
-    text-decoration: none;
-    color:dimgray;
-  }
+  background-color: #eeeeee;
 }
 
 //FILTER BAR
@@ -38,11 +32,22 @@
 
 //REPOSITORY LIST ITEM
 .panel-heading{
-  text-decoration:none;
+  a:hover{
+    text-decoration: underline;
+  }
 }
 
 .panel-default {
   border: 1px solid transparent;
+}
+
+.panel-body {
+  text-decoration: none;
+  color:dimgray;
+
+  &:hover{
+    text-decoration: none;
+  }
 }
 
 .language {
