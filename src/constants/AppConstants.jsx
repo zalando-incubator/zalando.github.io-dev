@@ -9,7 +9,7 @@ const AppConstants = {
   NavItems: [
     {label: (<div>
       <span className="claim">Zalando.</span>
-      <span className="claim">we dress code.</span>
+      <span className="claim">we <i className="claim-heart">&hearts;</i> open source.</span>
     </div>), target: 'welcome'},
     {label: 'repositories', target: 'repositories'},
     {label: 'statistics', target: 'stats'}

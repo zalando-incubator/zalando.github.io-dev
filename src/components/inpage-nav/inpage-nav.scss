@@ -41,7 +41,7 @@ nav.inpage-nav-bar {
 
       &:first-child {
         float:left;
-        width: 162px;
+        width: 190px;
 
         > a {
           background: url('#{$image-path}/icon_50x50.png') left center no-repeat;
@@ -53,6 +53,7 @@ nav.inpage-nav-bar {
           padding-top: 12px;
 
           span.claim {display: block}
+          .claim-heart {font-size: 1.2em}
 
           &.active {
             color: $zalando-darken-grey;
