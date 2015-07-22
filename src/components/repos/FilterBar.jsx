@@ -51,6 +51,12 @@ class FilterBar extends React.Component {
       </Button>
     );
 
+    buttons.push(<Button
+      key={'Other'}
+      onClick={this.onOptionChange.bind(this, 'other')}
+      active={this.state.filter === 'other'}>Other
+    </Button>);
+
     return (
       <div className="text-center filter-bar">
         {buttons}
