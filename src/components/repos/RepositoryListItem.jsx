@@ -4,12 +4,12 @@
 
 import React from 'react';
 import {Panel, Col, Row} from 'react-bootstrap';
-import LANGUAGE_COLORS from '../../constants/LanguageColors.js';
+import languagesUtils from '../../utils/LanguagesUtil.js';
 
 class RepositoryListItem extends React.Component {
   render() {
     let colorBar = {
-      borderLeft: '3px solid ' + LANGUAGE_COLORS[this.props.data.primaryLanguage]
+      borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
     };
     return (
       <Col xs={12} sm={6} md={4}>

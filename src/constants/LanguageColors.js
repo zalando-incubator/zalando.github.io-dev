@@ -11,7 +11,8 @@ const LANGUAGE_COLORS = {
   Groovy: '#2196F3',
   Java: '#006600',
   ObjectiveC: '#FF8C00',
-  CSS: '#0099FF'
+  CSS: '#0099FF',
+  DEFAULT: '#EEE'
 };
 
 export default LANGUAGE_COLORS;
