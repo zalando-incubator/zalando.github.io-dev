@@ -1,22 +1,9 @@
 //STATS
-.section-heading { // FIXME - global (mybe section-heading is a component that we can reuse)
-  margin: 20px;
-  text-transform: uppercase;
-  color: #F16A21;
-  font-size: 1.3em;
-}
-
-hr { // FIXME - global
-  max-width: 70px;
-  border-color: #F16A21;
-  border-width: 3px;
-}
-
 .stat {
   margin:30px;
 
   i {
-    font-size: 2.5em;
+    font-size: 2.8rem;
   }
 
   h2, h4 {
@@ -24,12 +11,11 @@ hr { // FIXME - global
   }
 
   h2 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   h4 {
-    font-size: 0.75em;
-    font-weight: 350;
+    font-size: 1.3rem;
   }
 }
 
@@ -39,19 +25,15 @@ hr { // FIXME - global
   .stat {
 
     i {
-      font-size: 4.5em;
+      font-size: 4.5rem;
     }
 
     h2 {
-      font-size: 3em;
+      font-size: 3rem;
     }
 
     h4 {
-      font-size: 1.5em;
+      font-size: 1.5rem;
     }
-  }
-
-  .section-heading {
-    font-size: 2em;
   }
 }

@@ -10,12 +10,22 @@ $zalando-darken-grey: rgb(51,51,51);
 // paths
 $image-path: '../images';
 
+// Import Source Sans Pro
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
+
 //
 // App Layout
 //
 body, html {
-  font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-family: 'Source Sans Pro',Helvetica,Arial,"Lucida Grande",sans-serif;
 }
+
+hr {
+  max-width: 70px;
+  border-color: #F16A21;
+  border-width: 3px;
+}
+
 
 .main-container {
   padding-top: 54px;
