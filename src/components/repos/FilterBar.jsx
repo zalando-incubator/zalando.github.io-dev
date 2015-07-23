@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import {Button} from 'react-bootstrap';
-import LANGUAGE_COLORS from '../../constants/LanguageColors.js';
 
 class FilterBar extends React.Component {
 
@@ -30,19 +29,19 @@ class FilterBar extends React.Component {
   render() {
     let buttons = this.props.languages.map(function (language) {
       let active = this.state.filter === language.name;
-
       let buttonBarStyle;
+
       if (active) {
         buttonBarStyle = {
           color: 'white',
-          backgroundColor: LANGUAGE_COLORS[language.name],
-          borderColor: LANGUAGE_COLORS[language.name],
+          backgroundColor: language.color,
+          borderColor: language.color,
           boxShadow: 'none'
         };
       } else {
         buttonBarStyle = {
-          color: LANGUAGE_COLORS[language.name],
-          borderColor: LANGUAGE_COLORS[language.name]
+          color: language.color,
+          borderColor: language.color
         };
       }
 
