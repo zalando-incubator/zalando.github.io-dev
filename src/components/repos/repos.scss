@@ -7,21 +7,35 @@
 //FILTER BAR
 .filter-bar {
   margin:20px;
+
   .btn {
     border-radius: 0px;
-    border-width: 0px;
-    color: dimgray;
-    margin: 0 4px 4px 0;
+    border-width: 2px;
+    border-color: black;
+    color: black;
+    margin:7px;
     background-color: transparent;
-
     &.active {
-      background-color: transparent;
-      border-bottom: 2px solid $zalando-orange;
+      background-color: white;
+      border-color: white;
+      color: black;
+      box-shadow:none;
     }
 
     &:focus {
       outline: none;
+      border-color: none;
     }
+
+  }
+}
+
+.other-btn {
+  border-color: #999999 !important;
+  color: #999999 !important;
+  &.active {
+    background-color: #999999 !important;
+    color: white !important;
   }
 }
 

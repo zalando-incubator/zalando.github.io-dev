@@ -30,10 +30,21 @@ class FilterBar extends React.Component {
   render() {
     let buttons = this.props.languages.map(function (language) {
       let active = this.state.filter === language.name;
-      let buttonBarStyle = {};
-      if (active){
-        buttonBarStyle.borderBottom = '2px solid ' + LANGUAGE_COLORS[language.name];
+
+      let buttonBarStyle;
+      if (active) {
+        buttonBarStyle = {
+          color: 'white',
+          backgroundColor: LANGUAGE_COLORS[language.name],
+          borderColor: LANGUAGE_COLORS[language.name]
+        };
+      } else {
+        buttonBarStyle = {
+          color: LANGUAGE_COLORS[language.name],
+          borderColor: LANGUAGE_COLORS[language.name]
+        };
       }
+
       return (
         <Button
           key={language.name}
@@ -51,7 +62,7 @@ class FilterBar extends React.Component {
       </Button>
     );
 
-    buttons.push(<Button
+    buttons.push(<Button className="other-btn"
       key={'Other'}
       onClick={this.onOptionChange.bind(this, 'other')}
       active={this.state.filter === 'other'}>Other

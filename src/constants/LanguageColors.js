@@ -1,17 +1,17 @@
 const LANGUAGE_COLORS = {
-  Scala: '#00BCD4',
-  Clojure: '#607D8B',
-  JS: '#FFC107',
-  VB: '#3F51B5',
-  'C#': '#9C27B0',
-  Go: '#795548',
-  HTML5: '#CDDC39',
-  Python: '#03A9F4',
-  'C++': '#E91E63',
+  Scala: '#BB0017',
+  Clojure: '#00AA00',
+  JS: '#CCAA00',
+  VB: '#663300',
+  'C#': '#7600BC',
+  Go: '#996633',
+  HTML5: '#FF0032',
+  Python: '#0000CC',
+  'C++': '#FF0099',
   Groovy: '#2196F3',
-  Java: '#4CAF50',
-  ObjectiveC: '#F44336',
-  CSS: '#FFEB3B'
+  Java: '#006600',
+  ObjectiveC: '#FF8C00',
+  CSS: '#0099FF'
 };
 
 export default LANGUAGE_COLORS;
