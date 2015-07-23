@@ -67,7 +67,6 @@ class FilterableRepositoryList extends React.Component {
             />
           <RepositoryList
             repositories={this.state.repositories}
-            filter={this.state.filter}
             />
       </div>
     );

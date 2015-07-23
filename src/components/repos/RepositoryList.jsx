@@ -21,5 +21,9 @@ class RepositoryList extends React.Component {
   }
 }
 
+RepositoryList.propTypes = {
+  repositories: React.PropTypes.array.isRequired
+};
+
 export default RepositoryList;
 

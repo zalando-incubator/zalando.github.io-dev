@@ -41,4 +41,8 @@ class RepositoryListItem extends React.Component {
   }
 }
 
+RepositoryListItem.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+
 export default RepositoryListItem;
