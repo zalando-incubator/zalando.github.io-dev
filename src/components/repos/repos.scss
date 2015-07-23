@@ -15,6 +15,7 @@
     color: black;
     margin:7px;
     background-color: transparent;
+
     &.active {
       background-color: white;
       border-color: white;
@@ -23,10 +24,14 @@
     }
 
     &:focus {
-      outline: none;
+      outline: 0 none;
       border-color: none;
     }
 
+    &:hover {
+      background-color: white;
+      color: black;
+    }
   }
 }
 
@@ -36,9 +41,9 @@
   &.active {
     background-color: #999999 !important;
     color: white !important;
+    box-shadow:none;
   }
 }
-
 
 .panel {
   border-radius: 0px;

@@ -36,7 +36,8 @@ class FilterBar extends React.Component {
         buttonBarStyle = {
           color: 'white',
           backgroundColor: LANGUAGE_COLORS[language.name],
-          borderColor: LANGUAGE_COLORS[language.name]
+          borderColor: LANGUAGE_COLORS[language.name],
+          boxShadow: 'none'
         };
       } else {
         buttonBarStyle = {
@@ -76,5 +77,11 @@ class FilterBar extends React.Component {
     );
   }
 }
+
+FilterBar.propTypes = {
+  languages: React.PropTypes.array.isRequired,
+  filter: React.PropTypes.string.isRequired,
+  onUserInput: React.PropTypes.func.isRequired
+};
 
 export default FilterBar;
