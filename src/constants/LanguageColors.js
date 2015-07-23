@@ -8,7 +8,7 @@ const LANGUAGE_COLORS = {
   HTML5: '#FF0032',
   Python: '#0000CC',
   'C++': '#FF0099',
-  Groovy: '#2196F3',
+  Groovy: '#00C92',
   Java: '#006600',
   ObjectiveC: '#FF8C00',
   CSS: '#0099FF',
