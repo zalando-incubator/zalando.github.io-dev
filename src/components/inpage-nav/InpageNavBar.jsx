@@ -19,11 +19,9 @@ export default class InpageNavBar extends React.Component {
 
     // fired when a ``InPageNavBarItem``` is clicked
     this.onClickCallback = function (section){
-
       this.shouldReactOnScroll = false;
       $scrollTo(this.getSectionId(window.location.hash), this.options.scrollTo);
       this.setState({section: section});
-
     }.bind(this);
 
     this.state = {
@@ -51,17 +49,24 @@ export default class InpageNavBar extends React.Component {
   }
 
   componentDidMount() {
-    this.populateSections();
-    this.listenScroll();
 
-    this.setState({ section: this.getSection() });
+    this.$window.on('load', function () {
+      this.populateSections();
+      this.listenScroll();
 
-    this.$window.on('navbar.scroll', function () {
-      if (this.shouldReactOnScroll === true) {
-        let section = this.getSection();
-        window.location.hash = section;
-        this.setState({section: section});
+      if (window.location.hash && this.sections[window.location.hash]) {
+        this.onClickCallback(window.location.hash);
+      } else {
+        this.setState({ section: this.getSection() });
       }
+
+      this.$window.on('navbar.scroll', function () {
+        if (this.shouldReactOnScroll === true) {
+          let section = this.getSection();
+          window.location.hash = section;
+          this.setState({section: section});
+        }
+      }.bind(this));
     }.bind(this));
   }
 
@@ -182,11 +187,11 @@ InpageNavBar.SCROLL_EVENT_DELAY = 300;
 InpageNavBar.SECTION_ID_SUFFIX = '__in-page-navbar';
 
 InpageNavBar.options = {
-  scrollThreshold: 0.3,
-  scrollOffset: 58,
+  scrollThreshold: 0.4,
+  scrollOffset: 54,
   scrollTo: {
     duration: 300,
-    offset: -60,
+    offset: -54,
     // FIXME this callback can't be overwritten
     onAfter: function () {
       this.shouldReactOnScroll = true;

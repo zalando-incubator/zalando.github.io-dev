@@ -1,3 +1,35 @@
-#welcome-container {
-  min-height: 300px;
+.welcome-image-mask {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  width: 100%;
+  max-width:1170px;
+  margin: 0 auto;
+
+  > img {
+    display: block;
+    position: absolute; top:-70px; left: 0;
+    width: 100%;
+  }
 }
+
+
+@media (max-width: $screen-xs-max) {
+  .welcome-image-mask {
+    > img {
+      top:0;
+      width: 130%;
+    }
+  }
+}
+
+@media (max-width: $screen-xs-min) {
+
+  .welcome-image-mask {
+    height: 380px;
+    > img {
+      width: 150%;
+    }
+  }
+}
+
