@@ -6,6 +6,8 @@ import RepoStore from '../../stores/RepoStore.js';
 import LanguageStore from '../../stores/LanguageStore.js';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import api from '../../utils/Api.js';
+import AppConstants from '../../constants/AppConstants.jsx';
+let InfiniteScroll = require('react-infinite-scroll')(React);
 
 class FilterableRepositoryList extends React.Component {
 
@@ -14,7 +16,8 @@ class FilterableRepositoryList extends React.Component {
     this.state = {
       filter: 'all',
       topLanguages: LanguageStore.getTopLanguages(),
-      repositories: RepoStore.getRepos()
+      repositories: RepoStore.getRepos(),
+      hasMore: RepoStore.hasMore()
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.onReposChange = this.onReposChange.bind(this);
@@ -24,7 +27,6 @@ class FilterableRepositoryList extends React.Component {
   componentDidMount() {
     RepoStore.addChangeListener(this.onReposChange);
     LanguageStore.addChangeListener(this.onLanguagesChange);
-    api.getRepos();
     api.getLanguages();
   }
 
@@ -36,7 +38,8 @@ class FilterableRepositoryList extends React.Component {
 
   onReposChange() {
     this.setState({
-      repositories: RepoStore.getRepos()
+      repositories: RepoStore.getRepos(),
+      hasMore: RepoStore.hasMore()
     });
   }
 
@@ -57,23 +60,31 @@ class FilterableRepositoryList extends React.Component {
     });
   }
 
+  loadMore(pageToLoad){
+    api.getReposByPage(pageToLoad * AppConstants.Pagination.PAGE_SIZE);
+  }
+
   render() {
     return (
-      <div className="repos">
+      <div className='repos'>
         <div className="container section">
-          <SectionHeading text="Repositories" />
-          <FilterBar
-            languages={this.state.topLanguages}
-            filter={this.state.filter}
-            onUserInput={this.handleUserInput}
-            />
+        <SectionHeading text="Repositories" />
+        <FilterBar
+          languages={this.state.topLanguages}
+          filter={this.state.filter}
+          onUserInput={this.handleUserInput}
+          />
+        <InfiniteScroll pageStart={-1} loader={<div className="loader">Loading ...</div>}
+                        loadMore={this.loadMore} hasMore={this.state.hasMore}>
           <RepositoryList
             repositories={this.state.repositories}
             />
+        </InfiniteScroll>
         </div>
       </div>
     );
   }
+
 }
 
 export default FilterableRepositoryList;

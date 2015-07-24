@@ -4,12 +4,14 @@ import API_CONFIG from '../constants/ApiConfig.js';
 import ReposActionCreators from '../actions/ReposActionCreators.js';
 import LanguageActionCreators from '../actions/LanguageActionCreators.js';
 import languagesUtil from '../utils/LanguagesUtil.js';
+import AppConstants from '../constants/AppConstants.jsx';
+
 
 var api = restful(API_CONFIG.BASE_URL)
   .protocol(API_CONFIG.PROTOCOL)
-  .addFullRequestInterceptor(function(params/*, headers, data, method, url*/) {
+  .addFullRequestInterceptor(function (params/*, headers, data, method, url*/) {
     return {
-      params: _.extend({ organizations: API_CONFIG.ORGANIZATIONS }, params)
+      params: _.extend({organizations: API_CONFIG.ORGANIZATIONS}, params)
     };
   });
 
@@ -27,12 +29,14 @@ languages.addResponseInterceptor(function(data) {
 
 // unwrap the response and return simple array of items
 let transformCollection = function (response) {
-    let body = response.body();
-    let items = [];
+  let body = response.body();
+  let items = [];
+  if (body.length) {
     body.forEach(function (item) {
       items.push(item.data());
     });
-    return items;
+  }
+  return items;
 };
 
 // XXX
@@ -59,6 +63,7 @@ api.getStats = function () {
 
     let body = response.body();
     let statData;
+
 
     if (body.length) {
       statData = body[0].data();
@@ -88,6 +93,28 @@ api.getRepos = function () {
     .then(addRandomRepoDescription)
     .then(function (repos) {
       ReposActionCreators.receiveRepos(repos);
+      return repos;
+    });
+};
+
+
+/**
+ * Get repositories/projects with params
+ *
+ * @returns {Promise.<Array>}
+ */
+//TODO
+api.getReposByPage = function (offset, limit) {
+  let params = {
+    limit: limit || AppConstants.Pagination.PAGE_SIZE,
+    offset: offset || 0,
+    sortBy: '-score'
+  };
+  return repositories
+    .getAll(params)
+    .then(transformCollection)
+    .then(function (repos) {
+      ReposActionCreators.receiveReposByPage(repos, params.limit);
       return repos;
     });
 };

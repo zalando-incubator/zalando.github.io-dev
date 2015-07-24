@@ -47,8 +47,9 @@
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
-    "react-simple-inpagenav": "git://github.com/zalando/react-simple-inpagenav.git",
-    "restful.js": "^0.7.0"
+    "react-infinite-scroll": "^0.1.5",
+    "restful.js": "^0.7.0",
+    "react-simple-inpagenav": "git://github.com/zalando/react-simple-inpagenav.git"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
