@@ -23,6 +23,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
     ghPages = require('gulp-gh-pages'),
+    assign = require('object-assign'),
     fs = require('fs'),
     _ = require('lodash'),
     p = {
@@ -51,13 +52,21 @@ gulp.task('browserSync', function() {
 });
 
 gulp.task('watchify', function() {
-  var bundler = watchify(browserify(p.jsx, watchify.args));
+  var customOpts = {
+    entries: [p.jsx],
+    debug: true
+  };
+  var opts = assign({}, watchify.args, customOpts);
+  var bundler = watchify(browserify(p.jsx, opts));
 
   function rebundle() {
     return bundler
       .bundle()
       .on('error', notify.onError())
       .pipe(source(p.bundle))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(p.tmpJs))
       .pipe(reload({stream: true}));
   }
