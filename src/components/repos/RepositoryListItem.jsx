@@ -15,7 +15,7 @@ class RepositoryListItem extends React.Component {
       <Col xs={12} sm={6} md={4}>
         <a href={this.props.data.url}>
           <Panel header={this.props.data.name} style={colorBar}>
-            <p>{this.props.data.description}</p>
+            <p className="description">{this.props.data.description}</p>
             <Row className='show-grid text-center'>
               <Col xs={4} md={4}>
                 <i className='fa fa-code'></i>

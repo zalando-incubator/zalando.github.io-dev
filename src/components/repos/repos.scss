@@ -73,3 +73,14 @@
   text-transform: uppercase;
   font-size: 1.1rem;
 }
+
+.description {
+  min-height: 53px;
+  max-height: 53px;
+  line-height: 25px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
