@@ -4,7 +4,9 @@ class Stat extends React.Component {
   render() {
     return (
       <div className='stat'>
-        <i className={this.props.icon}></i>
+        <div className="stat-icon">
+          <span className={this.props.icon}> </span>
+        </div>
         <div>
           <h2>{this.props.count}</h2>
           <h4>{this.props.name}</h4>

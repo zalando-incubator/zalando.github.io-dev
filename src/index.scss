@@ -1,8 +1,7 @@
 // Import bootstrap styles: TODO... maybe import only basic and really required modules not the entire huge pack
 @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
-// Import font-awesome
-@import '../node_modules/font-awesome/scss/font-awesome';
+
 
 @import 'components/app';
 @import 'components/section-heading/section-heading';
@@ -10,3 +9,53 @@
 @import 'components/welcome/welcome';
 @import 'components/stats/stats';
 @import 'components/repos/repos';
+
+// Import font-awesome
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?-ipl3rh');
+  src:url('../fonts/icomoon.eot?#iefix-ipl3rh') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?-ipl3rh') format('truetype'),
+  url('../fonts/icomoon.woff?-ipl3rh') format('woff'),
+  url('../fonts/icomoon.svg?-ipl3rh#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-repos:before {
+  content: "\e600";
+}
+.icon-star2:before {
+  content: "\e601";
+}
+.icon-fork2:before {
+  content: "\e602";
+}
+.icon-contributor:before {
+  content: "\e603";
+}
+.icon-members:before {
+  content: "\e604";
+}
+.icon-languages:before {
+  content: "\e605";
+}
+.stat-icon {
+  font-size: 32px;
+  color: #808080;
+  margin-bottom: -20px;
+}

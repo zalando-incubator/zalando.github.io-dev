@@ -58,7 +58,7 @@ class FilterableRepositoryList extends React.Component {
 
   render() {
     return (
-      <div className='container repos'>
+      <div className='container section repos'>
           <SectionHeading text="Repositories" />
           <FilterBar
             languages={this.state.topLanguages}

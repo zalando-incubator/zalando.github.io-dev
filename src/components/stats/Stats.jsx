@@ -29,26 +29,26 @@ class Stats extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='container section'>
         <SectionHeading text="statistics" />
         <Row className='show-grid text-center'>
-          <Col xs={6} lg={4}>
-            <Stat name='REPOS' count={this.state.repos} icon='fa fa-github'/>
+          <Col xs={6} sm={4} >
+            <Stat name='REPOS' count={this.state.repos} icon='icon-repos'/>
           </Col>
-          <Col xs={6} lg={4}>
-            <Stat name='STARS' count={this.state.stars} icon='fa fa-star'/>
+          <Col xs={6} sm={4}>
+            <Stat name='STARS' count={this.state.stars} icon='icon-star2'/>
           </Col>
-          <Col xs={6} lg={4}>
-            <Stat name='FORKS' count={this.state.forks} icon='fa fa-code-fork'/>
+          <Col xs={6} sm={4}>
+            <Stat name='FORKS' count={this.state.forks} icon='icon-fork2'/>
           </Col>
-          <Col xs={6} lg={4}>
-            <Stat name='LANGUAGES' count={this.state.languages} icon='fa fa-code'/>
+          <Col xs={6} sm={4}>
+            <Stat name='LANGUAGES' count={this.state.languages} icon='icon-languages'/>
           </Col>
-          <Col xs={6} lg={4}>
-            <Stat name='CONTRIBUTORS' count={this.state.contributors} icon='fa fa-users'/>
+          <Col xs={6} sm={4}>
+            <Stat name='CONTRIBUTORS' count={this.state.contributors} icon='icon-contributor'/>
           </Col>
-          <Col xs={6} lg={4}>
-            <Stat name='MEMBERS' count={this.state.members} icon='fa fa-user'/>
+          <Col xs={6} sm={4}>
+            <Stat name='MEMBERS' count={this.state.members} icon='icon-members'/>
           </Col>
         </Row>
       </div>

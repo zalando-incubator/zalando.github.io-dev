@@ -110,7 +110,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('fonts', function () {
-  return gulp.src('./node_modules/font-awesome/fonts/*')
+  return gulp.src('src/assets/fonts/*')
     .pipe(gulp.dest(p.tmpFonts));
 });
 
