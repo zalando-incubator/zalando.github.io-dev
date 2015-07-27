@@ -1,8 +1,7 @@
 import React from 'react';
+import SimpleInpagenav from 'react-simple-inpagenav';
+
 import AppConstants from '../constants/AppConstants.jsx';
-import InpageNav from './inpage-nav/InpageNav.jsx';
-import { default as NavBar } from './inpage-nav/InpageNavBar.jsx';
-import { default as Section } from './inpage-nav/InpageNavSection.jsx';
 import Welcome from './welcome/Welcome.jsx';
 import Stats from './stats/Stats.jsx';
 import FilterableRepositoryList from './repos/FilterableRepositoryList.jsx';
@@ -11,18 +10,27 @@ class App extends React.Component{
   render(){
     return (
       <div className="main-container">
-        <InpageNav>
-          <NavBar items={AppConstants.NavItems} />
-          <Section target="welcome">
+        <SimpleInpagenav options={AppConstants.SIMPLE_INPAGENAV_OPTIONS}>
+          <SimpleInpagenav.Bar>
+            <SimpleInpagenav.BarItem target="welcome">
+              <div>
+                <span className="claim">Zalando.</span>
+                <span className="claim">we <i className="claim-heart">&hearts;</i> open source.</span>
+              </div>
+            </SimpleInpagenav.BarItem>
+            <SimpleInpagenav.BarItem target="stats">stats</SimpleInpagenav.BarItem>
+            <SimpleInpagenav.BarItem target="repositories">repositories</SimpleInpagenav.BarItem>
+          </SimpleInpagenav.Bar>
+          <SimpleInpagenav.Section target="welcome">
             <Welcome />
-          </Section>
-          <Section target="stats">
+          </SimpleInpagenav.Section>
+          <SimpleInpagenav.Section target="stats">
             <Stats />
-          </Section>
-          <Section target="repositories">
+          </SimpleInpagenav.Section>
+          <SimpleInpagenav.Section target="repositories">
             <FilterableRepositoryList />
-          </Section>
-        </InpageNav>
+          </SimpleInpagenav.Section>
+        </SimpleInpagenav>
       </div>
     );
   }

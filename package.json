@@ -41,14 +41,13 @@
     "font-awesome": "^4.3.0",
     "imagemin-pngquant": "^4.1.2",
     "jquery": "^2.1.4",
-    "jquery.scrollto": "^2.1.1",
     "lodash": "^3.10.0",
     "object-assign": "^3.0.0",
     "flux": "^2.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
     "restful.js": "^0.7.0",
-    "superagent": "^1.2.0"
+    "react-simple-inpagenav": "git://github.com:zalando/react-simple-inpagenav.git"
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
