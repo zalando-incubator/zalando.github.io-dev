@@ -3,9 +3,9 @@ const AppConstants = {
     RECEIVE_REPOS: 'RECEIVE_REPOS'
   },
   SIMPLE_INPAGENAV_OPTIONS: {
-    scrollOffset: 54,
+    scrollOffset: 24,
     scrollTo: {
-      offset: -54
+      offset: -24
     }
   }
 };
