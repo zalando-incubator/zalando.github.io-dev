@@ -15,6 +15,8 @@ Clone the repository and run ```npm install```
 
 ## Tests
 
+Before run tests be sure you have a ```src/config/parameters.json``` file. (run ```gulp parameters```)
+
 ```npm test```
 
 ## Lint
@@ -35,11 +37,9 @@ Example (src/config/parameters.prod.json):
 }
 ```
 
-Run gulp tasks with the env flag.
+Run the task with the env flag.
 
-```
-gulp serve --env=prod
-```
+```npm run serve -- --env=prod``` or ```gulp serve --env=prod```
 
 The generated ```src/config/parameters.json``` file is the result of a merge 
 between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 
