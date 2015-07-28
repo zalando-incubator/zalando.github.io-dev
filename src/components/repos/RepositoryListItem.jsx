@@ -18,18 +18,21 @@ class RepositoryListItem extends React.Component {
             <p className="description">{this.props.data.description}</p>
             <Row className='show-grid text-center'>
               <Col xs={4} md={4}>
-                <i className='fa fa-code'></i>
-                &nbsp;
+                <div className="repo-item-icon">
+                  <span className='icon-languages'> </span>
+                </div>
                 <span className='language'>{this.props.data.primaryLanguage}</span>
               </Col>
               <Col xs={4} md={4}>
-                <i className='fa fa-code-fork'></i>
-                &nbsp;
+                <div className="repo-item-icon">
+                  <span className='icon-fork2'> </span>
+                </div>
                 {this.props.data.forksCount}
               </Col>
               <Col xs={4} md={4}>
-                <i className='fa fa-star'></i>
-                &nbsp;
+                <div className="repo-item-icon">
+                  <span className='icon-star2'> </span>
+                </div>
                 {this.props.data.starsCount}
               </Col>
             </Row>
