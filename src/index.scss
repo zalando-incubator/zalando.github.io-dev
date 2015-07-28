@@ -1,15 +1,13 @@
 // Import bootstrap styles: TODO... maybe import only basic and really required modules not the entire huge pack
 @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
-
-
 @import 'components/app';
 @import 'components/section-heading/section-heading';
 @import 'components/welcome/welcome';
 @import 'components/stats/stats';
 @import 'components/repos/repos';
 
-// Import font-awesome
+// Icomoon icons
 @font-face {
   font-family: 'icomoon';
   src:url('../fonts/icomoon.eot?-ipl3rh');
@@ -52,9 +50,4 @@
 }
 .icon-languages:before {
   content: "\e605";
-}
-.stat-icon {
-  font-size: 32px;
-  color: #808080;
-  margin-bottom: -20px;
 }
