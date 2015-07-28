@@ -1,21 +1,7 @@
-//REPOS
+//REPOS SECTION
 .repos{
   width: 100%;
-  background-color: #e4e4e4;
-}
-
-.repo-item-box {
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  &:hover .panel-heading {
-    text-decoration: underline;
-  }
+  background-color: $repos-section-background;
 }
 
 //FILTER BAR
@@ -59,36 +45,40 @@
   }
 }
 
-.panel {
+
+//REPOSITORY LIST ITEM
+.panel-default {
+  border: 1px solid transparent;
   border-radius: 0px;
 }
 
-//REPOSITORY LIST ITEM
-.panel-heading{
-  a:hover{
+.panel-heading {
+  color:$zalando-darken-grey;
+}
+.panel-body {
+  color:$zalando-dark-grey;
+}
+
+.repo-item-box {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover .panel-heading {
     text-decoration: underline;
   }
 }
 
-.panel-default {
-  border: 1px solid transparent;
-}
-
-.panel-body {
-  text-decoration: none;
-  color:dimgray;
-
-  &:hover{
-    text-decoration: none;
-  }
-}
-
-.language {
+.repo-item-language {
   text-transform: uppercase;
   font-size: 1.1rem;
 }
 
-.description {
+.repo-item-description {
   min-height: 53px;
   max-height: 53px;
   line-height: 25px;
@@ -101,7 +91,7 @@
 
 .repo-item-icon{
   font-size: 1.3rem;
-  color: #808080;
+  color: $light-gray;
   display: inline;
 }
 

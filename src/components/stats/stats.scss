@@ -1,52 +1,49 @@
 //STATS
 .stat {
-  margin:30px;
+  margin: 30px;
 
   i {
     font-size: 3.2rem;
   }
 
   h2, h4 {
-    display:block;
+    display: block;
   }
 
   h2 {
-    color:$zalando-orange;
+    color: $zalando-orange;
     font-size: 4rem;
     font-weight: 700;
   }
 
   h4 {
     font-size: 2.0rem;
-    color: #808080;
+    color: $light-gray;
     text-transform: lowercase;
     line-height: 0.3rem;
   }
 }
 
-.stat-icon {
-  font-size: 32px;
-  color: #808080;
-  margin-bottom: -20px;
-}
-
 @media (max-width: $screen-sm-min) {
 
-  i {
-    font-size: 2.8rem;
-  }
+  .stat {
 
-  h2 {
-    font-size: 3rem !important;
-  }
+    i {
+      font-size: 2.8rem;
+    }
 
-  h4 {
-    font-size: 1.8rem !important;
+    h2 {
+      font-size: 3rem !important;
+    }
+
+    h4 {
+      font-size: 1.8rem !important;
+    }
   }
 }
 
 .stat-icon {
   font-size: 3.2rem;
-  color: #808080;
+  color: $light-gray;
   margin-bottom: -20px;
 }

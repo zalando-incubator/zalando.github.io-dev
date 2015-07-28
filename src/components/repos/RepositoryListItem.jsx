@@ -12,17 +12,16 @@ class RepositoryListItem extends React.Component {
       borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
     };
     return (
-
       <Col xs={12} sm={6} md={4}>
         <a href={this.props.data.url} className="repo-item-box">
           <Panel header={this.props.data.name} style={colorBar}>
-            <p className="description">{this.props.data.description}</p>
+            <p className="repo-item-description">{this.props.data.description}</p>
             <Row className='show-grid text-center'>
               <Col xs={4} md={4}>
                 <div className="repo-item-icon">
                   <span className='icon-languages'> </span>
                 </div>
-                <span className='repo-item-icon-detail language'>{this.props.data.primaryLanguage}</span>
+                <span className='repo-item-icon-detail repo-item-language'>{this.props.data.primaryLanguage}</span>
               </Col>
               <Col xs={4} md={4}>
                 <div className="repo-item-icon">
