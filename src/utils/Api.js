@@ -28,6 +28,19 @@ let transformCollection = function (response) {
     return items;
 };
 
+let addRandomRepoDescription = function (repos) {
+  repos.forEach(function (repo) {
+    let n = Math.floor(Math.random() * 130) + 30;
+    let desc = addRandomRepoDescription.DESCRIPTION.substr(0, addRandomRepoDescription.DESCRIPTION.length - n).trim();
+    repo.description = repo.description ? repo.description : desc + '.';
+  });
+  return repos;
+};
+
+/* eslint-disable */
+addRandomRepoDescription.DESCRIPTION = "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you.";
+/* eslint-enable */
+
 /**
  * Get the last stats snapshot
  *
@@ -63,6 +76,7 @@ api.getRepos = function () {
   return repositories
     .getAll()
     .then(transformCollection)
+    .then(addRandomRepoDescription)
     .then(function (repos) {
       ReposActionCreators.receiveRepos(repos);
       return repos;
