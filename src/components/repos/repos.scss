@@ -4,6 +4,20 @@
   background-color: #e4e4e4;
 }
 
+.repo-item-box {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:hover .panel-heading {
+    text-decoration: underline;
+  }
+}
+
 //FILTER BAR
 .filter-bar {
   margin:20px;
@@ -89,4 +103,8 @@
   font-size: 1.3rem;
   color: #808080;
   display: inline;
+}
+
+.repo-item-icon-detail {
+  display: block;
 }
