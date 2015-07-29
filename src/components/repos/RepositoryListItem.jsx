@@ -12,6 +12,8 @@ class RepositoryListItem extends React.Component {
     let colorBar = {
       borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
     };
+    let primaryLanguage = this.props.data.primaryLanguage ? this.props.data.primaryLanguage : 'unknown';
+
     return (
       <Col xs={12} sm={6} md={4}>
         <a href={RepositoryListItem.buildRepoUrl(this.props.data)} target="_blank" className="repo-item-box">
@@ -22,7 +24,7 @@ class RepositoryListItem extends React.Component {
                 <div className="repo-item-icon">
                   <span className='icon-languages'> </span>
                 </div>
-                <span className='repo-item-icon-detail repo-item-language'>{this.props.data.primaryLanguage}</span>
+                <span className='repo-item-icon-detail repo-item-language'>{primaryLanguage}</span>
               </Col>
               <Col xs={4} md={4}>
                 <div className="repo-item-icon">

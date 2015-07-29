@@ -49,6 +49,7 @@ addRandomRepoDescription.DESCRIPTION = "Far far away, behind the word mountains,
  */
 api.getStats = function () {
   return statistics.getAll().then(function (response) {
+
     let body = response.body();
     let statData;
 
@@ -75,7 +76,7 @@ api.getStats = function () {
  */
 api.getRepos = function () {
   return repositories
-    .getAll()
+    .getAll({limit: 10000, offset: 0}) // all
     .then(transformCollection)
     .then(addRandomRepoDescription)
     .then(function (repos) {
