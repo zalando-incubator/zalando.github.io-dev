@@ -137,7 +137,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('serve', ['clean','parameters'], function() {
-  runSequence(['watch', 'watchify', 'styles', 'images', 'fonts', 'lint'], 'browserSync');
+  runSequence(['watch', 'watchify', 'styles', 'images', 'fonts'], 'browserSync');
 });
 
 gulp.task('copy-dist', function () {
