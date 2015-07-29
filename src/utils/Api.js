@@ -101,8 +101,8 @@ api.getLanguages = function (){
   return languages
     .getAll({limit: 50, offset: 0})
     .then(transformCollection)
-    .then(function (repos) {
-      LanguageActionCreators.receiveLanguages(repos);
-      return repos;
+    .then(function (languages) {
+      LanguageActionCreators.receiveLanguages(languages);
+      return languages;
     });
 };
