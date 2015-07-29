@@ -5,5 +5,5 @@ dist
 .tmp
 .publish
 
-src/config/*
+src/config/parameters.*
 src/config/parameters.default.json
