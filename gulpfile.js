@@ -2,6 +2,7 @@
 
 var gulp = require('gulp'),
     changed = require('gulp-changed'),
+    exec = require('child_process').exec,
     sass = require('gulp-sass'),
     csso = require('gulp-csso'),
     runSequence = require('run-sequence'),
@@ -121,6 +122,14 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError())
 });
 
+gulp.task('test', function (cb) {
+  exec('npm test --- --reporter spec', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+});
+
 gulp.task('watch', function() {
   gulp.watch('src/**/*.scss', ['styles']);
   gulp.watch('src/**/*.jsx', ['lint']);
@@ -136,7 +145,7 @@ gulp.task('copy-dist', function () {
 });
 
 gulp.task('build', ['clean','parameters'], function (done) {
-  runSequence(['browserify', 'styles', 'images', 'fonts'],'copy-dist', done);
+  runSequence('lint', 'test', ['browserify', 'styles', 'images', 'fonts'], 'copy-dist', done);
 });
 
 /**
