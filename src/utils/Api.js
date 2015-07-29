@@ -28,9 +28,10 @@ let transformCollection = function (response) {
     return items;
 };
 
+// XXX
 let addRandomRepoDescription = function (repos) {
   repos.forEach(function (repo) {
-    let n = Math.floor(Math.random() * 130) + 30;
+    let n = Math.floor(Math.random() * 240) + 130;
     let desc = addRandomRepoDescription.DESCRIPTION.substr(0, addRandomRepoDescription.DESCRIPTION.length - n).trim();
     repo.description = repo.description ? repo.description : desc + '.';
   });
@@ -38,7 +39,7 @@ let addRandomRepoDescription = function (repos) {
 };
 
 /* eslint-disable */
-addRandomRepoDescription.DESCRIPTION = "Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you.";
+addRandomRepoDescription.DESCRIPTION = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.";
 /* eslint-enable */
 
 /**
