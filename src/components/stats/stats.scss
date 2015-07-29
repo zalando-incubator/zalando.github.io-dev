@@ -23,11 +23,15 @@
     color: $light-gray;
     text-transform: lowercase;
     position: relative;
-    cursor: help;
+
+    &.with-stat-description {
+      cursor: help;
+    }
 
     small.stat-description {
       position: absolute;
       left: 0;
+      width: 100%;
       display: none;
       font-size: 55%;
       padding-top: 2px;

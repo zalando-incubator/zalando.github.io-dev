@@ -14,7 +14,7 @@ class Stat extends React.Component {
         </div>
         <div>
           <h2>{this.props.count}</h2>
-          <h4>{this.props.name} {description}</h4>
+          <h4 className={description ? 'with-stat-description' : null }>{this.props.name} {description}</h4>
         </div>
       </div>
     );
