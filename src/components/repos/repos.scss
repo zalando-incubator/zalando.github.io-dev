@@ -6,7 +6,7 @@
 
 //FILTER BAR
 .filter-bar {
-  margin:20px;
+  margin:28px;
 
   .btn {
     border-radius: 0px;
@@ -56,7 +56,12 @@
 .panel-heading {
   color:$zalando-darken-grey;
   font-weight: 600;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .panel-body {
   color:$zalando-dark-grey;
 }
@@ -100,33 +105,4 @@
 .repo-item-icon-detail {
   display: block;
 }
-
-
-.example-enter & {
-  opacity: 0;
-  transform:   translate(-250px,0);
-  transform: translate3d(-250px,0,0);
-}
-.example-enter.example-enter-active & {
-  opacity: 1;
-  transform:   translate(0,0);
-  transform: translate3d(0,0,0);
-  transition-property: transform, opacity;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
-}
-.example-leave & {
-  opacity: 1;
-  transform:   translate(0,0,0);
-  transform: translate3d(0,0,0);
-  transition-property: transform, opacity;
-  transition-duration: 500ms;
-  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
-}
-.example-leave.example-leave-active & {
-  opacity: 0;
-  transform:   translate(250px,0);
-  transform: translate3d(250px,0,0);
-}
-
 
