@@ -16,6 +16,7 @@ class RepositoryList extends React.Component {
         <Row className='show-grid'>
           <ReactCSSTransitionGroup transitionName="example" transitionAppear={true}>
           {this.props.repositories.map(function(repo, i){
+            console.log(repo);
             return <RepositoryListItem key={i} data={repo} />;
           })}
           </ReactCSSTransitionGroup>
