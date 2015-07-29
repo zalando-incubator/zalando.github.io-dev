@@ -3,6 +3,33 @@ import Stat from './Stat.jsx';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import {Col, Row} from 'react-bootstrap';
 import api from '../../utils/Api.js';
+import API_CONFIG from '../../constants/ApiConfig.js';
+
+let organizationNames = API_CONFIG.ORGANIZATIONS.split(',');
+
+let organizationLinks = function (genitive) {
+  return organizationNames.map(function (name, i) {
+    let href = `https://github.com/${name}`;
+    return (
+      <span key={'span_' + href}>
+        <a key={href} href={href} target="_blank">{name + (genitive ? '\'s' : '')}</a>
+        {(i !== organizationNames.length - 1) ? ', ' : ''}
+      </span>
+    );
+  });
+};
+
+let organizationsWord = function () {
+  return (<span>organization{organizationNames.length > 1 ? 's' : ''}</span>);
+}();
+
+let membersDescription = function () {
+  return (<span>number of folks that belong to {organizationLinks()} {organizationsWord}</span>);
+}();
+
+let contributorsDescription = function () {
+  return (<span>number of folks that contribute to {organizationLinks(true)} repositories</span>);
+}();
 
 class Stats extends React.Component {
 
@@ -45,10 +72,10 @@ class Stats extends React.Component {
             <Stat name='LANGUAGES' count={this.state.languages} icon='icon-languages'/>
           </Col>
           <Col xs={6} sm={4}>
-            <Stat name='CONTRIBUTORS' count={this.state.contributors} icon='icon-contributor'/>
+            <Stat name='CONTRIBUTORS' description={contributorsDescription} count={this.state.contributors} icon='icon-contributor'/>
           </Col>
           <Col xs={6} sm={4}>
-            <Stat name='MEMBERS' count={this.state.members} icon='icon-members'/>
+            <Stat name='MEMBERS' description={membersDescription} count={this.state.members} icon='icon-members'/>
           </Col>
         </Row>
       </div>

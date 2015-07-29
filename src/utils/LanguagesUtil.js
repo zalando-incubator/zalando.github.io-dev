@@ -2,26 +2,43 @@ import _ from 'lodash';
 import COLORS from '../constants/LanguageColors.js';
 
 export default {
-
+  /**
+   * Apply some extra metadata to each language (color, ...)
+   * @param {Array} languages
+   * @returns {Array}
+   */
   addMetadata: function (languages) {
-    // add percentage and color
     languages.forEach(function (language) {
-      for (let property in COLORS) {
-        if (property === language.name) {
-          language.color = COLORS[property];
-        }
-      }
-
-      if (!language.color) {
-        language.color = COLORS.DEFAULT;
-      }
-    });
+      language.color = this.getColorMetadata(language);
+    }.bind(this));
 
     return languages;
   },
   /**
+   * Get the hex color for a programming language
+   * @param {object} language
+   * @returns {string}
+   */
+  getColorMetadata: function (language) {
+    let color;
+
+    for (let languageName in COLORS) {
+      if (COLORS.hasOwnProperty(languageName)) {
+        if (languageName === language.name) {
+          color = COLORS[languageName];
+        }
+      }
+    }
+
+    if (!color) {
+      color = COLORS.DEFAULT;
+    }
+    return color;
+  },
+  /**
    * Extract programming languages and attach "metadata"
    *
+   * @deprecated now we get languages from the REST API
    * @param {Array} repos
    * @returns {Array} - languages with count/percentage/color, ordered by count
    */
@@ -38,23 +55,15 @@ export default {
     // add percentage and color
     languages.forEach(function (language) {
       language.percentage = Math.round( ( language.count / repos.length) * 100 );
-
-      for (let property in COLORS) {
-        if (property === language.name) {
-          language.color = COLORS[property];
-        }
-      }
-
-      if (!language.color) {
-        language.color = COLORS.DEFAULT;
-      }
-    });
+      language.color = this.getColorMetadata(language);
+    }.bind(this));
 
     return languages;
   },
   /**
    * Extract/aggregates programming languages
    *
+   * @deprecated now we get languages from the REST API
    * @param {Array} repos
    * @returns {Array}
    */

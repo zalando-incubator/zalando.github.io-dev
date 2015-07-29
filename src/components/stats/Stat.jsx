@@ -1,7 +1,12 @@
 import React from 'react';
 
 class Stat extends React.Component {
+
   render() {
+    let description = !this.props.description ? '' : (
+      <small className="stat-description">{this.props.description}</small>
+    );
+
     return (
       <div className='stat'>
         <div className="stat-icon">
@@ -9,7 +14,7 @@ class Stat extends React.Component {
         </div>
         <div>
           <h2>{this.props.count}</h2>
-          <h4>{this.props.name}</h4>
+          <h4>{this.props.name} {description}</h4>
         </div>
       </div>
     );
