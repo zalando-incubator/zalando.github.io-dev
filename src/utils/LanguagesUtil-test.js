@@ -30,7 +30,7 @@ describe('LanguagesUtil', function () {
 
   describe('#getLanguageColor method', function () {
     it('should return an color for the language name or the default one', function () {
-      let color = languagesUtil.getLanguageColor('JS');
+      let color = languagesUtil.getLanguageColor('JavaScript');
       expect(color).not.to.be.undefined;
       expect(color).not.to.be.equal(LANGUAGE_COLORS.DEFAULT);
 
