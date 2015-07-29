@@ -25,6 +25,7 @@ class FilterableRepositoryList extends React.Component {
     RepoStore.addChangeListener(this.onReposChange);
     LanguageStore.addChangeListener(this.onLanguagesChange);
     api.getRepos();
+    api.getLanguages();
   }
 
   onLanguagesChange() {

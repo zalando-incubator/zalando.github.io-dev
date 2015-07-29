@@ -50,7 +50,7 @@ class FilterBar extends React.Component {
           key={language.name}
           style={buttonBarStyle}
           onClick={this.onOptionChange.bind(this, language.name)}
-          active={active}>{language.name}
+          active={active}>{language.name || 'Unknown'}
         </Button>
       );
     }.bind(this));
