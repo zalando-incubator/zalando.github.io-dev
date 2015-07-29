@@ -7,13 +7,14 @@ import {Panel, Col, Row} from 'react-bootstrap';
 import languagesUtils from '../../utils/LanguagesUtil.js';
 
 class RepositoryListItem extends React.Component {
+
   render() {
     let colorBar = {
       borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
     };
     return (
       <Col xs={12} sm={6} md={4}>
-        <a href={this.props.data.url} className="repo-item-box">
+        <a href={RepositoryListItem.buildRepoUrl(this.props.data)} target="_blank" className="repo-item-box">
           <Panel header={this.props.data.name} style={colorBar}>
             <p className="repo-item-description">{this.props.data.description}</p>
             <Row className='show-grid text-center'>
@@ -43,6 +44,13 @@ class RepositoryListItem extends React.Component {
     );
   }
 }
+
+RepositoryListItem.buildRepoUrl = function (data) {
+  if (data.url) {
+    return data.url;
+  }
+  return 'https://github.com/' + data.organizationName + '/' + data.name;
+};
 
 RepositoryListItem.propTypes = {
   data: React.PropTypes.object.isRequired
