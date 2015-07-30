@@ -2,7 +2,7 @@
   "CATWATCH_API": {
     "BASE_URL": "ec2-52-28-130-84.eu-central-1.compute.amazonaws.com",
     "PROTOCOL": "http",
-    "ORGANIZATIONS": "zalando"
+    "ORGANIZATIONS": "zalando, zalando-stups"
   }
 }
 
