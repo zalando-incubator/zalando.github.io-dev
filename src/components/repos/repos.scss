@@ -73,6 +73,13 @@
 
   &:hover {
     text-decoration: none;
+    transform: scale(1.02,1.02);
+    transition: all .2s ease-in-out;
+  }
+
+  &:focus, &:visited{
+    text-decoration: none;
+    outline: none;
   }
 
   &:hover .panel-heading {
