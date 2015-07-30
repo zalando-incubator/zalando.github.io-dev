@@ -47,8 +47,8 @@
     "object-assign": "^3.0.0",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
-    "react-infinite-scroll": "^0.1.5",
     "restful.js": "^0.7.0",
+    "react-infinite-scroll": "git://github.com/zalando/react-infinite-scroll.git",
     "react-simple-inpagenav": "git://github.com/zalando/react-simple-inpagenav.git"
   },
   "devDependencies": {
