@@ -7,14 +7,16 @@ class Stat extends React.Component {
       <small className="stat-description">{this.props.description}</small>
     );
 
+    let statClassName = 'stat' + (description ? ' with-stat-description' : '');
+
     return (
-      <div className='stat'>
+      <div className={statClassName}>
         <div className="stat-icon">
           <span className={this.props.icon}> </span>
         </div>
         <div>
           <h2>{this.props.count}</h2>
-          <h4 className={description ? 'with-stat-description' : null }>{this.props.name} {description}</h4>
+          <h4>{this.props.name} {description}</h4>
         </div>
       </div>
     );

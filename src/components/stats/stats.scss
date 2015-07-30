@@ -23,24 +23,24 @@
     color: $light-gray;
     text-transform: lowercase;
     position: relative;
+  }
 
-    &.with-stat-description {
-      cursor: help;
-    }
+  &.with-stat-description {
+    cursor: help;
+  }
 
-    small.stat-description {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      display: none;
-      font-size: 55%;
-      padding-top: 2px;
-      color: $lighten-gray;
-    }
+  small.stat-description {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: none;
+    font-size: 55%;
+    padding-top: 2px;
+    color: $lighten-gray;
+  }
 
-    &:hover {
-      small.stat-description { display: block };
-    }
+  &:hover {
+    small.stat-description { display: block };
   }
 }
 
