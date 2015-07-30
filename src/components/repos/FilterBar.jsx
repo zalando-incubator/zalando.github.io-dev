@@ -30,7 +30,7 @@ class FilterBar extends React.Component {
   render() {
 
     let buttons = this.props.languages.map(function (language) {
-      let active = this.state.filter === language.name;
+      let active = this.state.language === language.name;
       let buttonBarStyle;
 
       if (active) {
