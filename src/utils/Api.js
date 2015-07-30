@@ -4,8 +4,6 @@ import API_CONFIG from '../constants/ApiConfig.js';
 import ReposActionCreators from '../actions/ReposActionCreators.js';
 import LanguageActionCreators from '../actions/LanguageActionCreators.js';
 import languagesUtil from '../utils/LanguagesUtil.js';
-import AppConstants from '../constants/AppConstants.jsx';
-
 
 var api = restful(API_CONFIG.BASE_URL)
   .protocol(API_CONFIG.PROTOCOL)
@@ -14,6 +12,8 @@ var api = restful(API_CONFIG.BASE_URL)
       params: _.extend({organizations: API_CONFIG.ORGANIZATIONS}, params)
     };
   });
+
+api.API_CONFIG = _.extend({}, API_CONFIG);
 
 export default api;
 
@@ -38,20 +38,6 @@ let transformCollection = function (response) {
   }
   return items;
 };
-
-// XXX
-let addRandomRepoDescription = function (repos) {
-  repos.forEach(function (repo) {
-    let n = Math.floor(Math.random() * 240) + 130;
-    let desc = addRandomRepoDescription.DESCRIPTION.substr(0, addRandomRepoDescription.DESCRIPTION.length - n).trim();
-    repo.description = repo.description ? repo.description : desc + '.';
-  });
-  return repos;
-};
-
-/* eslint-disable */
-addRandomRepoDescription.DESCRIPTION = "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.";
-/* eslint-enable */
 
 /**
  * Get the last stats snapshot
@@ -86,35 +72,19 @@ api.getStats = function () {
  *
  * @returns {Promise.<Array>}
  */
-api.getRepos = function () {
-  return repositories
-    .getAll({limit: 10000, offset: 0, sortBy: '-score'}) // all
-    .then(transformCollection)
-    .then(addRandomRepoDescription)
-    .then(function (repos) {
-      ReposActionCreators.receiveRepos(repos);
-      return repos;
-    });
-};
+api.getRepos = function (params) {
+  let ajaxParam = _.merge({limit: 10000, offset: 0, sortBy: '-score'}, params || {});
+  let actionParams = _.extend({}, ajaxParam);
 
+  if (ajaxParam.language === 'all') {
+    delete ajaxParam.language;
+  }
 
-/**
- * Get repositories/projects with params
- *
- * @returns {Promise.<Array>}
- */
-//TODO
-api.getReposByPage = function (offset, limit) {
-  let params = {
-    limit: limit || AppConstants.Pagination.PAGE_SIZE,
-    offset: offset || 0,
-    sortBy: '-score'
-  };
   return repositories
-    .getAll(params)
+    .getAll(ajaxParam)
     .then(transformCollection)
     .then(function (repos) {
-      ReposActionCreators.receiveReposByPage(repos, params.limit);
+      ReposActionCreators.receiveRepos(repos, actionParams);
       return repos;
     });
 };

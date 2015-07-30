@@ -5,29 +5,42 @@ import BaseStoreMixin from './BaseStoreMixin.js';
 
 let repos = [];
 let hasMore = true;
+let language = 'all';
+let page = -1;
 
 let RepoStore = assign({}, BaseStoreMixin, {
   getRepos: function () {
     return repos;
   },
-
   hasMore: function () {
     return hasMore;
+  },
+  getPage: function () {
+    return page;
+  },
+  getLanguage: function () {
+    return language;
   }
 });
 
 RepoStore.dispatchToken = AppDispatcher.register(function (action) {
   switch (action.type) {
     case AppConstants.ActionTypes.RECEIVE_REPOS:
-      repos = action.repos;
-      hasMore = false;
-      RepoStore.emitChange();
-      break;
-    case AppConstants.ActionTypes.RECEIVE_REPOS_PAGE:
-      repos = repos.concat(action.repos);
-      if (action.repos.length < action.limit) {
+
+      if (language !== action.params.language) {
+        repos = action.repos;
+        hasMore = true;
+      } else {
+        repos = repos.concat(action.repos);
+      }
+
+      if (action.repos.length < action.params.limit) {
         hasMore = false;
       }
+
+      language = action.params.language;
+      page = action.params.offset / action.params.limit;
+
       RepoStore.emitChange();
       break;
 

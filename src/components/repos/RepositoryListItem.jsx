@@ -18,7 +18,7 @@ class RepositoryListItem extends React.Component {
       <Col xs={12} sm={6} md={4}>
         <a href={RepositoryListItem.buildRepoUrl(this.props.data)} target="_blank" className="repo-item-box">
           <Panel header={this.props.data.name} style={colorBar}>
-            <p className="repo-item-description">{this.props.data.description}</p>
+            <p className="repo-item-description">{this.props.data.description || 'No description provided.'}</p>
             <Row className='show-grid text-center'>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
@@ -48,7 +48,6 @@ class RepositoryListItem extends React.Component {
           </Panel>
         </a>
       </Col>
-
     );
   }
 }

@@ -1,8 +1,7 @@
 const AppConstants = {
   ActionTypes: {
     RECEIVE_REPOS: 'RECEIVE_REPOS',
-    RECEIVE_LANGUAGES: 'RECEIVE_LANGUAGES',
-    RECEIVE_REPOS_PAGE: 'RECEIVE_REPOS_PAGE'
+    RECEIVE_LANGUAGES: 'RECEIVE_LANGUAGES'
   },
 
   SIMPLE_INPAGENAV_OPTIONS: {
@@ -10,10 +9,6 @@ const AppConstants = {
       scrollTo: {
         offset: -24
       }
-  },
-
-  Pagination: {
-    PAGE_SIZE: 5
   }
 };
 
