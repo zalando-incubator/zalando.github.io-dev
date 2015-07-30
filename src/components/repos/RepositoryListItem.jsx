@@ -5,6 +5,7 @@
 import React from 'react';
 import {Panel, Col, Row} from 'react-bootstrap';
 import languagesUtils from '../../utils/LanguagesUtil.js';
+import NumberFormatter from '../../utils/NumberFormatter.js';
 
 class RepositoryListItem extends React.Component {
 
@@ -29,19 +30,19 @@ class RepositoryListItem extends React.Component {
                 <div className="repo-item-icon">
                   <span className='icon-fork2'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{this.props.data.forksCount}</span>
+                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.forksCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-star2'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{this.props.data.starsCount}</span>
+                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.starsCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-contributor'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{this.props.data.contributorsCount}</span>
+                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.contributorsCount)}</span>
               </Col>
             </Row>
           </Panel>

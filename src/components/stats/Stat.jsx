@@ -1,4 +1,5 @@
 import React from 'react';
+import NumberFormatter from '../../utils/NumberFormatter.js';
 
 class Stat extends React.Component {
 
@@ -15,7 +16,7 @@ class Stat extends React.Component {
           <span className={this.props.icon}> </span>
         </div>
         <div>
-          <h2>{this.props.count}</h2>
+          <h2>{NumberFormatter.format(this.props.count)}</h2>
           <h4>{this.props.name} {description}</h4>
         </div>
       </div>
