@@ -44,6 +44,19 @@ Run the task with the env flag.
 The generated ```src/config/parameters.json``` file is the result of a merge 
 between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 
 
+## How to deploy
+
+**Always** move/checkout the **master** branch first.
+ 
+```git checkout master```
+
+Then to deploy the [project page](https://zalando.github.io/zalando.github.io-dev) (```gh-pages``` branch), run:
+
+```gulp deploy```
+
+To deploy the [organization page](https://zalando.github.io), run: 
+
+```gulp deploy --organization```  
 
 
 -------------------

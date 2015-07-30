@@ -173,8 +173,20 @@ gulp.task('parameters', function (done) {
 });
 
 gulp.task('deploy', ['build'], function () {
-  return gulp.src('./dist/**/*')
-    .pipe(ghPages());
+  var argv = require('yargs').argv;
+  var organization = argv.organization;
+  var organizationOptions = {
+    remoteUrl: 'https://github.com/zalando/zalando.github.io.git',
+    branch: 'master',
+    cacheDir: '.publish-organization'
+  };
+  var src = gulp.src('./dist/**/*');
+
+  if (organization) {
+    return src.pipe(ghPages(organizationOptions))
+  } else{
+    return src.pipe(ghPages());
+  }
 });
 
 gulp.task('default', function() {
