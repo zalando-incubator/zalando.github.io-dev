@@ -11,17 +11,16 @@
   .btn {
     border-radius: 0px;
     border-width: 2px;
-    border-color: black;
+    border-color: $light-gray;
     font-weight: 700;
-    color: black;
+    color: $light-gray;
     margin:7px;
     background-color: transparent;
 
     &.active {
-      background-color: white;
-      border-color: white;
-      color: black;
-      box-shadow:none;
+      background-color: $light-gray;
+      color: white ;
+      box-shadow: none;
     }
 
     &:focus {
@@ -31,7 +30,7 @@
 
     &:hover {
       background-color: white;
-      color: black;
+      color:$light-gray;
     }
   }
 }
