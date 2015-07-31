@@ -115,6 +115,9 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(p.tmpFonts));
 });
 
+/**
+ * Lint js files with eslint
+ */
 gulp.task('lint', function() {
   return gulp.src(['src/**/*.{jsx,js}','!src/**/*-{mock,test}.js'])
     .pipe(eslint())
@@ -122,6 +125,9 @@ gulp.task('lint', function() {
     .pipe(eslint.failAfterError())
 });
 
+/**
+ * Run tests (wraps npm command)
+ */
 gulp.task('test', function (cb) {
   exec('npm test --- --reporter spec', function (err, stdout, stderr) {
     console.log(stdout);
@@ -130,12 +136,18 @@ gulp.task('test', function (cb) {
   });
 });
 
+/**
+ * Watch for changes
+ */
 gulp.task('watch', function() {
   gulp.watch('src/**/*.scss', ['styles']);
   gulp.watch('src/**/*.jsx', ['lint']);
   gulp.watch('src/assets/images/*', ['images']);
 });
 
+/**
+ * start the development server and watch for changes
+ */
 gulp.task('serve', ['clean','parameters'], function() {
   runSequence(['watch', 'watchify', 'styles', 'images', 'fonts'], 'browserSync');
 });
@@ -144,6 +156,9 @@ gulp.task('copy-dist', function () {
   return gulp.src(['.tmp/**/*','src/index.html']).pipe(gulp.dest(p.dist));
 });
 
+/**
+ * Build a production ready version
+ */
 gulp.task('build', ['clean','parameters'], function (done) {
   runSequence('lint', 'test', ['browserify', 'styles', 'images', 'fonts'], 'copy-dist', done);
 });
@@ -172,6 +187,11 @@ gulp.task('parameters', function (done) {
   done();
 });
 
+/**
+ * Deploy the application to gh-pages branch (gulp deploy)
+ * or
+ * to zalando.github.io master branch (gulp deploy --organization)
+ */
 gulp.task('deploy', ['build'], function () {
   var argv = require('yargs').argv;
   var organization = argv.organization;
@@ -189,6 +209,4 @@ gulp.task('deploy', ['build'], function () {
   }
 });
 
-gulp.task('default', function() {
-  console.log('Run "gulp serve or gulp build"');
-});
+gulp.task('default', ['serve']);
