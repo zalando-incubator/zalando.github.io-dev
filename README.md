@@ -11,7 +11,7 @@ Clone the repository and run ```npm install```
 
 ## Run and watch for changes
 
-```npm run serve``` or ```gulp serve```
+```npm start``` or ```gulp start```
 
 ## Tests
 
@@ -39,7 +39,7 @@ Example (src/config/parameters.prod.json):
 
 Run the task with the env flag.
 
-```npm run serve -- --env=prod``` or ```gulp serve --env=prod```
+```npm start -- --env=prod``` or ```gulp start --env=prod```
 
 The generated ```src/config/parameters.json``` file is the result of a merge 
 between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 

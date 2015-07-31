@@ -148,7 +148,7 @@ gulp.task('watch', function() {
 /**
  * start the development server and watch for changes
  */
-gulp.task('serve', ['clean','parameters'], function() {
+gulp.task('start', ['clean','parameters'], function() {
   runSequence(['watch', 'watchify', 'styles', 'images', 'fonts'], 'browserSync');
 });
 
@@ -209,4 +209,4 @@ gulp.task('deploy', ['build'], function () {
   }
 });
 
-gulp.task('default', ['serve']);
+gulp.task('default', ['start']);
