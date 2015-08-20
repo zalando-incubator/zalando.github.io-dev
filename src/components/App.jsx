@@ -18,8 +18,8 @@ class App extends React.Component{
                 <span className="claim">we <i className="claim-heart">&hearts;</i> open source.</span>
               </div>
             </SimpleInpagenav.BarItem>
-            <SimpleInpagenav.BarItem target="statistics">statistics</SimpleInpagenav.BarItem>
             <SimpleInpagenav.BarItem target="repositories">repositories</SimpleInpagenav.BarItem>
+            <SimpleInpagenav.BarItem target="statistics">statistics</SimpleInpagenav.BarItem>
           </SimpleInpagenav.Bar>
           <SimpleInpagenav.Section target="welcome">
             <Welcome />
