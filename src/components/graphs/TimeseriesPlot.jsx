@@ -1,5 +1,6 @@
 import React from 'react';
 import Chart from 'react-chartjs';
+import _ from 'lodash';
 
 class TimeseriesPlot extends React.Component {
   constructor(props) {
@@ -22,8 +23,9 @@ class TimeseriesPlot extends React.Component {
         datasetStroke: true,
         datasetStrokeWidth: 2,
         datasetFill: true,
-        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span>muahah<%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-        responsive: true
+        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+        responsive: true,
+        animationSteps: 10
       }
     };
 
@@ -32,17 +34,17 @@ class TimeseriesPlot extends React.Component {
   render() {
     let data = this.props.data;
 
+    let options = _.merge({}, this.defaultProps.options, this.props.options);
+
     if (!data) {
-      console.log("waiting for data...");
       return (
         <div>
           <p className='text-center'>Waiting for data...</p>
         </div>);
     } else {
-      console.log("rendering data");
       return (
         <div>
-          <Chart.Line data={data} options={this.props.options}
+          <Chart.Line data={data} options={options}
                       width={this.props.width} height={this.props.width / 2}/>
         </div>);
     }

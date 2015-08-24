@@ -2,7 +2,7 @@ import React from 'react';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import api from '../../utils/Api.js';
 import API_CONFIG from '../../constants/ApiConfig.js';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
 import TimeseriesPlot from './TimeseriesPlot.jsx';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
@@ -65,13 +65,12 @@ class Graphs extends React.Component {
   }
 
   convertTimeseriesToPlotData(data, plotKey) {
-    console.log("converting data");
+    if (!data)
+      return false;
 
     data = _.map(data, x => x.data());
 
     data = _.sortBy(data, x => -_.last(x[plotKey]));
-
-    console.log("here");
 
     let allSnapshotDates = _.map(data, x => x.snapshot_dates);
     let uniqueSnapshotDates = _.union.apply(this, allSnapshotDates);
@@ -82,8 +81,6 @@ class Graphs extends React.Component {
     let totalCount = data.length;
 
     let outer = this;
-
-    console.log("here");
 
     //TODO make sure this actually picks the counts in the right order
     let timeseriesData = {
@@ -98,35 +95,45 @@ class Graphs extends React.Component {
       })
     };
 
-    console.log("done converting data => " + timeseriesData);
-
     return timeseriesData; // this.exampleData;
   }
 
   componentDidMount() {
     api.getStatisticsProjects().then(function (data) {
-      console.log("got data!");
-      this.setState({projectsData: this.convertTimeseriesToPlotData(data, this.state.projectsPlot)});
-      console.log("updated state!");
+      this.setState({projectsData: data});
     }.bind(this));
   }
 
   render() {
-    let getColor = this.getColor;
+    let projectsPlotData = this.convertTimeseriesToPlotData(this.state.projectsData, this.state.projectsPlot);
 
     return (
       <div className='container section'>
         <SectionHeading text='graphs'/>
         <Row className='show-grid'>
+          <Col sm={12}>
+            <p className='text-center'>
+              <Button active={this.state.projectsPlot == 'commit_counts'}
+                      onClick={function() {this.setState({projectsPlot: 'commit_counts'})}.bind(this)}>Commits</Button>
+              <Button active={this.state.projectsPlot == 'fork_counts'}
+                      onClick={function() {this.setState({projectsPlot: 'fork_counts'})}.bind(this)}>Forks</Button>
+              <Button active={this.state.projectsPlot == 'contributors_counts'}
+                      onClick={function() {this.setState({projectsPlot: 'contributors_counts'})}.bind(this)}>Contributors</Button>
+              <Button active={this.state.projectsPlot == 'scores'}
+                      onClick={function() {this.setState({projectsPlot: 'scores'})}.bind(this)}>Scores</Button>
+            </p>
+          </Col>
+        </Row>
+        <Row className='show-grid'>
           <Col xs={8} sm={8}>
             <p className='text-center'>
-              <TimeseriesPlot data={this.state.projectsData} width={window.innerWidth * 0.6}/>
+              <TimeseriesPlot data={projectsPlotData} width={window.innerWidth * 0.6}/>
             </p>
           </Col>
           <Col xs={4} sm={4}>
             <ul>
-              {this.state.projectsData ?
-                this.state.projectsData.datasets.map(function (data, i) {
+              {projectsPlotData ?
+                projectsPlotData.datasets.map(function (data, i) {
                   return <li className='graphs-legend' key={i}>
                     <span style={{color: data.strokeColor}}>{data.label}</span>
                   </li>;

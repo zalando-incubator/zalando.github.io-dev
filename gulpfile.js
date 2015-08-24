@@ -196,7 +196,7 @@ gulp.task('deploy', ['build'], function () {
   var argv = require('yargs').argv;
   var organization = argv.organization;
   var organizationOptions = {
-    remoteUrl: 'https://github.com/zalando/zalando.github.io.git',
+      remoteUrl: 'https://github.com/zalando/zalando.github.io.git',
     branch: 'master',
     cacheDir: '.publish-organization'
   };
