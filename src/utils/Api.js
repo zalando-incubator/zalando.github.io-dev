@@ -21,8 +21,9 @@ export default api;
 let repositories = api.all('projects');
 let statistics = api.all('statistics');
 let languages = api.all('languages');
+let statisticsProjects = api.all('statistics/projects');
 
-languages.addResponseInterceptor(function(data) {
+languages.addResponseInterceptor(function (data) {
   languagesUtil.addMetadata(data);
   return data;
 });
@@ -94,7 +95,7 @@ api.getRepos = function (params) {
  *
  * @returns {Promise.<Array>}
  */
-api.getLanguages = function (){
+api.getLanguages = function () {
   return languages
     .getAll({limit: 50, offset: 0})
     .then(transformCollection)
@@ -102,4 +103,10 @@ api.getLanguages = function (){
       LanguageActionCreators.receiveLanguages(langs);
       return langs;
     });
+};
+
+api.getStatisticsProjects = function () {
+  return statisticsProjects.getAll().then(function (response) {
+    return response.body();
+  });
 };
