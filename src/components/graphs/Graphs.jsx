@@ -2,71 +2,74 @@ import React from 'react';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import api from '../../utils/Api.js';
 import API_CONFIG from '../../constants/ApiConfig.js';
-import {Row, Col, Button} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import TimeseriesPlot from './TimeseriesPlot.jsx';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
+import ButtonGroup from './ButtonGroup.jsx';
 
-let organizationNames = API_CONFIG.ORGANIZATIONS.split(',');
+//let organizationNames = API_CONFIG.ORGANIZATIONS.split(',');
 
 class Graphs extends React.Component {
   constructor(props) {
     super(props);
     this.exampleData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: "My First dataset",
-          fillColor: "rgba(220,220,220,0.2)",
-          strokeColor: "rgba(220,220,220,1)",
-          pointColor: "rgba(220,220,220,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(220,220,220,1)",
+          label: 'My First dataset',
+          fillColor: 'rgba(220,220,220,0.2)',
+          strokeColor: 'rgba(220,220,220,1)',
+          pointColor: 'rgba(220,220,220,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
           data: [65, 59, 80, 81, 56, 55, 40]
         },
         {
-          label: "My Second dataset",
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
+          label: 'My Second dataset',
+          fillColor: 'rgba(151,187,205,0.2)',
+          strokeColor: 'rgba(151,187,205,1)',
+          pointColor: 'rgba(151,187,205,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(151,187,205,1)',
           data: [28, 48, 40, 19, 86, 27, 90]
         }
       ]
     };
     this.state = {
       projectsData: false,
-      projectsPlot: 'fork_counts'
+      projectsPlot: 'fork_counts',
+      languagesData: false
     };
     this.defaultStyle = {
-      fillColor: "rgba(220,220,220,0.2)",
-      //strokeColor: "rgba(220,220,220,1)",
-      //pointColor: "rgba(220,220,220,1)",
-      pointStrokeColor: "#fff",
-      pointHighlightFill: "#fff",
-      pointHighlightStroke: "rgba(220,220,220,1)"
-    }
+      fillColor: 'rgba(220,220,220,0.2)',
+      //strokeColor: 'rgba(220,220,220,1)',
+      //pointColor: 'rgba(220,220,220,1)',
+      pointStrokeColor: '#fff',
+      pointHighlightFill: '#fff',
+      pointHighlightStroke: 'rgba(220,220,220,1)'
+    };
+
+    this.colors = ['#FF8C00', '#FFD700', '#9ACD32', '#32CD32', '#00BFFF', '#0000CD', '#8B008B', '#FF00FF', '#FF69B4', '#DC143C'];
+
   }
 
-  getColor(count, totalCount) {
-    let a = count * 1.0 / totalCount;
-    let r = 255 - 255 * a;
-    let g = 255 * a;
-    let b = 127;
-    return "rgba(" + r + "," + g + "," + b + ",1)";
+  getColor(count) {
+    let numColors = this.colors.length;
+    return this.colors[count % numColors];
   }
 
   formatLabel(label) {
-    let d =  new Date(label);
-    return dateFormat(d, "d mmm, yyyy");
+    let d = new Date(label);
+    return dateFormat(d, 'd mmm, yyyy');
   }
 
   convertTimeseriesToPlotData(data, plotKey) {
-    if (!data)
+    if (!data) {
       return false;
+    }
 
     data = _.map(data, x => x.data());
 
@@ -78,8 +81,6 @@ class Graphs extends React.Component {
 
     let defaultStyle = this.defaultStyle;
 
-    let totalCount = data.length;
-
     let outer = this;
 
     //TODO make sure this actually picks the counts in the right order
@@ -89,8 +90,8 @@ class Graphs extends React.Component {
         return _.merge({}, {
           label: d.name,
           data: d[plotKey],
-          strokeColor: outer.getColor(i, totalCount),
-          pointColor: outer.getColor(i, totalCount)
+          strokeColor: outer.getColor(i),
+          pointColor: outer.getColor(i)
         }, defaultStyle);
       })
     };
@@ -102,26 +103,26 @@ class Graphs extends React.Component {
     api.getStatisticsProjects().then(function (data) {
       this.setState({projectsData: data});
     }.bind(this));
+
+    api.getStatisticsLanguages().then(function (data) {
+      this.setState({languagesData: data});
+    }.bind(this));
   }
 
   render() {
     let projectsPlotData = this.convertTimeseriesToPlotData(this.state.projectsData, this.state.projectsPlot);
 
+    let languagesPlotData = this.convertTimeseriesToPlotData(this.state.languagesData, 'project_counts');
+
     return (
       <div className='container section'>
-        <SectionHeading text='graphs'/>
+        <SectionHeading text='projects'/>
         <Row className='show-grid'>
           <Col sm={12}>
-            <p className='text-center'>
-              <Button active={this.state.projectsPlot == 'commit_counts'}
-                      onClick={function() {this.setState({projectsPlot: 'commit_counts'})}.bind(this)}>Commits</Button>
-              <Button active={this.state.projectsPlot == 'fork_counts'}
-                      onClick={function() {this.setState({projectsPlot: 'fork_counts'})}.bind(this)}>Forks</Button>
-              <Button active={this.state.projectsPlot == 'contributors_counts'}
-                      onClick={function() {this.setState({projectsPlot: 'contributors_counts'})}.bind(this)}>Contributors</Button>
-              <Button active={this.state.projectsPlot == 'scores'}
-                      onClick={function() {this.setState({projectsPlot: 'scores'})}.bind(this)}>Scores</Button>
-            </p>
+            <ButtonGroup fields={[['commit_counts', 'Commits'],
+                                  ['fork_counts', 'Forks'],
+                                  ['contributors_counts', 'Contributors'],
+                                  ['scores', 'Scores']]} stateKey={'projectsPlot'} obj={this} />
           </Col>
         </Row>
         <Row className='show-grid'>
@@ -138,6 +139,22 @@ class Graphs extends React.Component {
                     <span style={{color: data.strokeColor}}>{data.label}</span>
                   </li>;
                  }) : <li></li>}
+            </ul>
+          </Col>
+        </Row>
+        <SectionHeading text='languages'/>
+        <Row className='show-grid'>
+          <Col sm={8}>
+            <TimeseriesPlot data={languagesPlotData} width={window.innerWidth * 0.6}/>
+          </Col>
+          <Col sm={4}>
+            <ul>
+              {languagesPlotData ?
+                languagesPlotData.datasets.map(function (data, i) {
+                  return <li className='graphs-legend' key={i}>
+                    <span style={{color: data.strokeColor}}>{data.label}</span>
+                  </li>;
+                }) : <li></li>}
             </ul>
           </Col>
         </Row>

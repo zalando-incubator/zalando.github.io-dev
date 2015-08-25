@@ -1,3 +1,31 @@
 li.graphs-legend {
   list-style: none;
 }
+
+.button-group {
+  .btn {
+    border-radius: 0px;
+    border-width: 2px;
+    border-color: $light-gray;
+    font-weight: 700;
+    color: $light-gray;
+    margin:7px;
+    background-color: transparent;
+
+    &.active {
+      background-color: $light-gray;
+      color: white ;
+      box-shadow: none;
+    }
+
+    &:focus {
+      outline: 0 none;
+      border-color: none;
+    }
+
+    &:hover {
+      background-color: $light-gray;
+      color: white;
+    }
+  }
+}

@@ -10,7 +10,7 @@ class TimeseriesPlot extends React.Component {
       width: 800,
       options: {
         scaleShowGridLines: true,
-        scaleGridLineColor: "rgba(0,0,0,.05)",
+        scaleGridLineColor: 'rgba(0,0,0,.05)',
         scaleGridLineWidth: 1,
         scaleShowHorizontalLines: true,
         scaleShowVerticalLines: true,
@@ -23,7 +23,7 @@ class TimeseriesPlot extends React.Component {
         datasetStroke: true,
         datasetStrokeWidth: 2,
         datasetFill: true,
-        legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
+        legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
         responsive: true,
         animationSteps: 10
       }
@@ -42,10 +42,16 @@ class TimeseriesPlot extends React.Component {
           <p className='text-center'>Waiting for data...</p>
         </div>);
     } else {
+      // Calculate height but make sure its not too narrow. We still need space for the axis labels.˚˚
+      let height = this.props.width / 2;
+      if (height < 300) {
+        height = 300;
+      }
+
       return (
         <div>
           <Chart.Line data={data} options={options}
-                      width={this.props.width} height={this.props.width / 2}/>
+                      width={this.props.width} height={height}/>
         </div>);
     }
   }

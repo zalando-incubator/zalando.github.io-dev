@@ -22,6 +22,7 @@ let repositories = api.all('projects');
 let statistics = api.all('statistics');
 let languages = api.all('languages');
 let statisticsProjects = api.all('statistics/projects');
+let statisticsLanguages = api.all('statistics/languages');
 
 languages.addResponseInterceptor(function (data) {
   languagesUtil.addMetadata(data);
@@ -107,6 +108,12 @@ api.getLanguages = function () {
 
 api.getStatisticsProjects = function () {
   return statisticsProjects.getAll().then(function (response) {
+    return response.body();
+  });
+};
+
+api.getStatisticsLanguages = function () {
+  return statisticsLanguages.getAll().then(function (response) {
     return response.body();
   });
 };
