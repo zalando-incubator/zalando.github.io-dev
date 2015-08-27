@@ -15,7 +15,7 @@ class ButtonGroup extends React.Component {
               var newState = {};
               newState[stateKey] = field[0];
               obj.setState(newState);
-            }}>{field[1]}</Button>
+            }}>{field[1]}</ Button>;
         })}
       </ButtonToolbar>
     </p>;

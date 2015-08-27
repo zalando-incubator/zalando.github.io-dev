@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import api from '../../utils/Api.js';
-import API_CONFIG from '../../constants/ApiConfig.js';
+//import API_CONFIG from '../../constants/ApiConfig.js';
 import {Row, Col} from 'react-bootstrap';
 import TimeseriesPlot from './TimeseriesPlot.jsx';
 import _ from 'lodash';
@@ -126,12 +126,12 @@ class Graphs extends React.Component {
           </Col>
         </Row>
         <Row className='show-grid'>
-          <Col xs={8} sm={8}>
+          <Col sm={8}>
             <p className='text-center'>
               <TimeseriesPlot data={projectsPlotData} width={window.innerWidth * 0.6}/>
             </p>
           </Col>
-          <Col xs={4} sm={4}>
+          <Col sm={4}>
             <ul>
               {projectsPlotData ?
                 projectsPlotData.datasets.map(function (data, i) {
