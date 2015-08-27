@@ -63,7 +63,8 @@ class Graphs extends React.Component {
   }
 
   getLanguageColor(count, item) {
-    return LANGUAGE_COLORS[item];
+    let color = LANGUAGE_COLORS[item];
+    return color ? LANGUAGE_COLORS[item] : "black";
   }
 
   formatLabel(label) {
