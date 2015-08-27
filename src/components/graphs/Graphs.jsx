@@ -63,7 +63,6 @@ class Graphs extends React.Component {
   }
 
   getLanguageColor(count, item) {
-    console.log("Getting color for " + item);
     return LANGUAGE_COLORS[item];
   }
 
