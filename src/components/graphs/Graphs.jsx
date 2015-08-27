@@ -7,6 +7,7 @@ import TimeseriesPlot from './TimeseriesPlot.jsx';
 import _ from 'lodash';
 import dateFormat from 'dateformat';
 import ButtonGroup from './ButtonGroup.jsx';
+import LANGUAGE_COLORS from '../../constants/LanguageColors';
 
 //let organizationNames = API_CONFIG.ORGANIZATIONS.split(',');
 
@@ -56,9 +57,14 @@ class Graphs extends React.Component {
 
   }
 
-  getColor(count) {
+  getColor(count, item) {
     let numColors = this.colors.length;
     return this.colors[count % numColors];
+  }
+
+  getLanguageColor(count, item) {
+    console.log("Getting color for " + item);
+    return LANGUAGE_COLORS[item];
   }
 
   formatLabel(label) {
@@ -66,7 +72,7 @@ class Graphs extends React.Component {
     return dateFormat(d, 'd mmm, yyyy');
   }
 
-  convertTimeseriesToPlotData(data, plotKey) {
+  convertTimeseriesToPlotData(data, plotKey, colorFunction) {
     if (!data) {
       return false;
     }
@@ -81,8 +87,6 @@ class Graphs extends React.Component {
 
     let defaultStyle = this.defaultStyle;
 
-    let outer = this;
-
     //TODO make sure this actually picks the counts in the right order
     let timeseriesData = {
       labels: snapshotDates,
@@ -90,8 +94,8 @@ class Graphs extends React.Component {
         return _.merge({}, {
           label: d.name,
           data: d[plotKey],
-          strokeColor: outer.getColor(i),
-          pointColor: outer.getColor(i)
+          strokeColor: colorFunction(i, d.name),
+          pointColor: colorFunction(i, d.name)
         }, defaultStyle);
       })
     };
@@ -110,9 +114,9 @@ class Graphs extends React.Component {
   }
 
   render() {
-    let projectsPlotData = this.convertTimeseriesToPlotData(this.state.projectsData, this.state.projectsPlot);
+    let projectsPlotData = this.convertTimeseriesToPlotData(this.state.projectsData, this.state.projectsPlot, this.getColor.bind(this));
 
-    let languagesPlotData = this.convertTimeseriesToPlotData(this.state.languagesData, 'project_counts');
+    let languagesPlotData = this.convertTimeseriesToPlotData(this.state.languagesData, 'project_counts', this.getLanguageColor);
 
     return (
       <div className='container section'>
