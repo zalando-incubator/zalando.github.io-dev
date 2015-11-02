@@ -1,6 +1,6 @@
 {
   "CATWATCH_API": {
-    "BASE_URL": "catwatch-web.hackweek.zalan.do",
+    "BASE_URL": "catwatch.opensource.zalan.do",
     "PROTOCOL": "https",
     "ORGANIZATIONS": "zalando,zalando-stups,zalando-techmonkeys"
   }
