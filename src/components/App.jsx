@@ -4,7 +4,6 @@ import SimpleInpagenav from 'react-simple-inpagenav';
 import AppConstants from '../constants/AppConstants.jsx';
 import Welcome from './welcome/Welcome.jsx';
 import Stats from './stats/Stats.jsx';
-import Graphs from './graphs/Graphs.jsx';
 import FilterableRepositoryList from './repos/FilterableRepositoryList.jsx';
 
 class App extends React.Component{
@@ -20,7 +19,6 @@ class App extends React.Component{
               </div>
             </SimpleInpagenav.BarItem>
             <SimpleInpagenav.BarItem target="repositories">repositories</SimpleInpagenav.BarItem>
-            <SimpleInpagenav.BarItem target="graphs">graphs</SimpleInpagenav.BarItem>
             <SimpleInpagenav.BarItem target="statistics">statistics</SimpleInpagenav.BarItem>
           </SimpleInpagenav.Bar>
           <SimpleInpagenav.Section target="welcome">
@@ -28,9 +26,6 @@ class App extends React.Component{
           </SimpleInpagenav.Section>
           <SimpleInpagenav.Section target="statistics">
             <Stats />
-          </SimpleInpagenav.Section>
-          <SimpleInpagenav.Section target="graphs">
-            <Graphs />
           </SimpleInpagenav.Section>
           <SimpleInpagenav.Section target="repositories">
             <FilterableRepositoryList />
