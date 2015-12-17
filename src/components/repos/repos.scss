@@ -1,3 +1,5 @@
+@import '../../github-colors';
+
 //REPOS SECTION
 .repos{
   width: 100%;
@@ -112,3 +114,80 @@
   display: block;
 }
 
+
+.filter-bar--typeahead {
+  margin:0;
+  margin-bottom: 28px;
+  position: relative;
+
+  .filter-bar__btn-all {
+    position: absolute;
+    right: 0;
+    top: 6px;
+  }
+}
+
+.filter-bar__typeahead-input {
+  width: 100%;
+  padding:16px;
+  font-size: 18px;
+  outline: none;
+  border:1px solid #D6D2D2;
+}
+
+.filter-bar__typeahead-results {
+  display: block;
+  margin:0; padding: 0;
+  position: absolute;
+  left:0;
+  z-index:100;
+  width: 100%;
+  list-style: none;
+  text-align:left;
+  border:1px solid #D6D2D2;
+  border-top: none;
+}
+
+.filter-bar__typeahead-item {
+  display: block;
+  background: #fff;
+  font-size: 18px;
+  border-top:1px solid #D6D2D2;
+
+  &.hover .filter-bar__typeahead-anchor {
+    color: #808080;
+    text-decoration: none;
+    background: #e0e0e0;
+  }
+
+  &:first-child {
+    border-top:none;
+  }
+
+  @each $language-name, $color in $github-colors-map {
+    &[data-reactid*="#{$language-name}_"] .filter-bar__typeahead-anchor{
+      &:before {
+        color: $color;
+      }
+    }
+  }
+}
+
+.filter-bar__typeahead-anchor {
+  display: block;
+  padding:16px;
+  color: #808080;
+  text-decoration: none;
+  font-weight: 400;
+  &:before {
+    display: inline-block;
+    padding-right: 8px;
+    content: '\2588'
+  }
+
+  &:hover {
+    color: #808080;
+    text-decoration: none;
+    background: #e0e0e0;
+  }
+}
