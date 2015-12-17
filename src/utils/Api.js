@@ -1,8 +1,6 @@
 import restful from 'restful.js';
 import _ from 'lodash';
 import API_CONFIG from '../constants/ApiConfig.js';
-import ReposActionCreators from '../actions/ReposActionCreators.js';
-import LanguageActionCreators from '../actions/LanguageActionCreators.js';
 import languagesUtil from '../utils/LanguagesUtil.js';
 
 var api = restful(API_CONFIG.BASE_URL)
@@ -23,6 +21,7 @@ let statistics = api.all('statistics');
 let languages = api.all('languages');
 let statisticsProjects = api.all('statistics/projects');
 let statisticsLanguages = api.all('statistics/languages');
+
 
 languages.addResponseInterceptor(function (data) {
   languagesUtil.addMetadata(data);
@@ -76,7 +75,6 @@ api.getStats = function () {
  */
 api.getRepos = function (params) {
   let ajaxParam = _.merge({limit: 10000, offset: 0, sortBy: '-score'}, params || {});
-  let actionParams = _.extend({}, ajaxParam);
 
   if (ajaxParam.language === 'all') {
     delete ajaxParam.language;
@@ -86,7 +84,6 @@ api.getRepos = function (params) {
     .getAll(ajaxParam)
     .then(transformCollection)
     .then(function (repos) {
-      ReposActionCreators.receiveRepos(repos, actionParams);
       return repos;
     });
 };
@@ -101,7 +98,6 @@ api.getLanguages = function () {
     .getAll({limit: 50, offset: 0})
     .then(transformCollection)
     .then(function (langs) {
-      LanguageActionCreators.receiveLanguages(langs);
       return langs;
     });
 };

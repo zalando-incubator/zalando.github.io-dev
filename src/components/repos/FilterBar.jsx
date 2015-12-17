@@ -9,28 +9,17 @@ class FilterBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      language: this.props.language
-    };
     this.onOptionChange = this.onOptionChange.bind(this);
   }
 
   onOptionChange(language) {
-    let newLanguage = language;
-    //if the user clicks the same button, reset the language filter
-    if (language === this.state.language) {
-      newLanguage = ApiConfig.REPOS.ALL_LANGUAGE_FILTER;
-    }
-    this.setState({
-      language: newLanguage
-    });
-    this.props.onUserInput(newLanguage);
+    this.props.onLanguageChange(language);
   }
 
   render() {
-
     let buttons = this.props.languages.map(function (language) {
-      let active = this.state.language === language.name;
+
+      let active = this.props.language === language.name;
       let buttonBarStyle;
 
       if (active) {
@@ -60,7 +49,7 @@ class FilterBar extends React.Component {
     buttons.unshift(<Button
         key={'All'}
         onClick={this.onOptionChange.bind(this, ApiConfig.REPOS.ALL_LANGUAGE_FILTER)}
-        active={this.state.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER }>All
+        active={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER }>All
       </Button>
     );
 
@@ -68,7 +57,6 @@ class FilterBar extends React.Component {
       <div className="text-center filter-bar">
         {buttons}
       </div>
-
     );
   }
 }
@@ -76,7 +64,7 @@ class FilterBar extends React.Component {
 FilterBar.propTypes = {
   languages: React.PropTypes.array.isRequired,
   language: React.PropTypes.string.isRequired,
-  onUserInput: React.PropTypes.func.isRequired
+  onLanguageChange: React.PropTypes.func.isRequired
 };
 
 export default FilterBar;
