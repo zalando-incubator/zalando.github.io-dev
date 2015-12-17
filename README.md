@@ -60,7 +60,7 @@ To deploy the [organization page](https://zalando.github.io), run:
 
 ## Compatibility
  
-Tested to work with >=IE10, Chrome, Firefox, Safari, and Opera.
+Tested to work with Opera 34.0+, Chrome 47.0+, Firefox 43.0+, Safari 8.0+, IE10+
 
 ## License
 
