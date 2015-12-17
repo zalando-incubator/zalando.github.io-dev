@@ -23,8 +23,8 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    ghPages = require('gulp-gh-pages'),
     assign = require('object-assign'),
+    rename = require('gulp-rename'),
     fs = require('fs'),
     _ = require('lodash'),
     p = {
@@ -152,8 +152,21 @@ gulp.task('start', ['clean','parameters'], function() {
   runSequence(['watch', 'watchify', 'styles', 'images', 'fonts'], 'browserSync');
 });
 
-gulp.task('copy-dist', function () {
+gulp.task('copy-dist', ['copy-dist-metafiles','copy-dist-readme'], function () {
   return gulp.src(['.tmp/**/*','src/index.html']).pipe(gulp.dest(p.dist));
+});
+
+gulp.task('copy-dist-metafiles', function () {
+  return gulp
+    .src(['LICENSE','MAINTAINERS'])
+    .pipe(gulp.dest(p.dist));
+});
+
+gulp.task('copy-dist-readme', function () {
+  return gulp
+    .src(['DIST-README.md'])
+    .pipe(rename('README.md'))
+    .pipe(gulp.dest(p.dist));
 });
 
 /**
