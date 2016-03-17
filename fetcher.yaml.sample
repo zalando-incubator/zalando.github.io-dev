@@ -1,0 +1,6 @@
+--- 
+basic_auth: login:password
+orgs:
+- zalando
+- zalando-stups
+- zalando-techmonkeys
