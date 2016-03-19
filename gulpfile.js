@@ -72,14 +72,14 @@ gulp.task('watchify', function() {
       .pipe(reload({stream: true}));
   }
 
-  bundler.transform(babelify)
+  bundler.transform('babelify', {presets: ['es2015', 'react', 'stage-0']})
   .on('update', rebundle);
   return rebundle();
 });
 
 gulp.task('browserify', function() {
   return browserify(p.jsx)
-    .transform(babelify)
+    .transform('babelify', {presets: ['es2015', 'react', 'stage-0'], plugins: ['transform-runtime', 'add-module-exports']})
     .bundle()
     .pipe(source(p.bundle))
     .pipe(buffer())
