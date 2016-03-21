@@ -1,4 +1,4 @@
-var github = {
+let github = {
   "stats": {
     "repos": 273,
     "stars": 2529,
@@ -3240,3 +3240,5 @@ var github = {
     }
   ]
 };
+
+export default github;

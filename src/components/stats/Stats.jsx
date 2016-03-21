@@ -4,6 +4,8 @@ import SectionHeading from '../section-heading/SectionHeading.jsx';
 import {Col, Row} from 'react-bootstrap';
 import api from '../../utils/Api.js';
 import API_CONFIG from '../../constants/ApiConfig.js';
+import github from '../../stores/github.js';
+
 
 let organizationNames = API_CONFIG.ORGANIZATIONS.split(',');
 
@@ -46,12 +48,7 @@ class Stats extends React.Component {
   }
 
   componentDidMount() {
-    // get the stats
-    api.getStats().then(function (stats){
-      if (stats) {
-        this.setState(stats);
-      }
-    }.bind(this));
+    this.setState(github.stats);
   }
 
   render() {

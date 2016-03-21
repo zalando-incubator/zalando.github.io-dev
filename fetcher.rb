@@ -23,10 +23,11 @@ class Repo
       contributors: 321,
       members: 320
     }
-    open("data/github.js", "w") do |out|
-      out.write("var github = ")
+    open("/github.js", "w") do |out|
+      out.write("let github = ")
       out.write(JSON.pretty_generate(stats: stats, repos: repos))
       out.write(";")
+      out.write("export default github;")
     end
   end
 
