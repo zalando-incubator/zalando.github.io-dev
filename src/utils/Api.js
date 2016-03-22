@@ -2,6 +2,7 @@ import restful from 'restful.js';
 import _ from 'lodash';
 import API_CONFIG from '../constants/ApiConfig.js';
 import languagesUtil from '../utils/LanguagesUtil.js';
+import github from "../stores/github.js";
 
 var api = restful(API_CONFIG.BASE_URL)
   .protocol(API_CONFIG.PROTOCOL)
@@ -74,18 +75,13 @@ api.getStats = function () {
  * @returns {Promise.<Array>}
  */
 api.getRepos = function (params) {
-  let ajaxParam = _.merge({limit: 10000, offset: 0, sortBy: '-score'}, params || {});
-
-  if (ajaxParam.language === 'all') {
-    delete ajaxParam.language;
-  }
-
-  return repositories
-    .getAll(ajaxParam)
-    .then(transformCollection)
-    .then(function (repos) {
-      return repos;
-    });
+  let options = _.merge({ limit: 15, offset: 0 }, params || {});
+  let from = options.offset;
+  let to = from + options.limit;
+  let withLanguage = function(x) { return params.language === 'all' || params.language === x.primaryLanguage; }
+  return new Promise(function(resolve, reject) {
+    resolve(_.filter(github.repos, withLanguage).slice(from, to));
+  });  
 };
 
 /**

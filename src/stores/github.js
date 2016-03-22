@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 let github = {
   "stats": {
     "repos": 273,
@@ -3240,5 +3242,21 @@ let github = {
     }
   ]
 };
+
+github.repos = _.sortBy(github.repos, function(x) { return -x.score; });
+github.repos = _.map(github.repos, function(data, index, collection) {
+  return new Object({
+      "gitHubProjectId": index,
+      "name": data.name,
+      "organizationName": data.org,
+      "url": "https://github.com/" + data.org + "/" + data.name,
+      "description": data.description,
+      "starsCount": data.stars,
+      "forksCount": data.forks,
+      "contributorsCount": data.contributors,
+      "score": data.score,
+      "primaryLanguage": data.language,
+  });
+});
 
 export default github;
