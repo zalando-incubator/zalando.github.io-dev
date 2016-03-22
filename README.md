@@ -11,7 +11,9 @@ Clone the repository and run ```npm install```
 
 ## Run and watch for changes
 
-```npm start``` or ```gulp start```
+```npm start``` or ```gulp start```  
+
+Supported versions node >= 4 and npm >= 3
 
 ## Tests
 
