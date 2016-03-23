@@ -23,30 +23,36 @@ class Repo
       contributors: 321,
       members: 320
     }
-    open("/github.js", "w") do |out|
+    open("src/stores/github.js", "w") do |out|
       out.write("let github = ")
       out.write(JSON.pretty_generate(stats: stats, repos: repos))
-      out.write(";")
-      out.write("export default github;")
+      out.write(";\n\n")
+      out.write("export default github;\n")
     end
   end
 
   def self.fetch_all
     repos = []
+    limit = Config.limit || 10_000
+    puts "fetching #{Config.limit || 'all'} repos per org"
     Config.orgs.each do |org|
       print org
-      Github.repos.list(org: org).first(3).each do |data|
+      Github.repos.list(org: org).first(limit).each do |data|
         print "."
         repos << Repo.new(data)
       end
     end
     puts
-    repos
+    repos.sort_by(&:score).reverse
   end
 
   def initialize(data)
     @data = data
     init
+  end
+
+  def id
+    @data.id
   end
 
   def org
@@ -87,14 +93,16 @@ class Repo
 
   def as_json
     { 
-      org: org,
+      gitHubProjectId: id,
       name: name, 
+      organizationName: org,
+      url: "https://github.com/#{org}/#{name}",
       description: description,
-      language: language,
-      stars: stars, 
-      forks: forks, 
-      contributors: contributors, 
-      score: score 
+      starsCount: stars, 
+      forksCount: forks, 
+      contributorsCount: contributors, 
+      score: score,
+      primaryLanguage: language 
     }
   end
 
