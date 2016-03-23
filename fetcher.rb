@@ -52,6 +52,7 @@ class Repo
     Config.orgs.each do |org|
       print org
       Github.repos.list(org: org).first(limit).each do |data|
+        next if data.fork
         print "."
         repos << Repo.new(data)
       end
