@@ -11,27 +11,41 @@ Github.configure do |c|
   c.auto_pagination = true
 end
 
+class Array
+  def sum
+    inject(&:+)
+  end
+end
+
 class Repo
   def self.export_all
-    repos = Repo.fetch_all.map(&:as_json)
-    #TODO: calculate stats
+    repos = fetch_repos
     stats = {
-      repos: 273,
-      stars: 2529,
-      forks: 656,
-      languages: 33,
-      contributors: 321,
-      members: 320
+      repos: repos.count,
+      stars: repos.map(&:stars).sum,
+      forks: repos.map(&:forks).sum,
+      languages: Set.new(repos.map(&:language)).size,
+      contributors: Set.new(repos.map(&:contributors)).size,
+      members: fetch_members.count
     }
     open("src/stores/github.js", "w") do |out|
       out.write("let github = ")
-      out.write(JSON.pretty_generate(stats: stats, repos: repos))
+      out.write(JSON.pretty_generate(stats: stats, repos: repos.map(&:as_json)))
       out.write(";\n\n")
       out.write("export default github;\n")
     end
   end
 
-  def self.fetch_all
+  def self.fetch_members
+    result = []
+    puts "fetching all members per org"
+    Config.orgs.each do |org|
+      result += Github.orgs.members.list(org_name: org).map(&:login)
+    end
+    Set.new(result)
+  end
+
+  def self.fetch_repos
     repos = []
     limit = Config.limit || 10_000
     puts "fetching #{Config.limit || 'all'} repos per org"
@@ -68,7 +82,7 @@ class Repo
   end
 
   def score
-    (stars + forks + contributors + commits * 0.01).round(1) * (forks > 0 ? 1 : 0)
+    (stars + forks + contributors.count + commits * 0.01).round(1) * (forks > 0 ? 1 : 0)
   end
 
   def stars
@@ -100,7 +114,7 @@ class Repo
       description: description,
       starsCount: stars, 
       forksCount: forks, 
-      contributorsCount: contributors, 
+      contributorsCount: contributors.count, 
       score: score,
       primaryLanguage: language 
     }
@@ -116,7 +130,7 @@ private
   end
 
   def fetch_contributors
-    Github.repos.contributors(*full_name).count
+    Github.repos.contributors(*full_name).map(&:login) rescue []
   end
 
   def fetch_commits
