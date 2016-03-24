@@ -1,0 +1,17 @@
+{
+  "presets": ["react", "es2015", "stage-0"],
+
+  "plugins": [
+    "transform-runtime",
+    "add-module-exports",
+    "lodash"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-inline-elements",
+        "transform-react-constant-elements"
+      ]
+    }
+  }
+}
