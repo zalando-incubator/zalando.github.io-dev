@@ -38,6 +38,7 @@ api.getRepos = function (params) {
  * @returns {Promise.<Array>}
  */
 api.getLanguages = function () {
+  //TODO: fetch top languages from github.js
   let result = [
     {'color': '#3572a5', 'name': 'Python'},
     {'color': '#b07219', 'name': 'Java'},

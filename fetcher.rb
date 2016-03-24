@@ -29,7 +29,7 @@ class Repo
       members: fetch_members.count
     }
     data = JSON.pretty_generate(stats: stats, repos: repos.map(&:as_json))
-    data = data.tr(%q{"}, %q{'})
+    data = data.tr(%q{"'}, %q{'’})
     open("src/stores/github.js", "w") do |out|
       out.write("let github = #{data}")
       out.write(";\n\n")
@@ -113,7 +113,7 @@ class Repo
       name: name, 
       organizationName: org,
       url: "https://github.com/#{org}/#{name}",
-      description: quote(description),
+      description: description,
       starsCount: stars, 
       forksCount: forks, 
       contributorsCount: contributors.count, 
@@ -145,10 +145,6 @@ private
 
   def full_name
     @data.full_name.split("/")
-  end
-
-  def quote(text)
-    (text || "").gsub("'") { "\\'" }
   end
 end
 
