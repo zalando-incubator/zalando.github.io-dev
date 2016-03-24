@@ -30,7 +30,7 @@
     "Angela Igreja",
     "Ruben Barilani"
   ],
-  "license": "Apache2",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/zalando/zalando.github.io-dev/issues"
   },
@@ -59,7 +59,7 @@
     "restful.js": "^0.7.0"
   },
   "devDependencies": {
-    "autoprefixer-core": "^6.0.1",
+    "autoprefixer": "^6.3.4",
     "babel": "^6.5.2",
     "babel-core": "^6.7.2",
     "babel-eslint": "^6.0.0-beta.6",
