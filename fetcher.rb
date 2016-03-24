@@ -28,9 +28,10 @@ class Repo
       contributors: Set.new(repos.map(&:contributors)).size,
       members: fetch_members.count
     }
+    data = JSON.pretty_generate(stats: stats, repos: repos.map(&:as_json))
+    data = data.tr(%q{"}, %q{'})
     open("src/stores/github.js", "w") do |out|
-      out.write("let github = ")
-      out.write(JSON.pretty_generate(stats: stats, repos: repos.map(&:as_json)))
+      out.write("let github = #{data}")
       out.write(";\n\n")
       out.write("export default github;\n")
     end
@@ -112,7 +113,7 @@ class Repo
       name: name, 
       organizationName: org,
       url: "https://github.com/#{org}/#{name}",
-      description: description,
+      description: quote(description),
       starsCount: stars, 
       forksCount: forks, 
       contributorsCount: contributors.count, 
@@ -144,6 +145,10 @@ private
 
   def full_name
     @data.full_name.split("/")
+  end
+
+  def quote(text)
+    (text || "").gsub("'") { "\\'" }
   end
 end
 
