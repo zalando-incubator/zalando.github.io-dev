@@ -24,7 +24,7 @@ class Repo
       repos: repos.count,
       stars: repos.map(&:stars).sum,
       forks: repos.map(&:forks).sum,
-      languages: Set.new(repos.map(&:language)).size,
+      languages: Set.new(repos.map(&:languages).flatten).size,
       contributors: Set.new(repos.map(&:contributors)).size,
       members: fetch_members.count
     }
@@ -102,8 +102,8 @@ class Repo
     @commits ||= fetch_commits
   end
 
-  def language
-    @language ||= fetch_language
+  def languages
+    @languages ||= fetch_languages
   end
 
   def as_json
@@ -117,7 +117,7 @@ class Repo
       forksCount: forks, 
       contributorsCount: contributors.count, 
       score: score,
-      primaryLanguage: language 
+      primaryLanguage: languages.first || "(unknown)" 
     }
   end
 
@@ -126,7 +126,7 @@ private
   def init
     contributors
     commits
-    language
+    languages
     nil
   end
 
@@ -138,8 +138,8 @@ private
     Github.repos.stats.participation(*full_name).all.inject(0, &:+) rescue 0
   end
 
-  def fetch_language
-    Github.repos.languages(*full_name).to_a.map(&:first).first || "(unknown)"
+  def fetch_languages
+    Github.repos.languages(*full_name).to_a.map(&:first) rescue []
   end
 
   def full_name
