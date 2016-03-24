@@ -23,7 +23,7 @@
   "scripts": {
     "lint": "gulp lint",
     "test": "mocha $(find src -name '*-test.js') --reporter nyan --compilers js:babel-core/register",
-    "ci": "gulp lint && npm test -- --reporter spec",
+    "ci": "gulp build",
     "start": "gulp start"
   },
   "authors": [
