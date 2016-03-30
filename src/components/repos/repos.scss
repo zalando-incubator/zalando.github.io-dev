@@ -37,6 +37,21 @@
   }
 }
 
+.filter-menu {
+  margin: 15px auto 15px auto;
+  .btn {
+    &.active {
+      color: white;
+      background-color: $zalando-orange;
+      border-color: $repos-section-background;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
 .other-btn {
   border-color: #999999 !important;
   color: #999999 !important;
@@ -116,21 +131,23 @@
 
 
 .filter-bar--typeahead {
-  margin:0;
-  margin-bottom: 28px;
+  margin: 28px 0;
   position: relative;
 
   .filter-bar__btn-all {
     position: absolute;
     right: 0;
-    top: 6px;
+    top: 0;
+    padding: 3px 8px;
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 
 .filter-bar__typeahead-input {
   width: 100%;
-  padding:16px;
-  font-size: 18px;
+  padding: 8px;
+  font-size: 16px;
   outline: none;
   border:1px solid #D6D2D2;
 }

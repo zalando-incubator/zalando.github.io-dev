@@ -9,7 +9,6 @@ import api from '../utils/Api.js';
 
 let state = {
   language: 'all',
-  filterVariant: 'typeahead', // top-languages or typeahead
   allLanguages: [],
   topLanguages: [],
   repos: [],
