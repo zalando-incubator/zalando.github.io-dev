@@ -48,7 +48,7 @@ export default {
     let languages = this.getLanguagesFromRepos(repos);
 
     // sort by
-    languages = _.sortByOrder(languages, function (language) {
+    languages = _.orderBy(languages, function (language) {
       return language.count;
     }, ['desc']);
 

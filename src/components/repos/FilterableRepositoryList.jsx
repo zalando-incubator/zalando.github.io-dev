@@ -4,8 +4,8 @@ import RepositoryList from './RepositoryList.jsx';
 import SectionHeading from '../section-heading/SectionHeading.jsx';
 import ActionCreators from '../../actions/ReposActionCreators.js';
 import Store from '../../stores/ReposStore.js';
+import InfiniteScroll from 'react-infinite-scroller';
 
-let InfiniteScroll = require('react-infinite-scroll')(React);
 
 class FilterableRepositoryList extends React.Component {
 
@@ -51,10 +51,10 @@ class FilterableRepositoryList extends React.Component {
           language={this.state.language}
           onLanguageChange={this.handleLanguageChange}
           />
-        <InfiniteScroll pageStart={this.state.page} loader={<div className="loader repo-loader">Loading ...</div>}
-                        loadMore={this.loadMore.bind(this)} hasMore={this.state.hasMore}>
-          <RepositoryList repositories={this.state.repos} />
-        </InfiniteScroll>
+          <InfiniteScroll pageStart={this.state.page} loader={<div className="loader repo-loader">Loading ...</div>}
+                          loadMore={this.loadMore.bind(this)} hasMore={this.state.hasMore}>
+            <RepositoryList repositories={this.state.repos} />
+          </InfiniteScroll>
         </div>
       </div>
     );

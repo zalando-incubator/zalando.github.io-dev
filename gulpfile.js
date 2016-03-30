@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     csso = require('gulp-csso'),
     runSequence = require('run-sequence'),
-    autoprefixer = require('autoprefixer-core'),
+    autoprefixer = require('autoprefixer'),
     browserify = require('browserify'),
     ghPages = require('gulp-gh-pages'),
     watchify = require('watchify'),
@@ -94,7 +94,9 @@ gulp.task('styles', function() {
     .pipe(changed(p.tmpCss))
     .pipe(sass({errLogToConsole: true}))
     .on('error', notify.onError())
-    .pipe(postcss([autoprefixer('last 1 version')]))
+    .pipe(postcss([
+      autoprefixer({browsers: ['last 1 version']})
+    ]))
     .pipe(csso())
     .pipe(gulp.dest(p.tmpCss))
     .pipe(reload({stream: true}));
