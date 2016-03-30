@@ -1,67 +1,63 @@
-/**
- * Created by aigreja on 15/07/15.
- */
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import FilterTypeahead from './FilterTypeahead.jsx';
+import FilterButtons from './FilterButtons.jsx';
+import AppConstants from '../../constants/AppConstants.jsx';
 import ApiConfig from '../../constants/ApiConfig.js';
+import {Col, ButtonToolbar, ButtonGroup, Button, Row} from 'react-bootstrap';
 
 class FilterBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onOptionChange = this.onOptionChange.bind(this);
+    this.state = { filterType: AppConstants.FILTER_TYPES.DEFAULT };
   }
 
-  onOptionChange(language) {
-    this.props.onLanguageChange(language);
+  changeFilter(filterType) {
+    this.setState({filterType: filterType});
+    this.props.onLanguageChange(ApiConfig.REPOS.ALL_LANGUAGE_FILTER);
+  }
+
+  onFilterChange(filterType) {
+    this.changeFilter(filterType);
   }
 
   render() {
-    let buttons = this.props.languages.map(function (language) {
-
-      let active = this.props.language === language.name;
-      let buttonBarStyle;
-
-      if (active) {
-        buttonBarStyle = {
-          color: 'white',
-          backgroundColor: language.color,
-          borderColor: language.color,
-          boxShadow: 'none'
-        };
-      } else {
-        buttonBarStyle = {
-          color: language.color,
-          borderColor: language.color
-        };
-      }
-
-      return (
-        <Button
-          key={language.name}
-          style={buttonBarStyle}
-          onClick={this.onOptionChange.bind(this, language.name)}
-          active={active}>{language.name || 'Unknown'}
-        </Button>
-      );
-    }.bind(this));
-
-    buttons.unshift(<Button
-        key={'All'}
-        onClick={this.onOptionChange.bind(this, ApiConfig.REPOS.ALL_LANGUAGE_FILTER)}
-        active={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER }>All
-      </Button>
-    );
-
+    let filter = this.getFilter();
+    let onTopLanguages = this.onFilterChange.bind(this, AppConstants.FILTER_TYPES.BUTTONS);
+    let onSearch = this.onFilterChange.bind(this, AppConstants.FILTER_TYPES.TYPEAHEAD);
+    let filterType = this.state.filterType;
     return (
-      <div className="text-center filter-bar">
-        {buttons}
+      <Row className="text-center">
+          <ButtonGroup className="filter-menu">
+            <Button onClick={onTopLanguages} active={filterType === AppConstants.FILTER_TYPES.BUTTONS}>Top languages</Button>
+            <Button onClick={onSearch}  active={filterType === AppConstants.FILTER_TYPES.TYPEAHEAD}>Search</Button>
+          </ButtonGroup>
+
+        {filter}
+      </Row>
+    )
+  }
+
+  getFilter() {
+    if (this.state.filterType === AppConstants.FILTER_TYPES.TYPEAHEAD) {
+      return (
+        <FilterTypeahead onLanguageChange={this.props.onLanguageChange}
+                         language={this.props.language}
+                         allLanguages={this.props.allLanguages} />
+      );
+    }
+    return (
+      <div>
+        <FilterButtons language={this.props.language}
+                       languages={this.props.languages}
+                       onLanguageChange={this.props.onLanguageChange} />
       </div>
     );
   }
 }
 
 FilterBar.propTypes = {
+  allLanguages: React.PropTypes.array.isRequired,
   languages: React.PropTypes.array.isRequired,
   language: React.PropTypes.string.isRequired,
   onLanguageChange: React.PropTypes.func.isRequired
