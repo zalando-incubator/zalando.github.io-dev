@@ -10,39 +10,40 @@ import NumberFormatter from '../../utils/NumberFormatter.js';
 class RepositoryListItem extends React.Component {
 
   render() {
-    let colorBar = {
-      borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
-    };
-    let primaryLanguage = this.props.data.primaryLanguage ? this.props.data.primaryLanguage : 'unknown';
+    const {primaryLanguage, name, title, organizationName, description, forksCount, starsCount, contributorsCount} = this.props.data,
+      colorBar = {
+        borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
+      };
     return (
       <Col xs={12} sm={6} md={4}>
         <a href={RepositoryListItem.buildRepoUrl(this.props.data)} target="_blank" className="repo-item-box">
-          <Panel header={this.props.data.name + ' (' + this.props.data.organizationName + ')'} style={colorBar}>
-            <p className="repo-item-description">{this.props.data.description || 'No description provided.'}</p>
+          <Panel header={`${title || name} (${organizationName})`} style={colorBar}>
+            <p className="repo-item-description">{description || 'No description provided.'}</p>
             <Row className='show-grid text-center'>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-languages'> </span>
                 </div>
-                <span className='repo-item-icon-detail repo-item-language'>{primaryLanguage}</span>
+                <span className='repo-item-icon-detail repo-item-language'>{primaryLanguage || 'unknown'}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-fork2'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.forksCount)}</span>
+                <span className="repo-item-icon-detail">{NumberFormatter.format(forksCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-star2'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.starsCount)}</span>
+                <span className="repo-item-icon-detail">{NumberFormatter.format(starsCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
                   <span className='icon-contributor'> </span>
                 </div>
-                <span className="repo-item-icon-detail">{NumberFormatter.format(this.props.data.contributorsCount)}</span>
+                <span
+                  className="repo-item-icon-detail">{NumberFormatter.format(contributorsCount)}</span>
               </Col>
             </Row>
           </Panel>
