@@ -22,37 +22,35 @@ class FilterBar extends React.Component {
   }
 
   render() {
-    let filter = this.getFilter();
     let onTopLanguages = this.onFilterChange.bind(this, AppConstants.FILTER_TYPES.BUTTONS);
     let onSearch = this.onFilterChange.bind(this, AppConstants.FILTER_TYPES.TYPEAHEAD);
-    let filterType = this.state.filterType;
+    let isTypeahead = this.state.filterType === AppConstants.FILTER_TYPES.TYPEAHEAD;
+    let filter = isTypeahead ? this.getTypeaheadFilter() : this.getButtonsFilter();
     return (
       <Row className="text-center">
           <ButtonGroup className="filter-menu">
-            <Button onClick={onTopLanguages} active={filterType === AppConstants.FILTER_TYPES.BUTTONS}>Top languages</Button>
-            <Button onClick={onSearch}  active={filterType === AppConstants.FILTER_TYPES.TYPEAHEAD}>Search</Button>
+            <Button onClick={onTopLanguages} active={!isTypeahead}>Top languages</Button>
+            <Button onClick={onSearch}  active={isTypeahead}>Search</Button>
           </ButtonGroup>
-
         {filter}
       </Row>
     )
   }
 
-  getFilter() {
-    if (this.state.filterType === AppConstants.FILTER_TYPES.TYPEAHEAD) {
+  getButtonsFilter() {
+    return (<div>
+      <FilterButtons language={this.props.language}
+                     languages={this.props.languages}
+                     onLanguageChange={this.props.onLanguageChange} />
+      </div>);
+  }
+
+  getTypeaheadFilter() {
       return (
         <FilterTypeahead onLanguageChange={this.props.onLanguageChange}
                          language={this.props.language}
                          allLanguages={this.props.allLanguages} />
       );
-    }
-    return (
-      <div>
-        <FilterButtons language={this.props.language}
-                       languages={this.props.languages}
-                       onLanguageChange={this.props.onLanguageChange} />
-      </div>
-    );
   }
 }
 
