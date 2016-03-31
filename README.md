@@ -4,6 +4,11 @@ Zalando github io page **DEV** repository.
 
 [![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
 
+## Quick links
+
+* [WebSite](https://zalando.github.io)
+* [Contributing](#contributing)
+* [How to deploy](#how-to-deploy)
 
 ## Install
 
@@ -11,7 +16,9 @@ Clone the repository and run ```npm install```
 
 ## Run and watch for changes
 
-```npm start``` or ```gulp start```
+```npm start``` or ```gulp start```  
+
+> Supported versions node >= 4 and npm >= 3
 
 ## Tests
 
@@ -44,7 +51,7 @@ Run the task with the env flag.
 The generated ```src/config/parameters.json``` file is the result of a merge 
 between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 
 
-## How to deploy
+## <a name="how-to-deploy"> How to deploy
 
 **Always** move/checkout the **master** branch first.
  
@@ -61,6 +68,10 @@ To deploy the [organization page](https://zalando.github.io), run:
 ## Compatibility
  
 Tested to work with Opera 34.0+, Chrome 47.0+, Firefox 43.0+, Safari 8.0+, IE10+
+
+## <a name="contributing"> Contributing
+
+Developers interested in contributing should read the [CONTRIBUTING](CONTRIBUTING.md) markdown sheet.
 
 ## License
 
