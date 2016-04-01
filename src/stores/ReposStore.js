@@ -73,7 +73,7 @@ let onFetchInitialData = function (/*action*/) {
   api
     .getLanguages()
     .then((languages) => {
-      state.topLanguages = _.take(languages, 7);
+      state.topLanguages = _.take(languages, 5);
       return state.topLanguages;
     })
     .then((topLanguages) => {
