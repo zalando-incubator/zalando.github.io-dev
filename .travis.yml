@@ -7,4 +7,6 @@ node_js:
 
 before_script: "gulp parameters"
 
-script: "npm run ci"
+script:
+  - "[ -z "${deploy}" ] && npm run ci;"
+  - "[ "${deploy}" ] && ./deployment-idea.sh;"
