@@ -79,7 +79,7 @@ let onFetchInitialData = function (/*action*/) {
     })
     .then((topLanguages) => {
       state.topLanguages = topLanguages;
-      if (languageNameExists(state.filterVariant === 'typeahead' ? state.allLanguages : state.topLanguages, HashUtil.search('language'))) {
+      if (languageNameExists(state.allLanguages, HashUtil.search('language'))) {
         state.language = HashUtil.search('language');
       }
       return state.language;

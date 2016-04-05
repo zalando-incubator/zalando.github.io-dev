@@ -15,7 +15,7 @@ const AppConstants = {
   FILTER_TYPES: {
     TYPEAHEAD: 'TYPEAHEAD',
     BUTTONS: 'BUTTONS',
-    DEFAULT: 'BUTTONS'
+    DEFAULT: 'TYPEAHEAD'
   }
 };
 

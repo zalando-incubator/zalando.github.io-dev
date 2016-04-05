@@ -28,11 +28,13 @@ class FilterBar extends React.Component {
     let filter = isTypeahead ? this.getTypeaheadFilter() : this.getButtonsFilter();
     return (
       <Row className="text-center">
+        <Col md={12}>
           <ButtonGroup className="filter-menu">
             <Button onClick={onTopLanguages} active={!isTypeahead}>Top languages</Button>
             <Button onClick={onSearch}  active={isTypeahead}>Search</Button>
           </ButtonGroup>
-        {filter}
+          {filter}
+        </Col>
       </Row>
     )
   }
