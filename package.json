@@ -22,7 +22,9 @@
   ],
   "scripts": {
     "lint": "gulp lint",
-    "test": "jest",
+    "test": "npm run mocha --silent && npm run jest --silent",
+    "mocha": "mocha $(find src -name '*-test.js') --reporter nyan --compilers js:babel-core/register",
+    "jest": "jest",
     "ci": "gulp build",
     "start": "gulp start"
   },
