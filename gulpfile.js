@@ -171,6 +171,26 @@ gulp.task('copy-dist-readme', function () {
     .pipe(gulp.dest(p.dist));
 });
 
+gulp.task('generate-github-colors-scss', function (done) {
+  var swig= require('swig');
+  var githubColors = require('./src/config/github-colors.json');
+  var colors = [];
+  for(var colorName in githubColors) {
+    if(githubColors.hasOwnProperty(colorName)) {
+      colors.push({
+        name: colorName,
+        value: githubColors[colorName]
+      })
+    }
+  }
+
+  var output = swig.renderFile('./github-colors-template._scss', {
+    colors: colors
+  });
+
+  fs.writeFileSync('./src/_github-colors.scss', output);
+  done();
+});
 /**
  * Build a production ready version
  */

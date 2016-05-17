@@ -1,0 +1,3 @@
+$github-colors-map:({% for color in colors %}
+  '{{color.name}}': {{color.value}}{% if !loop.last %},{% endif %}
+{% endfor %});
