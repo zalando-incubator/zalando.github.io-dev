@@ -9,4 +9,4 @@ Developers interested in contributing should read the following guidelines:
 
 > Always open a Pull request (usually against ```dev``` branch).
 
-> For contributors with or without direct write access to this repo, as usual, fork and open a pull request.
+> For contributors without direct write access to this repo, as usual, fork and open a pull request.
