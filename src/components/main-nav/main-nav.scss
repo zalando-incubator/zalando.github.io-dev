@@ -1,0 +1,111 @@
+nav.main-nav {
+
+  border-radius: 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+  position: fixed;
+  margin:0; padding: 0;
+  background: #fff;
+  display: block;
+  width: 100%;
+  top: 0;
+  z-index:300;
+
+  > ul {
+    margin:0; padding:0;
+    display:block;
+    @include container-fixed();
+
+    @media (min-width: $screen-sm) {
+      width: $container-sm;
+    }
+    @media (min-width: $screen-md) {
+      width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+      width: $container-lg;
+    }
+
+
+    > li {
+
+      display: block;
+      list-style: none; padding: 0; margin: 0;
+      height: 55px;
+      float:right; width: 180px;
+      text-align:center;
+      text-transform: uppercase;
+
+      &:first-child {
+        float:left;
+        width: 190px;
+
+        > a {
+          background: url('#{$image-path}/icon_50x50.png') left center no-repeat;
+          background-size: 30px 30px;
+          padding-left: 38px;
+          line-height: 16px;
+          text-align: left;
+          height: 55px;
+          padding-top: 12px;
+
+          span.claim {display: block}
+          .claim-heart {font-size: 1.6rem}
+
+          &.active {
+            color: $zalando-darken-grey;
+            border-bottom: 2px solid transparent;
+          }
+
+          &:hover {
+            color: $zalando-dark-grey;
+          }
+        }
+      }
+
+      > a {
+        display: block;
+        line-height: 54px;
+        color: $zalando-darken-grey;
+        font-weight: 600;
+        font-size: 1.6rem;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+          color: $zalando-orange;
+          transition: color 100ms linear;
+        }
+
+        &.active {
+          color: $zalando-orange;
+          border-bottom: 2px solid $zalando-orange;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-md-min) {
+  nav.main-nav > ul > li {
+    width: 145px;
+
+
+    > a {
+      font-size: 1.3rem;
+    }
+
+    &:first-child  {
+      width: 180px;
+    }
+  }
+}
+
+
+@media (max-width: $screen-xs-max) {
+  nav.main-nav > ul > li:first-child {
+    width: 40px;
+    text-indent: -9999px;
+    > a { background-position: center center; }
+  }
+}

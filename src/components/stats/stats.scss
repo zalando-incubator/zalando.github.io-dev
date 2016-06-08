@@ -1,69 +1,80 @@
 //STATS
+.stats-container {
+  background: rgba(0,0,0, 0.75);
+  position: absolute;
+  top: 0; left:0;
+  height: 100%;
+  width: 100%;
+  padding: 18px;
+}
+
+.stats-claim-container {
+  margin-bottom: 36px;
+  h1, h2 { font-weight: 600;}
+  h1 {color: #fff; margin-top:0;}
+  h2 { color: $zalando-orange; margin-top:0;}
+}
 .stat {
-  margin: 30px;
+  color:#fff;
+  margin-bottom: 28px;
+}
 
-  i {
-    font-size: 3.2rem;
+.stat-label-icon {
+  vertical-align: middle;
+}
+
+.stat-label-text {
+  vertical-align: middle;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 300;
+  padding-left:6px;
+}
+
+.stat-count {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+
+// Responsive adjustments
+// Smart-phone Landscape
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  .stats-claim-container {
+    margin-top: 22px;
+  }
+}
+
+// From tablet and above
+@media (min-width: $screen-sm-min) {
+  .stats-container {
+    padding: 36px;
   }
 
-  h2, h4 {
-    display: block;
-    margin: 0;
+  .stats-container-main-row, .stats-container-main-cols {
+    height: 100%;
   }
 
-  h2 {
-    color: $zalando-orange;
-    font-size: 4rem;
-    font-weight: 700;
-    margin:15px 0 4px 0;
-  }
-
-  h4 {
-    font-size: 2.0rem;
-    color: $light-gray;
-    text-transform: lowercase;
+  .stats-claim-container {
     position: relative;
+    top: 50%;
+    margin-top: -64px;
+
+    h1 { font-size: 58px }
+    h2 { font-size: 36px}
   }
 
-  &.with-stat-description {
-    cursor: help;
-  }
-
-  small.stat-description {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    display: none;
-    font-size: 55%;
-    padding-top: 2px;
-    color: $lighten-gray;
-  }
-
-  &:hover {
-    small.stat-description { display: block };
+  .stats-labels-main-row {
+    margin-top: 68px;
   }
 }
 
-@media (max-width: $screen-sm-min) {
-
-  .stat {
-
-    i {
-      font-size: 2.8rem;
-    }
-
-    h2 {
-      font-size: 3rem !important;
-    }
-
-    h4 {
-      font-size: 1.8rem !important;
-    }
+// From Desktop and above
+@media (min-width: $screen-md-min) {
+  .stats-claim-container {
+    margin-top: -88px;
+    h1 { font-size: 88px }
   }
 }
 
-.stat-icon {
-  font-size: 3.2rem;
-  color: $light-gray;
-  margin-bottom: -10px;
-}
+

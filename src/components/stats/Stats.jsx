@@ -56,26 +56,29 @@ class Stats extends React.Component {
 
   render() {
     return (
-      <div className='container section'>
-        <SectionHeading text="statistics" />
-        <Row className='show-grid text-center'>
-          <Col xs={6} sm={4} >
-            <Stat name='REPOSITORIES' count={this.state.repos} icon='icon-repos'/>
+      <div className="stats-container">
+        <Row className="stats-container-main-row">
+          <Col xs={12} sm={6} md={8} className="stats-container-main-cols">
+            <div className="stats-claim-container">
+              <h1>Open Source</h1>
+              <h2>AT ZALANDO</h2>
+            </div>
           </Col>
-          <Col xs={6} sm={4}>
-            <Stat name='STARS' count={this.state.stars} icon='icon-star2'/>
-          </Col>
-          <Col xs={6} sm={4}>
-            <Stat name='FORKS' count={this.state.forks} icon='icon-fork2'/>
-          </Col>
-          <Col xs={6} sm={4}>
-            <Stat name='LANGUAGES' count={this.state.languages} icon='icon-languages'/>
-          </Col>
-          <Col xs={6} sm={4}>
-            <Stat name='CONTRIBUTORS' description={contributorsDescription} count={this.state.contributors} icon='icon-contributor'/>
-          </Col>
-          <Col xs={6} sm={4}>
-            <Stat name='MEMBERS' description={membersDescription} count={this.state.members} icon='icon-members'/>
+          <Col xs={12} sm={6} md={4} className="stats-container-main-cols">
+            <Row className="stats-labels-main-row">
+              <Col xs={12}>
+                <Stat name='Contributors' count={this.state.contributors} icon='mega-octicon octicon-organization'/>
+              </Col>
+              <Col xs={12}>
+                <Stat name='Stars' count={this.state.stars} icon='mega-octicon octicon-star'/>
+              </Col>
+              <Col xs={12}>
+                <Stat name='Repositories' count={this.state.repos} icon='mega-octicon octicon-repo'/>
+              </Col>
+              <Col xs={12}>
+                <Stat name='Languages' count={this.state.languages} icon='mega-octicon octicon-code'/>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </div>
