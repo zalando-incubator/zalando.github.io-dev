@@ -7,11 +7,7 @@ class MainNav extends React.Component{
         <nav className="main-nav">
           <ul>
             <li>
-              <a><div>
-                <span className="claim">Zalando.</span>
-                <span className="claim">we <i className="claim-heart">&hearts;</i> open source.</span>
-              </div>
-              </a>
+              <img src="images/zalando_logo.png" />
             </li>
             <li><a href="https://tech.zalando.de/blog/?tags=open%20source" target="_blank">Blog Posts</a></li>
             <li><a href="https://github.com/zalando/zalando-howto-open-source" target="_blank">How To</a></li>

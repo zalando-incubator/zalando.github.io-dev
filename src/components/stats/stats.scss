@@ -10,10 +10,25 @@
 
 .stats-claim-container {
   margin-bottom: 36px;
-  h1, h2 { font-weight: 600;}
-  h1 {color: #fff; margin-top:0;}
-  h2 { color: $zalando-orange; margin-top:0;}
+  h1 {color: #fff; margin-top:0; margin-bottom: 0; font-weight: 600;}
 }
+
+.stats-claim-subtitle {
+  img {
+    display: none;
+  }
+
+  span {
+    vertical-align: bottom;
+    line-height: 33px;
+    margin-left: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
+
 .stat {
   color:#fff;
   margin-bottom: 28px;
@@ -60,8 +75,19 @@
     top: 50%;
     margin-top: -64px;
 
-    h1 { font-size: 58px }
-    h2 { font-size: 36px}
+    h1 { font-size: 58px; margin-bottom: 16px}
+  }
+
+  .stats-claim-subtitle {
+    img {
+      display: inline-block;
+      width: 34px;
+      margin-left: 6px;
+    }
+
+    span {
+      font-size: 16px;
+    }
   }
 
   .stats-labels-main-row {
@@ -74,6 +100,12 @@
   .stats-claim-container {
     margin-top: -88px;
     h1 { font-size: 88px }
+  }
+
+  .stats-claim-subtitle {
+    span {
+      font-size: 22px;
+    }
   }
 }
 

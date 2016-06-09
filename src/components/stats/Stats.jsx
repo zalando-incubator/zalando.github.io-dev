@@ -61,7 +61,7 @@ class Stats extends React.Component {
           <Col xs={12} sm={6} md={8} className="stats-container-main-cols">
             <div className="stats-claim-container">
               <h1>Open Source</h1>
-              <h2>AT ZALANDO</h2>
+              <div className="stats-claim-subtitle"><img src="images/tech_zalando_logo_white.png" /> we dress code!</div>
             </div>
           </Col>
           <Col xs={12} sm={6} md={4} className="stats-container-main-cols">
