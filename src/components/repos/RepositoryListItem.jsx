@@ -12,7 +12,8 @@ class RepositoryListItem extends React.Component {
   render() {
     const {primaryLanguage, name, title, organizationName, description, forksCount, starsCount, contributorsCount} = this.props.data,
       colorBar = {
-        borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
+        borderLeft: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) ),
+        borderTop: '3px solid ' + ( languagesUtils.getLanguageColor(this.props.data.primaryLanguage) )
       };
     return (
       <Col xs={12} sm={6} md={4}>
@@ -22,25 +23,25 @@ class RepositoryListItem extends React.Component {
             <Row className='show-grid text-center'>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
-                  <span className='icon-languages'> </span>
+                  <span className='octicon octicon-code'> </span>
                 </div>
-                <span className='repo-item-icon-detail repo-item-language'>{primaryLanguage || 'unknown'}</span>
+                <span className='repo-item-icon-detail repo-item-language' style={{paddingTop:'4px'}}>{primaryLanguage || 'unknown'}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
-                  <span className='icon-fork2'> </span>
+                  <span className='octicon octicon-repo-forked' style={{paddingLeft:'4px'}}> </span>
                 </div>
                 <span className="repo-item-icon-detail">{NumberFormatter.format(forksCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
-                  <span className='icon-star2'> </span>
+                  <span className='octicon octicon-star'> </span>
                 </div>
                 <span className="repo-item-icon-detail">{NumberFormatter.format(starsCount)}</span>
               </Col>
               <Col xs={3} md={3}>
                 <div className="repo-item-icon">
-                  <span className='icon-contributor'> </span>
+                  <span className='octicon octicon-organization'> </span>
                 </div>
                 <span
                   className="repo-item-icon-detail">{NumberFormatter.format(contributorsCount)}</span>

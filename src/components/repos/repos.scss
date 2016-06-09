@@ -49,16 +49,22 @@
 //REPOSITORY LIST ITEM
 .panel-default {
   border: 1px solid transparent;
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 .panel-heading {
   color:$zalando-darken-grey;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.panel-default > .panel-heading {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border-radius: 0;
 }
 
 .panel-body {
@@ -72,8 +78,6 @@
 
   &:hover {
     text-decoration: none;
-    transform: scale(1.02,1.02);
-    transition: all .2s ease-in-out;
   }
 
   &:focus, &:visited{
@@ -81,8 +85,8 @@
     outline: none;
   }
 
-  &:hover .panel-heading {
-    text-decoration: underline;
+  &:hover .panel-body {
+    background: #f3f3f3;
   }
 }
 
@@ -103,7 +107,7 @@
 }
 
 .repo-item-icon{
-  font-size: 1.3rem;
+  font-size: 16px;
   color: $light-gray;
   display: inline;
 }

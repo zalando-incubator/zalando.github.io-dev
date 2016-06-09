@@ -19,15 +19,18 @@ nav.main-nav {
     > li {
 
       display: block;
-      list-style: none; padding: 0; margin: 0;
+      list-style: none;  margin: 0;
       height: 55px;
       float:right;
-      width: 180px;
       text-align:center;
       text-transform: uppercase;
+      padding: 0 16px;
 
       &:first-child {
         float:left;
+        padding:0;
+        padding-left:26px;
+
         img {
           padding-top: 16px;
           display: block;
@@ -60,7 +63,7 @@ nav.main-nav {
 
 @media (max-width: $screen-xs-max) {
   nav.main-nav > ul > li {
-    width: 145px;
+    //width: 145px;
     > a {
       font-size: 1.3rem;
     }
@@ -71,6 +74,7 @@ nav.main-nav {
   nav.main-nav > ul > li {
 
     &:first-child {
+      padding-left:0;
       width: 28px;
     }
   }
