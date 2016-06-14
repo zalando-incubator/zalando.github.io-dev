@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Button} from 'react-bootstrap';
-import {Typeahead} from 'react-typeahead';
+import SimpleTypeahead from 'react-simple-typeahead';
 import ApiConfig from '../../constants/ApiConfig.js';
 
 class FilterTypeahead extends React.Component {
@@ -11,20 +11,13 @@ class FilterTypeahead extends React.Component {
     this.typeahead = {
       customClasses: {
         input: 'filter-bar__typeahead-input',
-        results: 'filter-bar__typeahead-results',
+        list: 'filter-bar__typeahead-results',
         listItem: 'filter-bar__typeahead-item',
-        listAnchor: 'filter-bar__typeahead-anchor'
+        listItemSelected: 'filter-bar__typeahead-item--selected',
+        listItemValue: 'filter-bar__typeahead-anchor'
       }
     };
     this.classNames = ['text-center', 'filter-bar', 'filter-bar--typeahead'];
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.language !== this.props.language) {
-      if (this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER) {
-        this.refs.typeahead.setEntryText('');
-      }
-    }
   }
 
   changeOption(languageName) {
@@ -35,39 +28,20 @@ class FilterTypeahead extends React.Component {
     this.refs.typeahead.setState({selectionIndex: index});
   }
 
-  onKeyUp(event) {
-    let input = event.currentTarget;
-    if (input.value.length === 0) {
-      this.changeOption(ApiConfig.REPOS.ALL_LANGUAGE_FILTER);
-    }
-  }
-
-  onOptionChange(languageName, event) {
-    let input = event.target;
+  onOptionChange(languageName) {
     this.changeOption(languageName);
-    input.blur();
-
   }
 
-  onFocus(event) {
-    let input = event.currentTarget;
-    input.setSelectionRange(0, input.value.length);
-    this.selectTypeaheadOptionByIndex(0);
-  }
 
   render() {
     let typeahead = (
-      <Typeahead
-        ref="typeahead"
-        value={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER ? '' : this.props.language}
-        options={this.props.allLanguages.map((language) => language.name)}
+      <SimpleTypeahead
         placeholder="Programming language..."
-        onFocus={this.onFocus.bind(this)}
-        onKeyUp={this.onKeyUp.bind(this)}
+        defaultValue={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER ? '' : this.props.language}
+        options={this.props.allLanguages.map((language) => language.name)}
         onOptionSelected={this.onOptionChange.bind(this)}
-        customClasses={this.typeahead.customClasses}
-        maxVisible={4}
-      />
+        customClasses={this.typeahead.customClasses}>
+      </SimpleTypeahead>
     );
 
     let showing = ( <div style={{textAlign: 'left', marginTop: '4px'}}>
