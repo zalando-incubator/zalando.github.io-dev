@@ -29,6 +29,9 @@ class FilterTypeahead extends React.Component {
   }
 
   onOptionChange(languageName) {
+    if (!languageName) {
+      languageName = ApiConfig.REPOS.ALL_LANGUAGE_FILTER;
+    }
     this.changeOption(languageName);
   }
 
@@ -44,20 +47,35 @@ class FilterTypeahead extends React.Component {
       </SimpleTypeahead>
     );
 
-    let showing = ( <div style={{textAlign: 'left', marginTop: '4px'}}>
-      ... showing <strong>{this.props.language}</strong> repositories
+    let showing = ( <div className="filter-bar__typeahead__top-languages">
+      <strong>top {this.props.topLanguages.length}:</strong>
+      {this.props.topLanguages.map((language)=> {
+        let linkStyle = { color: language.color };
+        return (
+          <a
+            className="filter-bar__typeahead__top-languages__link"
+            key={language.name}
+            style={linkStyle}
+            onClick={this.onOptionChange.bind(this, language.name)}>{language.name || 'Unknown'}
+          </a>
+        );
+      })}
     </div>);
 
-    let showAllButton = (<Button
+    let resetIcon = (<span
       key={'All'}
-      className="filter-bar__btn-all"
-      onClick={this.onOptionChange.bind(this, ApiConfig.REPOS.ALL_LANGUAGE_FILTER)}
-      active={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER }>Show all
-    </Button>);
+      className="octicon octicon-x filter-bar__typeahead__reset-icon"
+      onClick={this.onOptionChange.bind(this, ApiConfig.REPOS.ALL_LANGUAGE_FILTER)}>
+    </span>);
+
+    let searchIcon = (<span
+      key={'Search'}
+      className="octicon octicon-search filter-bar__typeahead__search-icon">
+    </span>)
 
     return (
       <div className={this.classNames.join(' ')}>
-        {this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER ? '' : showAllButton}
+        {this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER ? searchIcon : resetIcon}
         {typeahead}
         {showing}
       </div>

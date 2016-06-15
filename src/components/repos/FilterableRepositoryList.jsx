@@ -46,7 +46,7 @@ class FilterableRepositoryList extends React.Component {
         <SectionHeading text="Repositories" />
         <FilterBar
           allLanguages={this.state.allLanguages}
-          languages={this.state.topLanguages}
+          topLanguages={this.state.topLanguages}
           language={this.state.language}
           onLanguageChange={this.handleLanguageChange}
           />
