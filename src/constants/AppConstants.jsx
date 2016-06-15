@@ -10,6 +10,12 @@ const AppConstants = {
       scrollTo: {
         offset: -24
       }
+  },
+
+  FILTER_TYPES: {
+    TYPEAHEAD: 'TYPEAHEAD',
+    BUTTONS: 'BUTTONS',
+    DEFAULT: 'TYPEAHEAD'
   }
 };
 

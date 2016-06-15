@@ -45,8 +45,9 @@ class FilterableRepositoryList extends React.Component {
         <div className="container section">
         <SectionHeading text="Repositories" />
         <FilterBar
-          language={this.state.language}
+          allLanguages={this.state.allLanguages}
           languages={this.state.topLanguages}
+          language={this.state.language}
           onLanguageChange={this.handleLanguageChange}
           />
           <InfiniteScroll pageStart={this.state.page} loader={<div className="loader repo-loader">Loading ...</div>}
