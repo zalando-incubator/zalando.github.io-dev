@@ -18,7 +18,7 @@ class RepositoryListItem extends React.Component {
     return (
       <Col xs={12} sm={6} md={4}>
         <a href={RepositoryListItem.buildRepoUrl(this.props.data)} target="_blank" className="repo-item-box">
-          <Panel header={`${title || name} (${organizationName})`} style={colorBar}>
+          <Panel header={`${title || name}`} style={colorBar}>
             <p className="repo-item-description">{description || 'No description provided.'}</p>
             <Row className='show-grid text-center'>
               <Col xs={3} md={3}>
