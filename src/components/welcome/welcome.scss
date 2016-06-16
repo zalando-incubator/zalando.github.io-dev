@@ -1,9 +1,8 @@
 .welcome-image-mask {
   position: relative;
-  height: 420px;
+  height: 380px;
   overflow: hidden;
   width: 100%;
-  max-width:1170px;
   margin: 0 auto;
 
   > img {
@@ -18,7 +17,7 @@
   .welcome-image-mask {
     > img {
       top:0;
-      width: 130%;
+      width: 150%;
     }
   }
 }
@@ -28,8 +27,7 @@
   .welcome-image-mask {
     height: 380px;
     > img {
-      width: 150%;
+      width: 185%;
     }
   }
 }
-

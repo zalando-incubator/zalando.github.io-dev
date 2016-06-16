@@ -1,69 +1,123 @@
 //STATS
-.stat {
-  margin: 30px;
+.stats-container {
+  background: rgba(0,0,0, 0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 36px;
+}
 
-  i {
-    font-size: 3.2rem;
-  }
+.stats-claim-container {
+  margin-bottom: 36px;
+  h1 {color: #fff; margin-top:0; margin-bottom: 0; font-weight: 600;}
+}
 
-  h2, h4 {
-    display: block;
-    margin: 0;
-  }
-
-  h2 {
-    color: $zalando-orange;
-    font-size: 4rem;
-    font-weight: 700;
-    margin:15px 0 4px 0;
-  }
-
-  h4 {
-    font-size: 2.0rem;
-    color: $light-gray;
-    text-transform: lowercase;
-    position: relative;
-  }
-
-  &.with-stat-description {
-    cursor: help;
-  }
-
-  small.stat-description {
-    position: absolute;
-    left: 0;
-    width: 100%;
+.stats-claim-subtitle {
+  img {
     display: none;
-    font-size: 55%;
-    padding-top: 2px;
-    color: $lighten-gray;
   }
 
-  &:hover {
-    small.stat-description { display: block };
-  }
-}
-
-@media (max-width: $screen-sm-min) {
-
-  .stat {
-
-    i {
-      font-size: 2.8rem;
-    }
-
-    h2 {
-      font-size: 3rem !important;
-    }
-
-    h4 {
-      font-size: 1.8rem !important;
-    }
+  span {
+    vertical-align: bottom;
+    line-height: 33px;
+    margin-left: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
   }
 }
 
-.stat-icon {
-  font-size: 3.2rem;
-  color: $light-gray;
-  margin-bottom: -10px;
+.stat {
+  color:#fff;
+  margin-bottom: 28px;
 }
+
+.stat-label-icon {
+  vertical-align: middle;
+}
+
+.stat-label-text {
+  vertical-align: middle;
+  font-size: 22px;
+  line-height: 22px;
+  font-weight: 300;
+  padding-left:6px;
+}
+
+.stat-count {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+
+// Responsive adjustments
+// Smart-phone Landscape
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  .stats-claim-container {
+    margin-top: 0;
+  }
+}
+
+// From tablet and above
+@media (min-width: $screen-sm-min) {
+  .stats-container {
+    padding: 36px;
+  }
+
+  .stats-container-main-row, .stats-container-main-cols {
+    height: 100%;
+    max-width: 750px;
+    margin: auto;
+  }
+
+  .stats-claim-container {
+    position: relative;
+    top: 50%;
+    margin-top: -64px;
+
+    h1 { font-size: 58px; margin-bottom: 16px}
+  }
+
+  .stats-claim-subtitle {
+    img {
+      display: inline-block;
+      width: 34px;
+      margin-left: 6px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  .stats-labels-main-row {
+    margin-top: 58px;
+  }
+}
+
+// From Desktop and above
+@media (min-width: $screen-md-min) {
+  .stats-container-main-cols, .stats-container-main-row {
+      max-width: 970px;
+  }
+
+  .stats-claim-container {
+    margin-top: -88px;
+    h1 { font-size: 88px }
+  }
+
+  .stats-claim-subtitle {
+    span {
+      font-size: 22px;
+    }
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+    .stats-container-main-cols, .stats-container-main-row {
+        max-width: 1170px;
+    }
+  }

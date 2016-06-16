@@ -1,12 +1,17 @@
 // Import bootstrap styles: TODO... maybe import only basic and really required modules not the entire huge pack
 @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
+@import '../node_modules/octicons/build/font/octicons.scss';
+
+
 @import 'components/app';
 @import 'components/section-heading/section-heading';
+@import 'components/main-nav/main-nav';
 @import 'components/welcome/welcome';
 @import 'components/stats/stats';
 @import 'components/repos/repos';
 @import 'components/graphs/graphs';
+
 
 
 
@@ -53,5 +58,18 @@
 }
 .icon-languages:before {
   content: "\e605";
+}
+
+// Octicons
+@font-face {
+  font-family:"Octicons";
+  src:url("../fonts/octicons.eot?89624517212bc6232de6d7b6c801ca91");
+  src:url("../fonts/octicons.eot?#iefix") format("embedded-opentype"),
+  url("../fonts/octicons.woff2?89624517212bc6232de6d7b6c801ca91") format("woff2"),
+  url("../fonts/octicons.woff?89624517212bc6232de6d7b6c801ca91") format("woff"),
+  url("../fonts/octicons.ttf?89624517212bc6232de6d7b6c801ca91") format("truetype"),
+  url("../fonts/octicons.svg?89624517212bc6232de6d7b6c801ca91#octicons") format("svg");
+  font-weight:normal;
+  font-style:normal;
 }
 

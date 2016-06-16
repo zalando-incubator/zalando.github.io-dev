@@ -1,25 +1,23 @@
 import React from 'react';
 import NumberFormatter from '../../utils/NumberFormatter.js';
+import {Col, Row} from 'react-bootstrap';
 
 class Stat extends React.Component {
 
   render() {
-    let description = !this.props.description ? '' : (
-      <small className="stat-description">{this.props.description}</small>
-    );
-
-    let statClassName = 'stat' + (description ? ' with-stat-description' : '');
-
     return (
-      <div className={statClassName}>
-        <div className="stat-icon">
-          <span className={this.props.icon}> </span>
-        </div>
-        <div>
-          <h2>{NumberFormatter.format(this.props.count)}</h2>
-          <h4>{this.props.name} {description}</h4>
-        </div>
-      </div>
+      <Row className='stat'>
+        <Col xs={8}>
+          <div className="stat-label">
+            <span className={'stat-label-icon ' + this.props.icon}></span><span className="stat-label-text">{this.props.name}</span>
+          </div>
+        </Col>
+        <Col xs={4}>
+          <div className="stat-count">
+            {NumberFormatter.format(this.props.count)}
+          </div>
+        </Col>
+      </Row>
     );
   }
 }
