@@ -2,7 +2,7 @@
 
 Zalando github io page **DEV** repository.
 
-[![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
+[![Build Status](https://travis-ci.org/zalando-incubator/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando-incubator/zalando.github.io-dev)
 
 ## Quick links
 
@@ -53,17 +53,17 @@ between ```src/config/parameters.default.json``` and ```src/config/parameters.pr
 
 ## <a name="how-to-deploy"> How to deploy
 
-**Always** move/checkout the **master** branch first.
- 
-```git checkout master```
-
-Then to deploy the [project page](https://zalando.github.io/zalando.github.io-dev) (```gh-pages``` branch), run:
+To deploy to the [project page](https://zalando-incubator.github.io/zalando.github.io-dev) (```gh-pages``` branch), for a dev preview, run:
 
 ```gulp deploy```
 
-To deploy the [organization page](https://zalando.github.io), run: 
+To deploy to the [official zalando organization page](https://zalando.github.io), run: 
 
 ```gulp deploy --organization```  
+
+> The deploy task will build the artifact and publish it by doing a commit and push to the right branch/repository 
+(gh-pages for dev preview, zalando.github.io#master when using ```--organization``` flag).
+
 
 ## Compatibility
  
