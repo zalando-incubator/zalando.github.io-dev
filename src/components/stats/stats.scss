@@ -2,10 +2,11 @@
 .stats-container {
   background: rgba(0,0,0, 0.75);
   position: absolute;
-  top: 0; left:0;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
-  padding: 18px;
+  padding: 36px;
 }
 
 .stats-claim-container {
@@ -56,7 +57,7 @@
 // Smart-phone Landscape
 @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
   .stats-claim-container {
-    margin-top: 22px;
+    margin-top: 0;
   }
 }
 
@@ -68,6 +69,8 @@
 
   .stats-container-main-row, .stats-container-main-cols {
     height: 100%;
+    max-width: 750px;
+    margin: auto;
   }
 
   .stats-claim-container {
@@ -91,12 +94,16 @@
   }
 
   .stats-labels-main-row {
-    margin-top: 68px;
+    margin-top: 58px;
   }
 }
 
 // From Desktop and above
 @media (min-width: $screen-md-min) {
+  .stats-container-main-cols, .stats-container-main-row {
+      max-width: 970px;
+  }
+
   .stats-claim-container {
     margin-top: -88px;
     h1 { font-size: 88px }
@@ -109,4 +116,8 @@
   }
 }
 
-
+@media (min-width: $screen-lg-min) {
+    .stats-container-main-cols, .stats-container-main-row {
+        max-width: 1170px;
+    }
+  }
