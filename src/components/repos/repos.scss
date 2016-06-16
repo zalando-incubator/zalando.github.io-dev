@@ -21,6 +21,7 @@
   outline: none;
   border:1px solid #D6D2D2;
   padding-right: 34px;
+  margin-bottom: 4px;
 }
 
 .filter-bar__typeahead-results {
@@ -100,7 +101,7 @@
   padding: 2px;
   width: 20px;
   border: 2px solid #929292;
-  letter-spacing: -4px;
+  letter-spacing: -5px;
   line-height: 12px;
   border-radius: 10px;
   cursor: pointer;
@@ -118,6 +119,7 @@
 .filter-bar__typeahead__top-languages {
   text-align: left;
   margin-top: 6px;
+  color: #4a4a4a;
 
   > strong {
     text-transform: uppercase;
@@ -126,14 +128,27 @@
 
 .filter-bar__typeahead__top-languages__link {
   display: inline-block;
-  font-weight: bold;
-  padding-left:4px;
+  font-weight: 700;
+  padding: 2px 8px;
+  margin: 0 4px;
   text-transform: uppercase;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
+  color: white;
+  letter-spacing: .5px;
+  transition-duration: .2s;
+
 
   &:hover {
-    opacity: 0.6;
+    color: #fff;
+    opacity: 1;
+    text-decoration: none;
+    transform: translateY(-2px);
+    background-blend-mode: darken;
+  }
+
+  &:active {
+    opacity: .8;
   }
 }
 
@@ -146,7 +161,7 @@
 
 .panel-heading {
   color:$zalando-darken-grey;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
@@ -167,6 +182,8 @@
   display: block;
   text-decoration: none;
   cursor: pointer;
+  transition: .2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
 
   &:hover {
     text-decoration: none;
@@ -177,8 +194,14 @@
     outline: none;
   }
 
-  &:hover .panel-body {
-    background: #f3f3f3;
+  &:hover {
+    transform: translateY(-3px);
+    transition: .2s;
+    box-shadow: 0 0 20px rgba(0,0,0,.2)
+
+    // .panel-body {
+    //   background: #f3f3f3;
+    // }
   }
 }
 
@@ -207,4 +230,3 @@
 .repo-item-icon-detail {
   display: block;
 }
-

@@ -52,9 +52,9 @@ class FilterTypeahead extends React.Component {
     );
 
     let showing = ( <div className="filter-bar__typeahead__top-languages">
-      <strong>top {this.props.topLanguages.length}:</strong>
+      <strong>top languages </strong>
       {this.props.topLanguages.map((language)=> {
-        let linkStyle = { color: language.color };
+        let linkStyle = { backgroundColor: language.color };
         return (
           <a
             className="filter-bar__typeahead__top-languages__link"
