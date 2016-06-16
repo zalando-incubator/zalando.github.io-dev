@@ -8,7 +8,6 @@ class FilterBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { filterType: AppConstants.FILTER_TYPES.DEFAULT };
   }
 
   render() {

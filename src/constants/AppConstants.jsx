@@ -4,18 +4,11 @@ const AppConstants = {
     REPOS_LANGUAGE_CHANGE: 'REPOS_LANGUAGE_CHANGE',
     REPOS_FETCH_MORE: 'REPOS_FETCH_MORE'
   },
-
   SIMPLE_INPAGENAV_OPTIONS: {
       scrollOffset: 24,
       scrollTo: {
         offset: -24
       }
-  },
-
-  FILTER_TYPES: {
-    TYPEAHEAD: 'TYPEAHEAD',
-    BUTTONS: 'BUTTONS',
-    DEFAULT: 'TYPEAHEAD'
   }
 };
 
