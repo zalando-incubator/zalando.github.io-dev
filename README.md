@@ -2,7 +2,7 @@
 
 Zalando github io page **DEV** repository.
 
-[![Build Status](https://travis-ci.org/zalando/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando/zalando.github.io-dev)
+[![Build Status](https://travis-ci.org/zalando-incubator/zalando.github.io-dev.svg?branch=dev)](https://travis-ci.org/zalando-incubator/zalando.github.io-dev)
 
 ## Quick links
 
@@ -57,11 +57,11 @@ between ```src/config/parameters.default.json``` and ```src/config/parameters.pr
  
 ```git checkout master```
 
-Then to deploy the [project page](https://zalando.github.io/zalando.github.io-dev) (```gh-pages``` branch), run:
+Then to deploy the [project page](https://zalando-incubator.github.io/zalando.github.io-dev) (```gh-pages``` branch), for a dev preview, run:
 
 ```gulp deploy```
 
-To deploy the [organization page](https://zalando.github.io), run: 
+To deploy the [official zalando organization page](https://zalando.github.io), run: 
 
 ```gulp deploy --organization```  
 
