@@ -4,7 +4,6 @@ const AppConstants = {
     REPOS_LANGUAGE_CHANGE: 'REPOS_LANGUAGE_CHANGE',
     REPOS_FETCH_MORE: 'REPOS_FETCH_MORE'
   },
-
   SIMPLE_INPAGENAV_OPTIONS: {
       scrollOffset: 24,
       scrollTo: {

@@ -9,6 +9,7 @@ import api from '../utils/Api.js';
 
 let state = {
   language: 'all',
+  allLanguages: [],
   topLanguages: [],
   repos: [],
   hasMore: true,
@@ -47,7 +48,6 @@ let onLanguageChange = function (action) {
   HashUtil.search('language', state.language);
   store.emitChange();
 
-
   return api.getRepos({
     language: state.language,
     limit: api.API_CONFIG.REPOS.DEFAULT_LIMIT,
@@ -73,14 +73,15 @@ let onFetchInitialData = function (/*action*/) {
   api
     .getLanguages()
     .then((languages) => {
+      state.allLanguages = languages;
       state.topLanguages = _.take(languages, 5);
       return state.topLanguages;
     })
     .then((topLanguages) => {
-      if (languageNameExists(topLanguages, HashUtil.search('language'))) {
+      state.topLanguages = topLanguages;
+      if (languageNameExists(state.allLanguages, HashUtil.search('language'))) {
         state.language = HashUtil.search('language');
       }
-      state.topLanguages = topLanguages;
       return state.language;
     })
     .then((language) => {

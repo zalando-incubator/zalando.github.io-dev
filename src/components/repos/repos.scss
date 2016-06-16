@@ -1,64 +1,162 @@
+@import './github-colors';
+
 //REPOS SECTION
 .repos{
   width: 100%;
-  background-color: $repos-section-background;
 }
 
-//FILTER BAR
-.filter-bar {
-  margin:28px;
+//
+// FILTER BAR / TYPEAHEAD
+//
+.filter-bar--typeahead {
+  margin: 28px 0;
+  position: relative;
+}
 
-  .btn {
-    border-radius: 0px;
-    border-width: 2px;
-    border-color: $light-gray;
-    font-weight: 700;
-    color: $light-gray;
-    margin:7px;
-    background-color: transparent;
 
-    &.active {
-      background-color: $light-gray;
-      color: white ;
-      box-shadow: none;
-    }
+.filter-bar__typeahead-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  outline: none;
+  border:1px solid #D6D2D2;
+  padding-right: 34px;
+}
 
-    &:focus {
-      outline: 0 none;
-      border-color: none;
-    }
+.filter-bar__typeahead-results {
+  display: block;
+  margin:0; padding: 0;
+  position: absolute;
+  left:0;
+  z-index:100;
+  width: 100%;
+  list-style: none;
+  text-align:left;
+  border:1px solid #D6D2D2;
+  border-top: none;
+}
 
-    &:hover {
-      background-color: white;
-      color:$light-gray;
+.filter-bar__typeahead-item {
+  display: block;
+  background: #fff;
+  font-size: 18px;
+  border-top:1px solid #D6D2D2;
+
+  &:hover .filter-bar__typeahead-anchor, &--selected .filter-bar__typeahead-anchor  {
+    color: #808080;
+    text-decoration: none;
+    background: #e0e0e0;
+  }
+
+  &:first-child {
+    border-top:none;
+  }
+
+  @each $language-name, $color in $github-colors-map {
+    &[data-reactid*="#{$language-name}_"] .filter-bar__typeahead-anchor{
+      &:before {
+        color: $color;
+      }
     }
   }
 }
 
-.other-btn {
-  border-color: #999999 !important;
-  color: #999999 !important;
-  &.active {
-    background-color: #999999 !important;
-    color: white !important;
-    box-shadow:none;
+.filter-bar__typeahead-anchor {
+  display: block;
+  padding:16px;
+  color: #808080;
+  text-decoration: none;
+  font-weight: 400;
+
+  &:before {
+    display: inline-block;
+    padding-right: 8px;
+    content: '\2588'
+  }
+
+  &:hover {
+    color: #808080;
+    text-decoration: none;
+    background: #e0e0e0;
+  }
+}
+
+.filter-bar__typeahead__reset-icon, .filter-bar__typeahead__search-icon {
+  display: block;
+  position: absolute;
+  color: #929292;
+}
+
+.filter-bar__typeahead__search-icon {
+  right: 10px;
+  top: 12px;
+}
+
+.filter-bar__typeahead__reset-icon {
+  display: block;
+  position: absolute;
+  right: 8px;
+  top: 11px;
+  padding: 2px;
+  width: 20px;
+  border: 2px solid #929292;
+  letter-spacing: -4px;
+  line-height: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #929292;
+    color: #696969;
+  }
+}
+
+@mixin filter-bar__typeahead__top-languages--hover {
+  color: red;
+}
+
+.filter-bar__typeahead__top-languages {
+  text-align: left;
+  margin-top: 6px;
+
+  > strong {
+    text-transform: uppercase;
+  }
+}
+
+.filter-bar__typeahead__top-languages__link {
+  display: inline-block;
+  font-weight: bold;
+  padding-left:4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    opacity: 0.6;
   }
 }
 
 
 //REPOSITORY LIST ITEM
 .panel-default {
-  border: 1px solid transparent;
-  border-radius: 0px;
+  border: 0;
+  border-radius: 0;
 }
 
 .panel-heading {
   color:$zalando-darken-grey;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.panel-default > .panel-heading {
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border-radius: 0;
 }
 
 .panel-body {
@@ -72,8 +170,6 @@
 
   &:hover {
     text-decoration: none;
-    transform: scale(1.02,1.02);
-    transition: all .2s ease-in-out;
   }
 
   &:focus, &:visited{
@@ -81,8 +177,8 @@
     outline: none;
   }
 
-  &:hover .panel-heading {
-    text-decoration: underline;
+  &:hover .panel-body {
+    background: #f3f3f3;
   }
 }
 
@@ -103,7 +199,7 @@
 }
 
 .repo-item-icon{
-  font-size: 1.3rem;
+  font-size: 16px;
   color: $light-gray;
   display: inline;
 }

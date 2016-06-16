@@ -1,12 +1,16 @@
 import React from 'react';
 
-export default class Welcome extends React.Component
-{
+class Welcome extends React.Component {
   render() {
     return (
-      <div className="welcome-image-mask">
-        <img src="images/welcome.jpg" />
+      <div>
+        <div className="welcome-image-mask">
+          <img src="images/welcome.jpg" />
+          {this.props.children}
+        </div>
       </div>
     );
   }
 }
+
+export default Welcome;
