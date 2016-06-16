@@ -35,6 +35,9 @@ class FilterTypeahead extends React.Component {
     this.changeOption(languageName);
   }
 
+  onInputEmpty() {
+    this.changeOption(ApiConfig.REPOS.ALL_LANGUAGE_FILTER);
+  }
 
   render() {
     let typeahead = (
@@ -43,6 +46,7 @@ class FilterTypeahead extends React.Component {
         defaultValue={this.props.language === ApiConfig.REPOS.ALL_LANGUAGE_FILTER ? '' : this.props.language}
         options={this.props.allLanguages.map((language) => language.name)}
         onOptionSelected={this.onOptionChange.bind(this)}
+        onInputEmpty={this.onInputEmpty.bind(this)}
         customClasses={this.typeahead.customClasses}>
       </SimpleTypeahead>
     );
