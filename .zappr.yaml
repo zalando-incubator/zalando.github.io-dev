@@ -1,0 +1,15 @@
+approvals:
+  minimum: 2              # PR needs at least 2 approval for compliant reasons
+  pattern: "^(:\\+1:|👍|approved)$"   # write a comment to the PR with "approved" or ":+1"
+  veto:
+    pattern: "^(:\\-1:|👎|rejected)$" # write a comment to the PR with "rejected" or ":-1"
+  from:
+    orgs:
+      - zalando
+      - zalando-incubator
+    collaborators: true
+commit:
+  message:
+    patterns:
+      # see CONTRIBUTING.md
+      - "^(feat|fix|docs|style|refactor|perf|test|chore)\\([a-zA-Z0-9-._]+\\):.{3,}"
