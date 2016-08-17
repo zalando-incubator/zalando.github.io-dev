@@ -2,7 +2,7 @@
   "CATWATCH_API": {
     "BASE_URL": "catwatch.opensource.zalan.do",
     "PROTOCOL": "https",
-    "ORGANIZATIONS": "zalando,zalando-stups,zalando-techmonkeys,zalando-zmon"
+    "ORGANIZATIONS": "zalando,zalando-stups,zalando-techmonkeys"
   }
 }
 
