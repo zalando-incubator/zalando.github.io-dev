@@ -1,5 +1,5 @@
 import React from 'react';
-import SimpleInpagenav from 'react-simple-inpagenav';
+import SimpleInpagenav from '@rbarilani/react-simple-inpagenav';
 
 import AppConstants from '../constants/AppConstants.jsx';
 import MainNav from './main-nav/MainNav.jsx';
