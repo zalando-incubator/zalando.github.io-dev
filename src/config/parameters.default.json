@@ -1,6 +1,6 @@
 {
   "CATWATCH_API": {
-    "BASE_URL": "catwatch.stups.zalan.do",
+    "BASE_URL": "catwatch.opensource.zalan.do",
     "PROTOCOL": "https",
     "ORGANIZATIONS": "zalando"
   }
