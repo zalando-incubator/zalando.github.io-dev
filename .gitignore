@@ -7,4 +7,4 @@ dist
 .publish-organization
 
 src/config/parameters.*
-src/config/parameters.default.json
+!src/config/parameters.default.json
