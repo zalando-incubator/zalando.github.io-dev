@@ -1,4 +1,4 @@
-# zalando.github.io 
+# zalando.github.io
 
 Zalando github io page **DEV** repository.
 
@@ -40,6 +40,9 @@ Example (src/config/parameters.prod.json):
 {
   "CATWATCH_API" : {
     "BASE_URL": "api.catwatch.com"
+  },
+  "GOOGLE_ANALYTICS": {
+    "TRACKING_ID": "UA-XXXXXXXX-X"
   }
 }
 ```
@@ -48,8 +51,8 @@ Run the task with the env flag.
 
 ```npm start -- --env=prod``` or ```gulp start --env=prod```
 
-The generated ```src/config/parameters.json``` file is the result of a merge 
-between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```. 
+The generated ```src/config/parameters.json``` file is the result of a merge
+between ```src/config/parameters.default.json``` and ```src/config/parameters.prod.json```.
 
 ## <a name="how-to-deploy"> How to deploy
 
@@ -57,16 +60,16 @@ To deploy to the [project page](https://zalando-incubator.github.io/zalando.gith
 
 ```gulp deploy```
 
-To deploy to the [official zalando organization page](https://zalando.github.io), run: 
+To deploy to the [official zalando organization page](https://zalando.github.io), run:
 
 ```gulp deploy --organization```  
 
-> The deploy task will build the artifact and publish it by doing a commit and push to the right branch/repository 
+> The deploy task will build the artifact and publish it by doing a commit and push to the right branch/repository
 (gh-pages for dev preview, zalando.github.io#master when using ```--organization``` flag).
 
 
 ## Compatibility
- 
+
 Tested to work with Opera 34.0+, Chrome 47.0+, Firefox 43.0+, Safari 8.0+, IE10+
 
 ## <a name="contributing"> Contributing
