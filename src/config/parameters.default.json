@@ -3,6 +3,9 @@
     "BASE_URL": "catwatch.opensource.zalan.do",
     "PROTOCOL": "https",
     "ORGANIZATIONS": "zalando"
+  },
+  "GOOGLE_ANALYTICS": {
+    "TRACKING_ID": "UA-53633993-31"
   }
 }
 
